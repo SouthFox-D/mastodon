@@ -3,7 +3,7 @@ name: Build container tag images
 on:
   push:
     tags:
-      - '*.*.*'
+      - '*'
 
 jobs:
   docker:
