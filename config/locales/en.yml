@@ -1609,12 +1609,12 @@ en:
       <p>Originally adapted from the <a href="https://github.com/discourse/discourse">Discourse privacy policy</a>.</p>
     title: "%{instance} Terms of Service and Privacy Policy"
   themes:
-    modern-light: Modern Light
-    modern-dark: Modern Dark
-    modern-contrast: Modern Contrast
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
     mastodon-light: Mastodon (Light)
+    modern-contrast: Modern Contrast
+    modern-dark: Modern Dark
+    modern-light: Modern Light
   time:
     formats:
       default: "%b %d, %Y, %H:%M"
