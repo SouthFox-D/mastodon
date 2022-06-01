@@ -1585,8 +1585,8 @@ zh-CN:
     default: Mastodon（暗色主题）
     mastodon-light: Mastodon（亮色主题）
     modern-contrast: 现代风（高对比度）
-    modern-dark: 现代风现代
-    modern-light: 亮色风现代
+    modern-dark: 现代风暗色
+    modern-light: 现代风亮色
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"
