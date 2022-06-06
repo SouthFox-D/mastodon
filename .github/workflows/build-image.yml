@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - 'main'
+      - '*'
     tags:
       - '*'
   pull_request:
@@ -32,4 +32,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: southfox09/mastodon:latest
+          tags: southfox09/mastodon:dev
