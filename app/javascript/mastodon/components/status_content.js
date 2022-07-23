@@ -10,6 +10,22 @@ import { autoPlayGif } from 'mastodon/initial_state';
 
 const MAX_HEIGHT = 642; // 20px * 32 (+ 2px padding at the top)
 
+const linkRegex = /(?:\?\w+|\&\w+)/g;
+
+const isLinkMisleading = (link, checkUrlLike = true) => {
+
+  const targetURL = new URL(link.href);
+  if (targetURL.host === 'b23.tv') {
+    return true;
+  }
+
+  var linkPara = (link.href).match(linkRegex);
+  if (linkPara != null && linkPara.length > 1) {
+    return true;
+  }
+
+};
+
 export default class StatusContent extends React.PureComponent {
 
   static contextTypes = {
@@ -56,6 +72,15 @@ export default class StatusContent extends React.PureComponent {
       } else {
         link.setAttribute('title', link.href);
         link.classList.add('unhandled-link');
+
+        if (isLinkMisleading(link)) {
+          const tag = document.createElement('span');
+          tag.classList.add('link-origin-tag');
+          tag.textContent = `[👀❗]`;
+          link.insertAdjacentText('beforeend', ' ');
+          link.insertAdjacentElement('beforeend', tag);
+        }
+
       }
 
       link.setAttribute('target', '_blank');
