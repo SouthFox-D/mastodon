@@ -14,6 +14,17 @@
   text-align: right;
   direction: rtl;
 }
+#mastodon a,
+.public-layout a,
+.modal-layout a,
+#mastodon button,
+.public-layout button,
+.modal-layout button,
+#mastodon label,
+.public-layout label,
+.modal-layout label {
+  user-select: none;
+}
 #mastodon .button--block,
 .public-layout .button--block,
 .modal-layout .button--block {
@@ -70,105 +81,107 @@
   border-color: var(--border-color) !important;
   font-display: swap !important;
 }
-#mastodon .load-more,
-.public-layout .load-more,
-.modal-layout .load-more,
-#mastodon .trends__item,
-.public-layout .trends__item,
-.modal-layout .trends__item,
-#mastodon .story,
-.public-layout .story,
-.modal-layout .story,
-#mastodon .media-gallery__item,
-.public-layout .media-gallery__item,
-.modal-layout .media-gallery__item,
-#mastodon .column-link,
-.public-layout .column-link,
-.modal-layout .column-link,
-#mastodon select,
-.public-layout select,
-.modal-layout select,
-#mastodon .status-card,
-.public-layout .status-card,
-.modal-layout .status-card,
-#mastodon .audio-player,
-.public-layout .audio-player,
-.modal-layout .audio-player,
-#mastodon .account,
-.public-layout .account,
-.modal-layout .account {
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 3) !important;
-}
-#mastodon .load-more:active,
-.public-layout .load-more:active,
-.modal-layout .load-more:active,
-#mastodon .trends__item:active,
-.public-layout .trends__item:active,
-.modal-layout .trends__item:active,
-#mastodon .story:active,
-.public-layout .story:active,
-.modal-layout .story:active,
-#mastodon .media-gallery__item:active,
-.public-layout .media-gallery__item:active,
-.modal-layout .media-gallery__item:active,
-#mastodon .column-link:active,
-.public-layout .column-link:active,
-.modal-layout .column-link:active,
-#mastodon select:active,
-.public-layout select:active,
-.modal-layout select:active,
-#mastodon .status-card:active,
-.public-layout .status-card:active,
-.modal-layout .status-card:active,
-#mastodon .audio-player:active,
-.public-layout .audio-player:active,
-.modal-layout .audio-player:active,
-#mastodon .account:active,
-.public-layout .account:active,
-.modal-layout .account:active {
-  transform: scale(0.99);
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
-}
-#mastodon .react-toggle-track,
-.public-layout .react-toggle-track,
-.modal-layout .react-toggle-track,
-#mastodon .button,
-.public-layout .button,
-.modal-layout .button,
-#mastodon .icon-button,
-.public-layout .icon-button,
-.modal-layout .icon-button,
-#mastodon .floating-action-button,
-.public-layout .floating-action-button,
-.modal-layout .floating-action-button {
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
-}
-#mastodon .react-toggle-track:active,
-.public-layout .react-toggle-track:active,
-.modal-layout .react-toggle-track:active,
-#mastodon .button:active,
-.public-layout .button:active,
-.modal-layout .button:active,
-#mastodon .icon-button:active,
-.public-layout .icon-button:active,
-.modal-layout .icon-button:active,
-#mastodon .floating-action-button:active,
-.public-layout .floating-action-button:active,
-.modal-layout .floating-action-button:active {
-  transform: scale(0.95);
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
-}
-#mastodon .status__content__spoiler-link span,
-.public-layout .status__content__spoiler-link span,
-.modal-layout .status__content__spoiler-link span {
-  display: inline-block;
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
-}
-#mastodon .status__content__spoiler-link:active span,
-.public-layout .status__content__spoiler-link:active span,
-.modal-layout .status__content__spoiler-link:active span {
-  transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
-  transform: translateY(1px);
+@media (prefers-reduced-motion: no-preference) {
+  #mastodon .load-more,
+  .public-layout .load-more,
+  .modal-layout .load-more,
+  #mastodon .trends__item,
+  .public-layout .trends__item,
+  .modal-layout .trends__item,
+  #mastodon .story,
+  .public-layout .story,
+  .modal-layout .story,
+  #mastodon .media-gallery__item,
+  .public-layout .media-gallery__item,
+  .modal-layout .media-gallery__item,
+  #mastodon .column-link,
+  .public-layout .column-link,
+  .modal-layout .column-link,
+  #mastodon select,
+  .public-layout select,
+  .modal-layout select,
+  #mastodon .status-card,
+  .public-layout .status-card,
+  .modal-layout .status-card,
+  #mastodon .audio-player,
+  .public-layout .audio-player,
+  .modal-layout .audio-player,
+  #mastodon .account,
+  .public-layout .account,
+  .modal-layout .account {
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 3) !important;
+  }
+  #mastodon .load-more:active,
+  .public-layout .load-more:active,
+  .modal-layout .load-more:active,
+  #mastodon .trends__item:active,
+  .public-layout .trends__item:active,
+  .modal-layout .trends__item:active,
+  #mastodon .story:active,
+  .public-layout .story:active,
+  .modal-layout .story:active,
+  #mastodon .media-gallery__item:active,
+  .public-layout .media-gallery__item:active,
+  .modal-layout .media-gallery__item:active,
+  #mastodon .column-link:active,
+  .public-layout .column-link:active,
+  .modal-layout .column-link:active,
+  #mastodon select:active,
+  .public-layout select:active,
+  .modal-layout select:active,
+  #mastodon .status-card:active,
+  .public-layout .status-card:active,
+  .modal-layout .status-card:active,
+  #mastodon .audio-player:active,
+  .public-layout .audio-player:active,
+  .modal-layout .audio-player:active,
+  #mastodon .account:active,
+  .public-layout .account:active,
+  .modal-layout .account:active {
+    transform: scale(0.99);
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
+  }
+  #mastodon .react-toggle-track,
+  .public-layout .react-toggle-track,
+  .modal-layout .react-toggle-track,
+  #mastodon .button,
+  .public-layout .button,
+  .modal-layout .button,
+  #mastodon .icon-button,
+  .public-layout .icon-button,
+  .modal-layout .icon-button,
+  #mastodon .floating-action-button,
+  .public-layout .floating-action-button,
+  .modal-layout .floating-action-button {
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
+  }
+  #mastodon .react-toggle-track:active,
+  .public-layout .react-toggle-track:active,
+  .modal-layout .react-toggle-track:active,
+  #mastodon .button:active,
+  .public-layout .button:active,
+  .modal-layout .button:active,
+  #mastodon .icon-button:active,
+  .public-layout .icon-button:active,
+  .modal-layout .icon-button:active,
+  #mastodon .floating-action-button:active,
+  .public-layout .floating-action-button:active,
+  .modal-layout .floating-action-button:active {
+    transform: scale(0.95);
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
+  }
+  #mastodon .status__content__spoiler-link span,
+  .public-layout .status__content__spoiler-link span,
+  .modal-layout .status__content__spoiler-link span {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 4) !important;
+  }
+  #mastodon .status__content__spoiler-link:active span,
+  .public-layout .status__content__spoiler-link:active span,
+  .modal-layout .status__content__spoiler-link:active span {
+    transition: transform 0.4s cubic-bezier(0, 0, 0, 1) !important;
+    transform: translateY(1px);
+  }
 }
 #mastodon .react-toggle-thumb,
 .public-layout .react-toggle-thumb,
@@ -225,9 +238,6 @@
 #mastodon .compose-form__poll-wrapper select,
 .public-layout .compose-form__poll-wrapper select,
 .modal-layout .compose-form__poll-wrapper select,
-#mastodon .poll__option input[type="text"],
-.public-layout .poll__option input[type="text"],
-.modal-layout .poll__option input[type="text"],
 #mastodon .report-dialog-modal__textarea,
 .public-layout .report-dialog-modal__textarea,
 .modal-layout .report-dialog-modal__textarea,
@@ -241,6 +251,25 @@
 .public-layout .statuses-grid .detailed-status,
 .modal-layout .statuses-grid .detailed-status {
   border: 0 !important;
+}
+.dropdown-menu {
+  border-radius: var(--radius);
+}
+.dropdown-menu__container__list {
+  overflow: hidden;
+  border-radius: var(--radius);
+  margin-block: -4px;
+}
+.dropdown-menu__item {
+  overflow: hidden;
+}
+.dropdown-menu__item a {
+  padding: 0.7em 1em !important;
+  transition: background-color 0.2s, color 0.2s;
+  min-width: 150px;
+}
+.dropdown-menu__separator {
+  margin: 0 !important;
 }
 #mastodon .columns-area__panels__pane__inner,
 .public-layout .columns-area__panels__pane__inner,
@@ -306,6 +335,45 @@
 .modal-layout .compose-form .compose-form__publish-button-wrapper {
   overflow: visible !important;
   max-width: 100%;
+}
+#mastodon .compose-form .compose-form__upload__actions,
+.public-layout .compose-form .compose-form__upload__actions,
+.modal-layout .compose-form .compose-form__upload__actions {
+  z-index: 5;
+  position: relative;
+}
+#mastodon .compose-form .compose-form__upload-thumbnail,
+.public-layout .compose-form .compose-form__upload-thumbnail,
+.modal-layout .compose-form .compose-form__upload-thumbnail {
+  display: flex;
+  flex-direction: column;
+}
+#mastodon .compose-form .compose-form__upload__warning,
+.public-layout .compose-form .compose-form__upload__warning,
+.modal-layout .compose-form .compose-form__upload__warning {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.7);
+  flex-grow: 1;
+  box-shadow: 0 -50px rgba(0,0,0,0.7);
+}
+#mastodon .compose-form .compose-form__upload__warning > button,
+.public-layout .compose-form .compose-form__upload__warning > button,
+.modal-layout .compose-form .compose-form__upload__warning > button {
+  width: 100%;
+  height: 100%;
+  font-weight: 700;
+  border-radius: var(--radius);
+  padding-inline: 1em;
+  color: #fff;
+  box-shadow: var(--shadow-low);
+}
+#mastodon .compose-form .compose-form__upload__warning > button i,
+.public-layout .compose-form .compose-form__upload__warning > button i,
+.modal-layout .compose-form .compose-form__upload__warning > button i {
+  margin-right: 0.2em;
+  transform: scale(1.2);
 }
 @media (min-width: 895px) {
   .layout-single-column .getting-started__footer {
@@ -1679,55 +1747,57 @@
   pointer-events: none;
   transition: background-color 0.2s;
 }
-#mastodon .focusable:not(.detailed-status__wrapper):hover::before,
-.public-layout .focusable:not(.detailed-status__wrapper):hover::before,
-.modal-layout .focusable:not(.detailed-status__wrapper):hover::before,
-#mastodon .entry:not(.detailed-status__wrapper):hover::before,
-.public-layout .entry:not(.detailed-status__wrapper):hover::before,
-.modal-layout .entry:not(.detailed-status__wrapper):hover::before,
-#mastodon .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
-.public-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
-.modal-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
-#mastodon .trends__item:not(.detailed-status__wrapper):hover::before,
-.public-layout .trends__item:not(.detailed-status__wrapper):hover::before,
-.modal-layout .trends__item:not(.detailed-status__wrapper):hover::before,
-#mastodon .story:not(.detailed-status__wrapper):hover::before,
-.public-layout .story:not(.detailed-status__wrapper):hover::before,
-.modal-layout .story:not(.detailed-status__wrapper):hover::before,
-#mastodon .account-card:not(.detailed-status__wrapper):hover::before,
-.public-layout .account-card:not(.detailed-status__wrapper):hover::before,
-.modal-layout .account-card:not(.detailed-status__wrapper):hover::before,
-#mastodon :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
-.public-layout :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
-.modal-layout :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
-#mastodon .timeline-hint:not(.detailed-status__wrapper):hover::before,
-.public-layout .timeline-hint:not(.detailed-status__wrapper):hover::before,
-.modal-layout .timeline-hint:not(.detailed-status__wrapper):hover::before,
-#mastodon .focusable:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .focusable:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .focusable:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .entry:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .entry:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .entry:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .trends__item:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .trends__item:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .trends__item:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .story:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .story:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .story:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .account-card:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .account-card:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .account-card:not(.detailed-status__wrapper):focus-within::before,
-#mastodon :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
-.public-layout :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
-#mastodon .timeline-hint:not(.detailed-status__wrapper):focus-within::before,
-.public-layout .timeline-hint:not(.detailed-status__wrapper):focus-within::before,
-.modal-layout .timeline-hint:not(.detailed-status__wrapper):focus-within::before {
-  background-color: var(--hover-color);
+@media (min-width: 895px) {
+  #mastodon .focusable:not(.detailed-status__wrapper):hover::before,
+  .public-layout .focusable:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .focusable:not(.detailed-status__wrapper):hover::before,
+  #mastodon .entry:not(.detailed-status__wrapper):hover::before,
+  .public-layout .entry:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .entry:not(.detailed-status__wrapper):hover::before,
+  #mastodon .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
+  .public-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):hover::before,
+  #mastodon .trends__item:not(.detailed-status__wrapper):hover::before,
+  .public-layout .trends__item:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .trends__item:not(.detailed-status__wrapper):hover::before,
+  #mastodon .story:not(.detailed-status__wrapper):hover::before,
+  .public-layout .story:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .story:not(.detailed-status__wrapper):hover::before,
+  #mastodon .account-card:not(.detailed-status__wrapper):hover::before,
+  .public-layout .account-card:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .account-card:not(.detailed-status__wrapper):hover::before,
+  #mastodon :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
+  .public-layout :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
+  .modal-layout :not(.focusable) > .account:not(.detailed-status__wrapper):hover::before,
+  #mastodon .timeline-hint:not(.detailed-status__wrapper):hover::before,
+  .public-layout .timeline-hint:not(.detailed-status__wrapper):hover::before,
+  .modal-layout .timeline-hint:not(.detailed-status__wrapper):hover::before,
+  #mastodon .focusable:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .focusable:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .focusable:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .entry:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .entry:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .entry:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .statuses-grid__item .detailed-status:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .trends__item:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .trends__item:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .trends__item:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .story:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .story:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .story:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .account-card:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .account-card:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .account-card:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout :not(.focusable) > .account:not(.detailed-status__wrapper):focus-within::before,
+  #mastodon .timeline-hint:not(.detailed-status__wrapper):focus-within::before,
+  .public-layout .timeline-hint:not(.detailed-status__wrapper):focus-within::before,
+  .modal-layout .timeline-hint:not(.detailed-status__wrapper):focus-within::before {
+    background-color: var(--hover-color);
+  }
 }
 .explore__links {
   padding: 10px !important;
@@ -2547,6 +2617,18 @@
 .modal-layout .column-back-button--slim .column-back-button {
   transition: margin 0.2s cubic-bezier(0, 0, 0, 1.1);
 }
+.column-header {
+  font-weight: 600;
+}
+.column-header,
+.column-header button {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+.column-header ~ .scrollable {
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+}
 @media (min-width: 1191px) {
   #mastodon .tabs-bar__wrapper,
   .public-layout .tabs-bar__wrapper,
@@ -3352,6 +3434,11 @@
     padding: 0 !important;
     max-width: unset;
   }
+  #mastodon .columns-area__panels__main > .columns-area--mobile,
+  .public-layout .columns-area__panels__main > .columns-area--mobile,
+  .modal-layout .columns-area__panels__main > .columns-area--mobile {
+    overflow: visible !important;
+  }
   #mastodon .columns-area__panels__main .scrollable:not(.scrollable--flex),
   .public-layout .columns-area__panels__main .scrollable:not(.scrollable--flex),
   .modal-layout .columns-area__panels__main .scrollable:not(.scrollable--flex) {
@@ -3486,7 +3573,7 @@
     background: none;
     border-radius: 0 !important;
     pointer-events: none;
-    filter: brightness(0.95);
+    z-index: 105;
   }
   #mastodon .tabs-bar__wrapper > *,
   .public-layout .tabs-bar__wrapper > *,
@@ -3503,6 +3590,7 @@
     color: #fff !important;
     overflow: visible !important;
     padding-inline: 5px;
+    box-shadow: 0 0 24px rgba(0,0,0,0.1);
   }
   .rtl #mastodon .tabs-bar__wrapper .tabs-bar,
   .rtl .public-layout .tabs-bar__wrapper .tabs-bar,
@@ -3657,6 +3745,7 @@
     right: 15px;
     width: 55px;
     height: 55px;
+    z-index: 105;
   }
   #mastodon .icon-button:after,
   .public-layout .icon-button:after,
@@ -4003,6 +4092,26 @@
     from {
       transform: scale(0.98);
       opacity: 0;
+    }
+}
+@-moz-keyframes fadeLeft {
+    from {
+      transform: translateX(20px) opacity(0);
+    }
+}
+@-webkit-keyframes fadeLeft {
+    from {
+      transform: translateX(20px) opacity(0);
+    }
+}
+@-o-keyframes fadeLeft {
+    from {
+      transform: translateX(20px) opacity(0);
+    }
+}
+@keyframes fadeLeft {
+    from {
+      transform: translateX(20px) opacity(0);
     }
 }
 }
