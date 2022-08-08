@@ -10,7 +10,7 @@ const initialState = Immutable.Map({
   new: Immutable.Map({
     account: null,
     notifications: true,
-    duration: 0,
+    duration: 86400,
   }),
 });
 
@@ -19,7 +19,7 @@ export default function mutes(state = initialState, action) {
   case MUTES_INIT_MODAL:
     return state.withMutations((state) => {
       state.setIn(['new', 'account'], action.account);
-      state.setIn(['new', 'notifications'], true);
+      state.setIn(['new', 'notifications'], false);
     });
   case MUTES_TOGGLE_HIDE_NOTIFICATIONS:
     return state.updateIn(['new', 'notifications'], (old) => !old);
