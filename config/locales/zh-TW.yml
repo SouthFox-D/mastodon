@@ -51,8 +51,8 @@ zh-TW:
       suspended_title: 暫停的伺服器
     unavailable_content_html: Mastodon 一般來說允許您閱讀並和任何聯盟伺服器上的使用者互動。這些伺服器是這個站台設下的例外。
     user_count_after:
-      other: 位使用者
-    user_count_before: 註冊使用者數
+      other: 位狐狸
+    user_count_before: 註冊狐狸數
     what_is_mastodon: 什麼是 Mastodon?
   accounts:
     choices_html: "%{name} 的選擇："

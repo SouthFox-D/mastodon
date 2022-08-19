@@ -52,8 +52,8 @@ en:
       suspended_title: Suspended servers
     unavailable_content_html: Mastodon generally allows you to view content from and interact with users from any other server in the fediverse. These are the exceptions that have been made on this particular server.
     user_count_after:
-      one: user
-      other: users
+      one: fox
+      other: foxes
     user_count_before: Home to
     what_is_mastodon: What is Mastodon?
   accounts:

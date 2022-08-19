@@ -51,7 +51,7 @@ zh-CN:
       suspended_title: 已被封禁的服务器
     unavailable_content_html: 通常来说，在 Mastodon 上，你可以浏览联邦宇宙中任何一台服务器上的内容，并且和上面的用户互动。但是某些站点上不排除会有例外。
     user_count_after:
-      other: 位用户
+      other: 位狐狸
     user_count_before: 这里共注册有
     what_is_mastodon: Mastodon 是什么？
   accounts:

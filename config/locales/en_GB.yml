@@ -36,8 +36,8 @@ en_GB:
     tagline: Follow friends and discover new ones
     terms: Terms of service
     user_count_after:
-      one: user
-      other: users
+      one: fox
+      other: foxes
     user_count_before: Home to
     what_is_mastodon: What is Mastodon?
   accounts:
