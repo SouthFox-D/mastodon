@@ -95,7 +95,6 @@ Rails.application.routes.draw do
   get  '/interact/:id', to: 'remote_interaction#new', as: :remote_interaction
   post '/interact/:id', to: 'remote_interaction#create'
 
-  get '/explore', to: 'directories#index', as: :explore
   get '/settings', to: redirect('/settings/profile')
 
   namespace :settings do
@@ -188,7 +187,9 @@ Rails.application.routes.draw do
   resource :relationships, only: [:show, :update]
   resource :statuses_cleanup, controller: :statuses_cleanup, only: [:show, :update]
 
-  get '/public', to: 'public_timelines#show', as: :public_timeline
+  get '/explore', to: redirect('/web/explore')
+  get '/public', to: redirect('/web/public')
+  get '/public/local', to: redirect('/web/public/local')
   get '/media_proxy/:id/(*any)', to: 'media_proxy#show', as: :media_proxy
 
   resource :authorize_interaction, only: [:show, :create]
@@ -640,7 +641,9 @@ Rails.application.routes.draw do
 
   get '/about',        to: 'about#show'
   get '/about/more',   to: 'about#more'
-  get '/terms',        to: 'about#terms'
+
+  get '/privacy-policy', to: 'privacy#show', as: :privacy_policy
+  get '/terms',          to: redirect('/privacy-policy')
 
   match '/', via: [:post, :put, :patch, :delete], to: 'application#raise_not_found', format: false
   match '*unmatched_route', via: :all, to: 'application#raise_not_found', format: false

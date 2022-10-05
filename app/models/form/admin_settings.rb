@@ -19,7 +19,6 @@ class Form::AdminSettings
     theme
     activity_api_enabled
     peers_api_enabled
-    show_known_fediverse_at_about_page
     preview_sensitive_media
     custom_css
     profile_directory
@@ -32,6 +31,9 @@ class Form::AdminSettings
     show_domain_blocks_rationale
     noindex
     require_invite_text
+    media_cache_retention_period
+    content_cache_retention_period
+    backups_retention_period
   ).freeze
 
   BOOLEAN_KEYS = %i(
@@ -39,7 +41,6 @@ class Form::AdminSettings
     timeline_preview
     activity_api_enabled
     peers_api_enabled
-    show_known_fediverse_at_about_page
     preview_sensitive_media
     profile_directory
     trends
@@ -64,6 +65,7 @@ class Form::AdminSettings
   validates :bootstrap_timeline_accounts, existing_username: { multiple: true }
   validates :show_domain_blocks, inclusion: { in: %w(disabled users all) }
   validates :show_domain_blocks_rationale, inclusion: { in: %w(disabled users all) }
+  validates :media_cache_retention_period, :content_cache_retention_period, :backups_retention_period, numericality: { only_integer: true }, allow_blank: true
 
   def initialize(_attributes = {})
     super
