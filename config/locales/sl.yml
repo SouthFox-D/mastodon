@@ -1,63 +1,15 @@
 ---
 sl:
   about:
-    about_hashtag_html: To so javne objave, označene z <strong>#%{hashtag}</strong>. Z njimi se lahko povežete, če imate račun kjerkoli v fediverzumu.
     about_mastodon_html: Mastodon je socialno omrežje, ki temelji na odprtih spletnih protokolih in prosti ter odprtokodni programski opremi. Je decentraliziran, kot e-pošta.
-    about_this: O Mastodonu
-    active_count_after: dejavnih
-    active_footnote: Aktivni mesečni uporabniki (AMU)
-    administered_by: 'Upravlja:'
     api: API (programerski vmesnik aplikacije)
     apps: Mobilne aplikacije
-    apps_platforms: Uporabljajte Mastodon iz iOS, Android ali iz drugih platform
-    browse_directory: Brskajte po imeniku profilov in jih filtrirajte po interesih
-    browse_local_posts: Prebrskaj živi tok javnih objav s tega strežnika
-    browse_public_posts: Brskajte javnih objav v živo na Mastodonu
-    contact: Kontakt
     contact_missing: Ni nastavljeno
     contact_unavailable: Ni na voljo
-    continue_to_web: Nadaljuj v spletno aplikacijo
-    discover_users: Odkrijte uporabnike
     documentation: Dokumentacija
-    federation_hint_html: Z računom na %{instance} boste lahko spremljali osebe na poljubnem strežniku Mastodon.
-    get_apps: Poskusite mobilno aplikacijo
     hosted_on: Mastodon gostuje na %{domain}
-    instance_actor_flash: |
-      Ta račun je navidezni igralec, ki predstavlja strežnik in ne posameznega uporabnika.
-      Uporablja se za namene federacije in se ne blokira, če ne želite blokirati celotne instance. V tem primeru blokirajte domeno.
-    learn_more: Nauči se več
-    logged_in_as_html: Trenutno ste prijavljeni kot %{username}.
-    logout_before_registering: Ste že prijavljeni.
     privacy_policy: Pravilnik o zasebnosti
-    rules: Pravila strežnika
-    rules_html: 'Spodaj je povzetek pravil, ki jim morate slediti, če želite imeti račun na tem strežniku Mastodon:'
-    see_whats_happening: Poglejte, kaj se dogaja
-    server_stats: 'Statistika strežnika:'
     source_code: Izvorna koda
-    status_count_after:
-      few: stanja
-      one: stanje
-      other: objav
-      two: stanja
-    status_count_before: Ki so avtorji
-    tagline: Decentralizirano družbeno omrežje
-    unavailable_content: Moderirani strežniki
-    unavailable_content_description:
-      domain: Strežnik
-      reason: Razlog
-      rejecting_media: 'Medijske datoteke s teh strežnikov ne bodo obdelane ali shranjene, nobene ogledne sličice ne bodo prikazane, kar bo zahtevalo ročno klikanje po izvorni datoteki:'
-      rejecting_media_title: Filtrirane datoteke
-      silenced: 'Objave s teh strežnikov bodo skrite v javnih časovnicah ter pogovorih in nobena obvestila ne bodo izdelana iz interakcij njihovih uporabnikov, razen če jim sledite:'
-      silenced_title: Omejeni strežniki
-      suspended: 'Nobeni podatki s teh strežnikov ne bodo obdelani, shranjeni ali izmenjani, zaradi česar je nemogoča kakršna koli interakcija ali komunikacija z uporabniki s teh strežnikov:'
-      suspended_title: Suspendirani strežniki
-    unavailable_content_html: Mastodon vam splošno omogoča ogled vsebin in interakcijo z uporabniki iz vseh drugih strežnikov v fediverzumu. To so izjeme, opravljene na tem strežniku.
-    user_count_after:
-      few: uporabniki
-      one: uporabnik
-      other: uporabnikov
-      two: uporabnika
-    user_count_before: Dom za
     what_is_mastodon: Kaj je Mastodon?
   accounts:
     choices_html: "%{name} izbire:"
@@ -784,9 +736,6 @@ sl:
         users: Prijavljenim krajevnim uporabnikom
       domain_blocks_rationale:
         title: Pokaži razlago
-      hero:
-        desc_html: Prikazano na sprednji strani. Priporoča se vsaj 600x100px. Ko ni nastavljen, se vrne na sličico strežnika
-        title: Slika junaka
       mascot:
         desc_html: Prikazano na več straneh. Priporočena je najmanj 293 × 205 px. Ko ni nastavljen, se vrne na privzeto maskoto
         title: Slika maskote
@@ -803,9 +752,6 @@ sl:
         closed_message:
           desc_html: Prikazano na prvi strani, ko so registracije zaprte. Lahko uporabite oznake HTML
           title: Sporočilo o zaprti registraciji
-        deletion:
-          desc_html: Dovoli vsakomur, da izbriše svoj račun
-          title: Odpri brisanje računa
         require_invite_text:
           desc_html: Če registracije zahtevajo ročno potrditev, nastavite vnos besedila pod »Zakaj se želite pridružiti?« za obveznega
           title: Zahteva, da novi uprorabniki navedejo razlog, zakaj se želijo registrirati
@@ -815,9 +761,6 @@ sl:
           none: Nihče se ne more prijaviti
           open: Vsakdo se lahko prijavi
         title: Način registracije
-      show_known_fediverse_at_about_page:
-        desc_html: Ko preklopite, bo prikazal objave vseh znanih fediverzumov v predogledu. V nasprotnem primeru bodo prikazane samo krajevne objave.
-        title: Pokaži znane fediverse-e v predogledu časovnice
       site_description:
         desc_html: Uvodni odstavek na API-ju. Opišite, zakaj je ta Mastodon strežnik poseben in karkoli pomembnega. Lahko uporabite HTML oznake, zlasti <code>&lt;a&gt;</code> in <code>&lt;em&gt;</code>.
         title: Opis strežnika
@@ -1002,12 +945,8 @@ sl:
     new_trends:
       body: 'Naslednji elementi potrebujejo pregled, preden jih je možno javno prikazati:'
       new_trending_links:
-        no_approved_links: Trenutno ni odobrenih povezav v trendu.
-        requirements: Vsak od teh kandidatov bi lahko presegel odobreno povezavo v trendu št. %{rank}, ki je trenutno %{lowest_link_title} z rezultatom %{lowest_link_score}.
         title: Povezave v trendu
       new_trending_statuses:
-        no_approved_statuses: Trenutno ni odobrenih objav v trendu.
-        requirements: Vsak od teh kandidatov bi lahko presegel odobreno trendno objavo št. %{rank}, ki je trenutno %{lowest_status_url} z rezultatom %{lowest_status_score}.
         title: Trendne objave
       new_trending_tags:
         no_approved_tags: Trenutno ni odobrenih ključnikov v trendu.
@@ -1048,10 +987,8 @@ sl:
     warning: Bodite zelo previdni s temi podatki. Nikoli jih ne delite z nikomer!
     your_token: Vaš dostopni žeton
   auth:
-    apply_for_account: Zahtevajte povabilo
+    apply_for_account: Vpišite se na čakalni seznam
     change_password: Geslo
-    checkbox_agreement_html: Strinjam se s <a href="%{rules_path}" target="_blank">pravili strežnika</a> in <a href="%{terms_path}" target="_blank">pogoji storitve</a>
-    checkbox_agreement_without_rules_html: Strinjam se s <a href="%{terms_path}" target="_blank">pogoji storitve</a>
     delete_account: Izbriši račun
     delete_account_html: Če želite izbrisati svoj račun, lahko nadaljujete <a href="%{path}">tukaj</a>. Prosili vas bomo za potrditev.
     description:
@@ -1070,6 +1007,7 @@ sl:
     migrate_account: Premakni se na drug račun
     migrate_account_html: Če želite ta račun preusmeriti na drugega, ga lahko <a href="%{path}">nastavite tukaj</a>.
     or_log_in_with: Ali se prijavite z
+    privacy_policy_agreement_html: Prebral_a sem in se strinjam s <a href="%{privacy_policy_path}" target="_blank">pravilnikom o zasebnosti</a>.
     providers:
       cas: CAS
       saml: SAML
@@ -1077,12 +1015,18 @@ sl:
     registration_closed: "%{instance} ne sprejema novih članov"
     resend_confirmation: Ponovno pošlji navodila za potrditev
     reset_password: Ponastavi geslo
+    rules:
+      preamble: Slednje določajo in njihovo spoštovanje zagotavljajo moderatorji %{domain}.
+      title: Nekaj osnovnih pravil.
     security: Varnost
     set_new_password: Nastavi novo geslo
     setup:
       email_below_hint_html: Če spodnji e-poštni naslov ni pravilen, ga lahko spremenite tukaj in prejmete novo potrditveno e-pošto.
       email_settings_hint_html: Potrditvena e-pošta je bila poslana na %{email}. Če ta e-poštni naslov ni pravilen, ga lahko spremenite v nastavitvah računa.
       title: Nastavitev
+    sign_up:
+      preamble: Z računom na strežniku Mastodon boste lahko sledili vsem drugim v tem omrežju, ne glede na to, kje gostuje njihov račun.
+      title: Naj vas namestimo na %{domain}.
     status:
       account_status: Stanje računa
       confirming: Čakanje na potrditev e-pošte.
@@ -1091,7 +1035,6 @@ sl:
       redirecting_to: Vaš račun ni dejaven, ker trenutno preusmerja na račun %{acct}.
       view_strikes: Pokaži pretekle ukrepe proti mojemu računu
     too_fast: Obrazec oddan prehitro, poskusite znova.
-    trouble_logging_in: Težave pri prijavi?
     use_security_key: Uporabi varnostni ključ
   authorize_follow:
     already_following: Temu računu že sledite
@@ -1149,10 +1092,6 @@ sl:
       more_details_html: Za podrobnosti glejte <a href="%{terms_path}">politiko zasebnosti</a>.
       username_available: Vaše uporabniško ime bo znova na voljo
       username_unavailable: Vaše uporabniško ime še vedno ne bo na voljo
-  directories:
-    directory: Imenik profilov
-    explanation: Odkrijte uporabnike glede na njihove interese
-    explore_mastodon: Razišči %{title}
   disputes:
     strikes:
       action_taken: Izvedeno dejanje
@@ -1483,6 +1422,8 @@ sl:
     other: Ostalo
     posting_defaults: Privzete nastavitev objavljanja
     public_timelines: Javne časovnice
+  privacy_policy:
+    title: Pravilnik o zasebnosti
   reactions:
     errors:
       limit_reached: Dosežena omejitev različnih reakcij/odzivov
@@ -1704,89 +1645,6 @@ sl:
       too_late: Prepozno je, da bi se pritožili na ta ukrep
   tags:
     does_not_match_previous_name: se ne ujema s prejšnjim imenom
-  terms:
-    body_html: |
-      <h2>Politika zasebnosti</h2>
-      <h3 id="collect">Katere vrste podatkov zbiramo?</h3>
-
-      <ul>
-        <li><em>Osnovni podatki o računu</em>: Če se registrirate na tem strežniku, boste morda morali vnesti uporabniško ime, e-poštni naslov in geslo. Vnesete lahko tudi dodatne informacije o profilu, npr. pojavno ime in biografijo, ter naložite sliko profila in sliko glave. Uporabniško ime, pojavno ime, biografija, slika profila in slika glave so vedno javno dostopni.</li>
-        <li><em>Objave, sledenja in druge javne informacije</em>: Seznam oseb, ki jim sledite, je javno dostopen, enako velja za vaše sledilce. Ko pošljete sporočilo, sta datum in čas shranjena, kot tudi aplikacija, iz katere ste poslali sporočilo. Sporočila lahko vsebujejo medijske priloge, kot so slike in videoposnetki. Javne in neprikazane objave so javno dostopne. Ko v profilu vključite objavo, je to tudi javno dostopna informacija. Vaše objave, ki so dostavljene vašim sledilcem, so včasih dostavljeni na različne strežnike, kjer se kopije objav tudi shranijo. Ko izbrišete objave, se to prav tako dostavi vašim sledilcem. Spodbujanje in vzljubitev drugih objav sta vedno javni.</li>
-        <li><em>Neposredne objave in objave samo za sledilce</em>: Vse objave so shranjene in obdelane na strežniku. Objave samo za sledilce se dostavijo vašim sledilcem in uporabnikom, ki so v njih omenjeni. Neposredne objave se posredujejo samo uporabnikom, ki so v njih omenjeni. V nekaterih primerih so dostavljeni na različne strežnike, kopije pa se shranijo tam. V dobri veri si prizadevamo omejiti dostop do teh objav samo pooblaščenim osebam, vendar drugi strežniki to morda ne bodo storili. Zato je pomembno, da pregledate strežnike, na katerih so sledilci. V nastavitvah lahko preklapljate med možnostmi za odobritev in zavrnitev novih sledilcev. <em>Ne pozabite, da lahko operaterji strežnika in poljubni prejemni strežnik takšna sporočila pregledajo</em> in da jih lahko prejemniki poslikajo, kopirajo ali drugače ponovno delijo. <em>Ne pošiljajte občutljivih informacij skozi Mastodon.</em></li>
-        <li><em>IP-ji in drugi metapodatki</em>: Ko se prijavite, zabeležimo naslov IP, s katerega se prijavljate, in ime aplikacije brskalnika. V nastavitvah so za pregled in preklic na voljo vse prijavljene seje. Zadnji uporabljeni IP naslov je shranjen največ 12 mesecev. Prav tako lahko obdržimo dnevnike strežnikov, ki vsebujejo IP-naslov vsake zahteve na naš strežnik.</li>
-      </ul>
-
-      <hr class="spacer" />
-
-      <h3 id="use">Za kaj uporabljamo vaše podatke?</h3>
-
-      <p>Vse informacije, ki jih zbiramo od vas, so lahko uporabljene na naslednje načine:</p>
-
-      <ul>
-        <li>Za zagotavljanje osrednje funkcionalnosti Mastodona. Komunicirate lahko z vsebino drugih oseb in objavljate lastno vsebino, ko ste prijavljeni. Primer: spremljate lahko druge osebe in si ogledate njihove kombinirane objave v svoji prilagojeni domači časovnici.</li>
-        <li>Za pomoč pri moderiranju skupnosti, npr. primerjavo vašega naslova IP z drugimi znanimi za ugotavljanje izmikanja prepovedim ali drugih kršitev.</li>
-        <li>E-poštni naslov, ki ga navedete, se lahko uporabi za pošiljanje informacij, obvestil o drugih osebah, ki komunicirajo z vašo vsebino ali vam pošiljajo sporočila, ter za odzivanje na poizvedbe in/ali druge zahteve ali vprašanja.</li>
-      </ul>
-
-      <hr class="spacer" />
-
-      <h3 id="protect">Kako zaščitimo vaše podatke?</h3>
-
-      <p>Za ohranitev varnosti vaših osebnih podatkov izvajamo različne varnostne ukrepe, ko vnašate, pošiljate ali dostopate do vaših osebnih podatkov. Med drugim je seja brskalnika, pa tudi promet med vašimi aplikacijami in API-jem zaščitena s SSL-jem, geslo pa je zgoščeno z uporabo močnega enosmernega algoritma. Če želite omogočiti varen dostop do računa, lahko omogočite dvofaktorsko preverjanje pristnosti.</p>
-
-      <hr class="spacer" />
-
-      <h3 id="data-retention">Kakšna je naša politika hrambe podatkov?</h3>
-
-      <p>Prizadevali si bomo za:</p>
-
-      <ul>
-        <li>Shranjevanje dnevnikov strežnikov, ki vsebujejo naslov IP vseh zahtev za ta strežnik, če so hranjeni, največ 90 dni.</li>
-        <li>Obdržiitev naslovov IP, povezanih z registriranimi uporabniki, ne več kot 12 mesecev.</li>
-      </ul>
-
-      <p>Lahko zahtevate in prenesete arhiv vaše vsebine, vključno z objavami, predstavnostnimi prilogami, sliko profila in sliko glave.</p>
-
-      <p>Račun lahko kadar koli nepovratno izbrišete.</p>
-
-      <hr class="spacer"/>
-
-      <h3 id="cookies">Ali uporabljamo piškotke?</h3>
-
-      <p>Da. Piškotki so majhne datoteke, ki jih spletno mesto ali njegov ponudnik storitev prenese na trdi disk vašega računalnika prek spletnega brskalnika (če dovolite). Ti piškotki omogočajo, da spletno mesto prepozna vaš brskalnik in ga, če imate registriran račun, povežete z vašim registriranim računom.</p>
-
-      <p>Piškotke uporabljamo za razumevanje in shranjevanje vaših nastavitev za prihodnje obiske.</p>
-
-      <hr class="spacer" />
-
-      <h3 id="disclose">Ali razkrivamo informacije zunanjim strankam?</h3>
-
-      <p>Vaših osebnih podatkov ne prodajamo, preprodajamo ali kako drugače posredujemo tretjim osebam. To ne vključuje zaupanja vrednih tretjih oseb, ki nam pomagajo pri upravljanju naše spletne strani, vodenju našega poslovanja ali storitev, če se te strani strinjajo, da bodo te informacije zaupne. Vaše podatke lahko tudi objavimo, če menimo, da je objava ustrezna in v skladu z zakonom, uveljavlja pravilnike o spletnih mestih ali ščiti naše ali druge pravice, lastnino ali varnost.</p>
-
-      <p>Vaše javne vsebine lahko prenesejo drugi strežniki v omrežju. Vaše objave in objave samo za sledilce so dostavljene na strežnike, na katerih prebivajo vaši sledilci, in neposredna sporočila so dostavljena na strežnike prejemnikov, če so ti sledilci ali prejemniki na drugem strežniku.</p>
-
-      <p>Ko odobrite aplikacijo za uporabo vašega računa, lahko glede na obseg dovoljenj, ki jih odobravate, dostopa do vaših javnih podatkov o profilu, seznama osebam, ki jim sledite, vaših sledilcev, seznamov, vseh vaših objav in priljubljenih. Aplikacije ne morejo nikoli dostopati do vašega e-poštnega naslova ali gesla.</p>
-
-      <hr class="spacer" />
-
-      <h3 id="children">Uporaba spletišča s strani otrok</h3>
-
-      <p>Če je ta strežnik v EU ali EEA: Naše spletno mesto, izdelki in storitve so namenjeni ljudem, ki so stari vsaj 16 let. Če ste mlajši od 16 let, po zahtevah GDPR (<a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">General Data Protection Regulation</a>) ne uporabljajte tega spletnega mesta. (<a href="https://en.wikipedia.org/wiki/General_Data_Protection_Regulation">General Data Protection Regulation</a>).</p>
-
-      <p>Če je ta strežnik v ZDA: Naše spletno mesto, izdelki in storitve so namenjeni ljudem, ki so stari vsaj 13 let. Če ste mlajši od 13 let, po zahtevah COPPA (<a href="https://en.wikipedia.org/wiki/Children%27s_Online_Privacy_Protection_Act">Children's Online Privacy Protection Act</a>), ne uporabljajte tega spletnega mesta.</p>
-
-      <p>Če je ta strežnik v drugi jurisdikciji, so lahko zakonske zahteve drugačne.</p>
-
-      <hr class="spacer" />
-
-      <h3 id="changes">Spremembe naše politike zasebnosti</h3>
-
-      <p>Če se odločimo za spremembo našega pravilnika o zasebnosti, bomo te spremembe objavili na tej strani.</p>
-
-      <p>Ta dokument je CC-BY-SA. Zadnja posodobitev je bila 7. marca 2018.</p>
-
-      <p>Prvotno je bila prilagojena v skladu s <a href="https://github.com/discourse/discourse">politiko zasebnost Discourse</a>.</p>
-    title: Pravilnik o zasebnosti %{instance}
   themes:
     contrast: Mastodon (Visok kontrast)
     default: Mastodon (Temna)
@@ -1865,20 +1723,13 @@ sl:
         suspend: Račun je suspendiran
     welcome:
       edit_profile_action: Nastavitve profila
-      edit_profile_step: Profil lahko prilagodite tako, da naložite podobo, glavo, spremenite prikazno ime in drugo. Če želite pregledati nove sledilce, preden jim dovolite sledenje, lahko zaklenete svoj račun.
+      edit_profile_step: Profil lahko prilagodite tako, da naložite sliko profila, spremenite pojavno ime in drugo. Lahko izberete, da želite pregledati nove sledilce, preden jim dovolite sledenje.
       explanation: Tu je nekaj nasvetov za začetek
       final_action: Začnite objavljati
-      final_step: 'Začnite objavljati! Tudi brez sledilcev bodo vaša javna sporočila videli drugi, na primer na lokalni časovnici in v ključnikih. Morda se želite predstaviti s ključnikom #introductions.'
+      final_step: 'Začnite objavljati! Tudi brez sledilcev bodo vaše javne objave videli drugi, npr. na krajevni časovnici ali v ključnikih. Morda se želite predstaviti s ključnikom #introductions.'
       full_handle: Vaša polna ročica
       full_handle_hint: To bi povedali svojim prijateljem, da vam lahko pošljejo sporočila ali vam sledijo iz drugega strežnika.
-      review_preferences_action: Spremenite nastavitve
-      review_preferences_step: Poskrbite, da določite svoje nastavitve, na primer, katera e-poštna sporočila želite prejemati ali katere privzete ravni zasebnosti bodo imele vaše objave. Če nimate potovalne slabosti, lahko omogočite samodejno predvajanje GIF-ov.
       subject: Dobrodošli na Mastodon
-      tip_federated_timeline: Združena časovnica je pogled na mrežo Mastodona. Vključuje pa samo ljudi, na katere so naročeni vaši sosedje, zato ni popolna.
-      tip_following: Privzeto sledite skrbnikom strežnika. Če želite najti več zanimivih ljudi, preverite lokalne in združene časovnice.
-      tip_local_timeline: Lokalna časovnica je strežniški pogled ljudi na %{instance}. To so vaši neposredni sosedje!
-      tip_mobile_webapp: Če vam mobilni brskalnik ponuja, da dodate Mastodon na domači zaslon, lahko prejmete potisna obvestila. Deluje kot lastna aplikacija na več načinov!
-      tips: Nasveti
       title: Dobrodošli, %{name}!
   users:
     follow_limit_reached: Ne morete spremljati več kot %{limit} ljudi

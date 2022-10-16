@@ -51,10 +51,10 @@ class LinkFooter extends React.PureComponent {
     const items = [];
 
     items.push(<a key='apps' href='https://joinmastodon.org/apps' target='_blank'><FormattedMessage id='navigation_bar.apps' defaultMessage='Get the app' /></a>);
-    items.push(<a key='about' href='/about/more' target='_blank'><FormattedMessage id='navigation_bar.info' defaultMessage='About' /></a>);
+    items.push(<Link key='about' to='/about'><FormattedMessage id='navigation_bar.info' defaultMessage='About' /></Link>);
     items.push(<a key='mastodon' href='https://joinmastodon.org' target='_blank'><FormattedMessage id='getting_started.what_is_mastodon' defaultMessage='About Mastodon' /></a>);
     items.push(<a key='docs' href='https://docs.joinmastodon.org' target='_blank'><FormattedMessage id='getting_started.documentation' defaultMessage='Documentation' /></a>);
-    items.push(<a key='privacy-policy' href='/privacy-policy' target='_blank'><FormattedMessage id='getting_started.privacy_policy' defaultMessage='Privacy Policy' /></a>);
+    items.push(<Link key='privacy-policy' to='/privacy-policy'><FormattedMessage id='getting_started.privacy_policy' defaultMessage='Privacy Policy' /></Link>);
     items.push(<Link key='hotkeys' to='/keyboard-shortcuts'><FormattedMessage id='navigation_bar.keyboard_shortcuts' defaultMessage='Hotkeys' /></Link>);
 
     if (profileDirectory) {

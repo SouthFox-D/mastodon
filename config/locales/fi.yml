@@ -1,58 +1,14 @@
 ---
 fi:
   about:
-    about_hashtag_html: Nämä julkiset julkaisut on merkitty hastagilla <strong>#%{hashtag}</strong>. Voit vastata niihin, jos sinulla on tili jossain päin fediversumia.
     about_mastodon_html: 'Tulevaisuuden sosiaalinen verkosto: Ei mainoksia, ei valvontaa, toteutettu avoimilla protokollilla ja hajautettu! Pidä tietosi ominasi Mastodonilla!'
-    about_this: Tietoa tästä palvelimesta
-    active_count_after: aktiivista
-    active_footnote: Kuukausittain aktiiviset käyttäjät (MAU)
-    administered_by: 'Ylläpitäjä:'
     api: Rajapinta
     apps: Mobiilisovellukset
-    apps_platforms: Käytä Mastodonia Androidilla, iOS:llä ja muilla alustoilla
-    browse_directory: Selaa profiilihakemistoa
-    browse_local_posts: Selaa julkisia julkaisuja tältä palvelimelta
-    browse_public_posts: Selaa julkisia julkaisuja Mastodonissa
-    contact: Ota yhteyttä
     contact_missing: Ei asetettu
     contact_unavailable: Ei saatavilla
-    continue_to_web: Jatka verkkosovellukseen
-    discover_users: Löydä käyttäjiä
     documentation: Dokumentaatio
-    federation_hint_html: Tilillä %{instance}:ssa voit seurata ihmisiä millä tahansa Mastodon-palvelimella ja sen ulkopuolella.
-    get_apps: Kokeile mobiilisovellusta
     hosted_on: Mastodon palvelimella %{domain}
-    instance_actor_flash: |
-      Tämä on virtuaalitili, joka edustaa itse palvelinta eikä yksittäistä käyttäjää.
-      Sitä käytetään yhdistämistarkoituksiin, eikä sitä saa estää, ellet halua estää koko palvelinta, jolloin sinun on käytettävä verkkotunnuksen estoa.
-    learn_more: Lisätietoja
-    logged_in_as_html: Olet kirjautunut sisään nimellä %{username}.
-    logout_before_registering: Olet jo kirjautunut sisään.
-    rules: Palvelimen säännöt
-    rules_html: 'Alla on yhteenveto säännöistä, joita sinun on noudatettava, jos haluat olla tili tällä Mastodonin palvelimella:'
-    see_whats_happening: Näe mitä tapahtuu
-    server_stats: 'Palvelimen tilastot:'
     source_code: Lähdekoodi
-    status_count_after:
-      one: julkaisun
-      other: julkaisua
-    status_count_before: Julkaistu
-    tagline: Hajautettu sosiaalinen verkosto
-    unavailable_content: Moderoidut palvelimet
-    unavailable_content_description:
-      domain: Palvelin
-      reason: Syy
-      rejecting_media: 'Näiden palvelimien mediatiedostoja ei käsitellä tai tallenneta eikä pikkukuvia näytetä, mikä edellyttää manuaalista klikkausta alkuperäiseen tiedostoon:'
-      rejecting_media_title: Media suodatettu
-      silenced: 'Julkaisut näiltä palvelimilta piilotetaan julkisilta aikajanoilta ja keskusteluista, ilmoituksia ei luoda näiden käyttäjien tekemistä toiminnoista, jos et seuraa heitä:'
-      silenced_title: Hiljennetyt palvelimet
-      suspended: 'Dataa näiltä palvelimilta ei tulla käsittelemään, tallentamaan tai jakamaan. Tämä tekee kommunikoinnin näiden käyttäjien kanssa mahdottomaksi:'
-      suspended_title: Keskeytetyt palvelimet
-    unavailable_content_html: Mastodonin avulla voit yleensä tarkastella sisältöä ja olla vuorovaikutuksessa käyttäjien kanssa millä tahansa muulla palvelimella fediversessä. Nämä ovat poikkeuksia, jotka on tehty tälle palvelimelle.
-    user_count_after:
-      one: käyttäjä
-      other: käyttäjää
-    user_count_before: Palvelimella
     what_is_mastodon: Mikä on Mastodon?
   accounts:
     choices_html: "%{name} valinnat:"
@@ -745,9 +701,6 @@ fi:
         users: Kirjautuneille paikallisille käyttäjille
       domain_blocks_rationale:
         title: Näytä syy
-      hero:
-        desc_html: Näytetään etusivulla. Suosituskoko vähintään 600x100 pikseliä. Jos kuvaa ei aseteta, käytetään instanssin pikkukuvaa
-        title: Sankarin kuva
       mascot:
         desc_html: Näytetään useilla sivuilla. Suositus vähintään 293×205px. Kun ei ole asetettu, käytetään oletuskuvaa
         title: Maskottikuva
@@ -764,9 +717,6 @@ fi:
         closed_message:
           desc_html: Näytetään etusivulla, kun rekisteröinti on suljettu. HTML-tagit käytössä
           title: Viesti, kun rekisteröinti on suljettu
-        deletion:
-          desc_html: Salli jokaisen poistaa oma tilinsä
-          title: Avoin tilin poisto
         require_invite_text:
           desc_html: Kun rekisteröinnit edellyttävät manuaalista hyväksyntää, tee “Miksi haluat liittyä?” teksti pakolliseksi eikä valinnaiseksi
           title: Vaadi uusia käyttäjiä antamaan liittymisen syy
@@ -776,9 +726,6 @@ fi:
           none: Kukaan ei voi rekisteröityä
           open: Kaikki voivat rekisteröityä
         title: Rekisteröintitapa
-      show_known_fediverse_at_about_page:
-        desc_html: Kun tämä on valittu, esikatselussa näytetään tuuttaukset kaikkialta tunnetusta fediversumista. Muutoin näytetään vain paikalliset tuuttaukset.
-        title: Näytä aikajanan esikatselussa koko tunnettu fediversumi
       site_description:
         desc_html: Esittelykappale etusivulla ja metatunnisteissa. HTML-tagit käytössä, tärkeimmät ovat <code>&lt;a&gt;</code> ja <code>&lt;em&gt;</code>.
         title: Instanssin kuvaus
@@ -949,12 +896,8 @@ fi:
     new_trends:
       body: 'Seuraavat kohteet on tarkistettava ennen kuin ne voidaan näyttää julkisesti:'
       new_trending_links:
-        no_approved_links: Tällä hetkellä ei ole hyväksyttyjä trendikkäitä linkkejä.
-        requirements: 'Mikä tahansa näistä ehdokkaista voisi ylittää #%{rank} hyväksytyn trendikkään linkin, joka on tällä hetkellä "%{lowest_link_title}" arvosanalla %{lowest_link_score}.'
         title: Suositut linkit
       new_trending_statuses:
-        no_approved_statuses: Tällä hetkellä ei ole hyväksyttyjä trendikkäitä viestejä.
-        requirements: 'Mikä tahansa näistä ehdokkaista voisi ylittää #%{rank} hyväksytyn trendikkään julkaisun, joka on tällä hetkellä %{lowest_status_url} arvosanalla %{lowest_status_score}.'
         title: Suositut viestit
       new_trending_tags:
         no_approved_tags: Tällä hetkellä ei ole hyväksyttyjä trendikkäitä hashtageja.
@@ -995,10 +938,7 @@ fi:
     warning: Säilytä tietoa hyvin. Älä milloinkaan jaa sitä muille!
     your_token: Pääsytunnus
   auth:
-    apply_for_account: Pyydä kutsu
     change_password: Salasana
-    checkbox_agreement_html: Hyväksyn <a href="%{rules_path}" target="_blank">palvelimen käytännöt</a> ja <a href="%{terms_path}" target="_blank">käyttöehdot</a>
-    checkbox_agreement_without_rules_html: Hyväksyn <a href="%{terms_path}" target="_blank">käyttöehdot</a>
     delete_account: Poista tili
     delete_account_html: Jos haluat poistaa tilisi, <a href="%{path}">paina tästä</a>. Poisto on vahvistettava.
     description:
@@ -1038,7 +978,6 @@ fi:
       redirecting_to: Tilisi ei ole aktiivinen, koska se ohjaa tällä hetkellä kohteeseen %{acct}.
       view_strikes: Näytä tiliäsi koskevia aiempia varoituksia
     too_fast: Lomake lähetettiin liian nopeasti, yritä uudelleen.
-    trouble_logging_in: Ongelmia kirjautumisessa?
     use_security_key: Käytä suojausavainta
   authorize_follow:
     already_following: Sinä seuraat jo tätä tiliä
@@ -1096,10 +1035,6 @@ fi:
       more_details_html: Lisätietoja saat <a href="%{terms_path}">tietosuojakäytännöstämme</a>.
       username_available: Käyttäjänimesi tulee saataville uudestaan
       username_unavailable: Käyttäjänimesi ei tule saataville enää uudestaan
-  directories:
-    directory: Profiilihakemisto
-    explanation: Löydä käyttäjiä heidän kiinnostustensa mukaan
-    explore_mastodon: Tutki %{title}ia
   disputes:
     strikes:
       action_taken: Toteutetut toimet
@@ -1691,20 +1626,11 @@ fi:
         suspend: Tilin käyttäminen keskeytetty
     welcome:
       edit_profile_action: Aseta profiili
-      edit_profile_step: Voit mukauttaa profiiliasi lataamalla profiilikuvan ja otsakekuvan, muuttamalla näyttönimeäsi ym. Jos haluat hyväksyä uudet seuraajat ennen kuin he voivat seurata sinua, voit lukita tilisi.
       explanation: Näillä vinkeillä pääset alkuun
       final_action: Ala julkaista
-      final_step: 'Ala julkaista! Vaikkei sinulla olisi seuraajia, monet voivat nähdä julkiset viestisi esimerkiksi paikallisella aikajanalla ja hashtagien avulla. Kannattaa esittäytyä! Käytä hashtagia #introductions. (Jos haluat esittäytyä myös suomeksi, se kannattaa tehdä erillisessä tuuttauksessa ja käyttää hashtagia #esittely.).'
       full_handle: Koko käyttäjätunnuksesi
       full_handle_hint: Kerro tämä ystävillesi, niin he voivat lähettää sinulle viestejä tai löytää sinut toisen instanssin kautta.
-      review_preferences_action: Muuta asetuksia
-      review_preferences_step: Käy tarkistamassa, että asetukset ovat haluamallasi tavalla. Voit valita, missä tilanteissa haluat saada sähköpostia, mikä on julkaisujesi oletusnäkyvyys jne. Jos et saa helposti pahoinvointia, voit valita, että GIF-animaatiot toistetaan automaattisesti.
       subject: Tervetuloa Mastodoniin
-      tip_federated_timeline: Yleinen aikajana näyttää sisältöä koko Mastodon-verkostosta. Siinä näkyvät kuitenkin vain ne henkilöt, joita oman instanssisi käyttäjät seuraavat. Siinä ei siis näytetä aivan kaikkea.
-      tip_following: Oletusarvoisesti seuraat oman palvelimesi ylläpitäjiä. Etsi lisää kiinnostavia ihmisiä paikalliselta ja yleiseltä aikajanalta.
-      tip_local_timeline: Paikallinen aikajana näyttää instanssin %{instance} käyttäjien julkaisut. He ovat naapureitasi!
-      tip_mobile_webapp: Jos voit lisätä Mastodonin mobiiliselaimen kautta aloitusnäytöllesi, voit vastaanottaa push-ilmoituksia. Toiminta vastaa monin tavoin tavanomaista sovellusta!
-      tips: Vinkkejä
       title: Tervetuloa mukaan, %{name}!
   users:
     follow_limit_reached: Et voi seurata yli %{limit} henkilöä

@@ -34,8 +34,6 @@
   .fields-row
     .fields-row__column.fields-row__column-6.fields-group
       = f.input :thumbnail, as: :file, wrapper: :with_block_label, label: t('admin.settings.thumbnail.title'), hint: site_upload_delete_hint(t('admin.settings.thumbnail.desc_html'), :thumbnail)
-    .fields-row__column.fields-row__column-6.fields-group
-      = f.input :hero, as: :file, wrapper: :with_block_label, label: t('admin.settings.hero.title'), hint: site_upload_delete_hint(t('admin.settings.hero.desc_html'), :hero)
 
   .fields-row
     .fields-row__column.fields-row__column-6.fields-group
@@ -56,9 +54,6 @@
   - unless whitelist_mode?
     .fields-group
       = f.input :timeline_preview, as: :boolean, wrapper: :with_label, label: t('admin.settings.timeline_preview.title'), hint: t('admin.settings.timeline_preview.desc_html')
-
-  .fields-group
-    = f.input :open_deletion, as: :boolean, wrapper: :with_label, label: t('admin.settings.registrations.deletion.title'), hint: t('admin.settings.registrations.deletion.desc_html')
 
   - unless whitelist_mode?
     .fields-group

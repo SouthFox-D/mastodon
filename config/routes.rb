@@ -486,8 +486,11 @@ Rails.application.routes.draw do
 
       resource :instance, only: [:show] do
         resources :peers, only: [:index], controller: 'instances/peers'
-        resource :activity, only: [:show], controller: 'instances/activity'
         resources :rules, only: [:index], controller: 'instances/rules'
+        resources :domain_blocks, only: [:index], controller: 'instances/domain_blocks'
+        resource :privacy_policy, only: [:show], controller: 'instances/privacy_policies'
+        resource :extended_description, only: [:show], controller: 'instances/extended_descriptions'
+        resource :activity, only: [:show], controller: 'instances/activity'
       end
 
       resource :domain_blocks, only: [:show, :create, :destroy]
@@ -616,10 +619,12 @@ Rails.application.routes.draw do
     end
 
     namespace :v2 do
-      resources :media, only: [:create]
       get '/search', to: 'search#index', as: :search
+
+      resources :media,       only: [:create]
       resources :suggestions, only: [:index]
       resources :filters,     only: [:index, :create, :show, :update, :destroy]
+      resource  :instance,    only: [:show]
 
       namespace :admin do
         resources :accounts, only: [:index]
@@ -640,7 +645,7 @@ Rails.application.routes.draw do
   get '/web/(*any)', to: 'home#index', as: :web
 
   get '/about',        to: 'about#show'
-  get '/about/more',   to: 'about#more'
+  get '/about/more',   to: redirect('/about')
 
   get '/privacy-policy', to: 'privacy#show', as: :privacy_policy
   get '/terms',          to: redirect('/privacy-policy')

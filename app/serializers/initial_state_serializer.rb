@@ -5,28 +5,32 @@ class InitialStateSerializer < ActiveModel::Serializer
 
   attributes :meta, :compose, :accounts,
              :media_attachments, :settings,
-             :languages, :server
+             :languages
 
   has_one :push_subscription, serializer: REST::WebPushSubscriptionSerializer
   has_one :role, serializer: REST::RoleSerializer
 
+  # rubocop:disable Metrics/AbcSize
   def meta
     store = {
       streaming_api_base_url: Rails.configuration.x.streaming_api_base_url,
       access_token: object.token,
       locale: I18n.locale,
-      domain: Rails.configuration.x.local_domain,
-      title: instance_presenter.site_title,
+      domain: instance_presenter.domain,
+      title: instance_presenter.title,
       admin: object.admin&.id&.to_s,
       search_enabled: Chewy.enabled?,
       repository: Mastodon::Version.repository,
-      source_url: Mastodon::Version.source_url,
-      version: Mastodon::Version.to_s,
+      source_url: instance_presenter.source_url,
+      version: instance_presenter.version,
       limited_federation_mode: Rails.configuration.x.whitelist_mode,
       mascot: instance_presenter.mascot&.file&.url,
       profile_directory: Setting.profile_directory,
       trends: Setting.trends,
       registrations_open: Setting.registrations_mode != 'none' && !Rails.configuration.x.single_user_mode,
+      timeline_preview: Setting.timeline_preview,
+      activity_api_enabled: Setting.activity_api_enabled,
+      single_user_mode: Rails.configuration.x.single_user_mode,
     }
 
     if object.current_account
@@ -52,8 +56,13 @@ class InitialStateSerializer < ActiveModel::Serializer
       store[:crop_images]   = Setting.crop_images
     end
 
+    if Rails.configuration.x.single_user_mode
+      store[:owner] = object.owner&.id&.to_s
+    end
+
     store
   end
+  # rubocop:enable Metrics/AbcSize
 
   def compose
     store = {}
@@ -74,6 +83,7 @@ class InitialStateSerializer < ActiveModel::Serializer
     store = {}
     store[object.current_account.id.to_s] = ActiveModelSerializers::SerializableResource.new(object.current_account, serializer: REST::AccountSerializer) if object.current_account
     store[object.admin.id.to_s]           = ActiveModelSerializers::SerializableResource.new(object.admin, serializer: REST::AccountSerializer) if object.admin
+    store[object.owner.id.to_s]           = ActiveModelSerializers::SerializableResource.new(object.owner, serializer: REST::AccountSerializer) if object.owner
     store
   end
 
@@ -83,13 +93,6 @@ class InitialStateSerializer < ActiveModel::Serializer
 
   def languages
     LanguagesHelper::SUPPORTED_LOCALES.map { |(key, value)| [key, value[0], value[1]] }
-  end
-
-  def server
-    {
-      hero: instance_presenter.hero&.file&.url || instance_presenter.thumbnail&.file&.url || asset_pack_path('media/images/preview.png'),
-      description: instance_presenter.site_short_description.presence || I18n.t('about.about_mastodon_html'),
-    }
   end
 
   private
