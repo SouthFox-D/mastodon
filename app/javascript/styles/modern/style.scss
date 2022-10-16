@@ -3005,6 +3005,11 @@
   height: calc(100% - 30px);
   box-sizing: border-box;
 }
+#mastodon .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
+.public-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
+.modal-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i {
+  opacity: 0.2;
+}
 @media (min-width: 1191px) {
   #mastodon .navigation-panel,
   .public-layout .navigation-panel,
@@ -3065,11 +3070,6 @@
   .public-layout .navigation-panel .column-link:focus:before,
   .modal-layout .navigation-panel .column-link:focus:before {
     opacity: 1 !important;
-  }
-  #mastodon .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
-  .public-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
-  .modal-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i {
-    opacity: 0.2;
   }
 }
 @media (min-width: 895px) {
@@ -3951,8 +3951,8 @@
     max-height: calc(100vh - 150px);
   }
   .floating-action-button {
-    bottom: 70px;
-    left: 25px;
+    bottom: 10px;
+    right: 70px;
     width: 55px;
     height: 55px;
     z-index: 105;

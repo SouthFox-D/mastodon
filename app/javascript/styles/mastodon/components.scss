@@ -2647,6 +2647,7 @@ $ui-header-height: 55px;
     display: flex;
     background: $ui-base-color;
     border-bottom: 1px solid lighten($ui-base-color, 8%);
+    z-index: 233;
   }
 
   .column-header,
@@ -2674,9 +2675,6 @@ $ui-header-height: 55px;
       display: none;
     }
 
-    .list-panel {
-      display: none;
-    }
   }
 }
 
@@ -3180,7 +3178,6 @@ label[for="is-exclusive-checkbox"] {
   padding: 15px;
   text-decoration: none;
   overflow: hidden;
-  text-overflow: ellipsis;
   white-space: nowrap;
 
   &:hover,
