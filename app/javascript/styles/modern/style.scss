@@ -3066,16 +3066,6 @@
   .modal-layout .navigation-panel .column-link:focus:before {
     opacity: 1 !important;
   }
-  #mastodon .navigation-panel .column-link[href="/settings/preferences"],
-  .public-layout .navigation-panel .column-link[href="/settings/preferences"],
-  .modal-layout .navigation-panel .column-link[href="/settings/preferences"] {
-    display: none !important;
-  }
-  #mastodon .navigation-panel .column-link[href="/web/lists"] + div hr,
-  .public-layout .navigation-panel .column-link[href="/web/lists"] + div hr,
-  .modal-layout .navigation-panel .column-link[href="/web/lists"] + div hr {
-    display: none;
-  }
   #mastodon .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
   .public-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i,
   .modal-layout .navigation-panel .column-link[href="/web/lists"] + div .column-link i {
@@ -3962,7 +3952,7 @@
   }
   .floating-action-button {
     bottom: 70px;
-    right: 15px;
+    left: 25px;
     width: 55px;
     height: 55px;
     z-index: 105;
