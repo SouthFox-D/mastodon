@@ -335,8 +335,12 @@ export default function compose(state = initialState, action) {
       }
 
       if (action.status.get('spoiler_text').length > 0) {
+        let spoiler_text = action.status.get('spoiler_text');
+        if (!spoiler_text.match(/^↩️/i) && !spoiler_text.match(/^re[: ]/i)) {
+          spoiler_text = '↩️'.concat(spoiler_text);
+        }
         map.set('spoiler', true);
-        map.set('spoiler_text', action.status.get('spoiler_text'));
+        map.set('spoiler_text', spoiler_text);
       } else {
         map.set('spoiler', false);
         map.set('spoiler_text', '');
