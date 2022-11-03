@@ -88,8 +88,8 @@ class PublicFeed
   def language_scope
     if account&.chosen_languages.present?
       Status.where(language: account.chosen_languages)
-    elsif @options[:locale].present?
-      Status.where(language: @options[:locale])
+    #elsif @options[:locale].present?
+    #  Status.where(language: @options[:locale])
     else
       Status.all
     end
