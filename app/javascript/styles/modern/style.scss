@@ -31,6 +31,9 @@
 .modal-layout .button--block {
   font-weight: 700;
 }
+.status-card.compact .status-card__image {
+  flex: 0 0 100px;
+}
 #mastodon .compose-form__upload-thumbnail,
 .public-layout .compose-form__upload-thumbnail,
 .modal-layout .compose-form__upload-thumbnail,
@@ -722,9 +725,6 @@
 .modal-layout .account-timeline__header .account__header__bio > div {
   padding-inline: 10px !important;
 }
-#mastodon .account__header__fields,
-.public-layout .account__header__fields,
-.modal-layout .account__header__fields,
 #mastodon .account__header__account-note,
 .public-layout .account__header__account-note,
 .modal-layout .account__header__account-note {
@@ -752,11 +752,8 @@
 #mastodon .account__header__account-note.account__header__account-note.account__header__account-note,
 .public-layout .account__header__account-note.account__header__account-note.account__header__account-note,
 .modal-layout .account__header__account-note.account__header__account-note.account__header__account-note {
-  border: 0;
-  border-radius: var(--radius-round);
   overflow: hidden;
   background-color: var(--border-color);
-  padding: 0 !important;
 }
 #mastodon .account__header__fields dl dt,
 .public-layout .account__header__fields dl dt,
@@ -3740,7 +3737,7 @@
   #mastodon .status__action-bar,
   .public-layout .status__action-bar,
   .modal-layout .status__action-bar {
-    margin-bottom: -10px;
+    margin-bottom: -5px;
   }
   #mastodon .status__action-bar .icon-button,
   .public-layout .status__action-bar .icon-button,
@@ -3748,7 +3745,6 @@
     flex-grow: 1 !important;
     margin: 0 !important;
     justify-content: center;
-    padding: 0.7em !important;
   }
   #mastodon .tabs-bar__wrapper,
   .public-layout .tabs-bar__wrapper,
