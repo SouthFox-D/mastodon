@@ -2373,8 +2373,8 @@
 .public-layout .account__avatar-overlay-overlay,
 .modal-layout .account__avatar-overlay-overlay {
   border-radius: var(--radius-round);
-  bottom: -10%;
-  right: -10%;
+  bottom: 0%;
+  right: 0%;
 }
 #mastodon .status__info,
 .public-layout .status__info,
@@ -3721,7 +3721,7 @@
   #mastodon .status .status__avatar > div,
   .public-layout .status .status__avatar > div,
   .modal-layout .status .status__avatar > div {
-    width: 100% !important;
+    width: 100%;
     height: 100% !important;
     background-size: cover !important;
   }
@@ -3763,7 +3763,7 @@
     flex-grow: 1 !important;
     margin: 0 !important;
     justify-content: center;
-    padding: 0.7em !important;
+    padding: 0.4em !important;
   }
   #mastodon .tabs-bar__wrapper,
   .public-layout .tabs-bar__wrapper,
