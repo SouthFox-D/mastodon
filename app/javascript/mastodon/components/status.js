@@ -5,6 +5,7 @@ import Avatar from './avatar';
 import AvatarOverlay from './avatar_overlay';
 import RelativeTimestamp from './relative_timestamp';
 import DisplayName from './display_name';
+import StatusIcons from './status_icons';
 import StatusContent from './status_content';
 import StatusActionBar from './status_action_bar';
 import AttachmentList from './attachment_list';
@@ -316,6 +317,9 @@ class Status extends ImmutablePureComponent {
 
     let { status, account, ...other } = this.props;
 
+    let contentMediaIcons = [];
+    let mediaIcons = contentMediaIcons;
+
     if (status === null) {
       return null;
     }
@@ -399,6 +403,7 @@ class Status extends ImmutablePureComponent {
 
     if (pictureInPicture.get('inUse')) {
       media = <PictureInPicturePlaceholder width={this.props.cachedMediaWidth} />;
+      mediaIcons.push('video-camera');
     } else if (status.get('media_attachments').size > 0) {
       if (this.props.muted) {
         media = (
@@ -433,6 +438,7 @@ class Status extends ImmutablePureComponent {
             )}
           </Bundle>
         );
+        mediaIcons.push('music');
       } else if (status.getIn(['media_attachments', 0, 'type']) === 'video') {
         const attachment = status.getIn(['media_attachments', 0]);
 
@@ -458,6 +464,7 @@ class Status extends ImmutablePureComponent {
             )}
           </Bundle>
         );
+        mediaIcons.push('video-camera');
       } else {
         media = (
           <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery}>
@@ -475,6 +482,7 @@ class Status extends ImmutablePureComponent {
             )}
           </Bundle>
         );
+        mediaIcons.push('picture-o');
       }
     } else if (status.get('spoiler_text').length === 0 && status.get('card') && !this.props.muted) {
       media = (
@@ -487,6 +495,11 @@ class Status extends ImmutablePureComponent {
           sensitive={status.get('sensitive')}
         />
       );
+      mediaIcons.push('link');
+    }
+
+    if (status.get('poll')) {
+      contentMediaIcons.push('tasks');
     }
 
     if (account === undefined || account === null) {
@@ -511,10 +524,16 @@ class Status extends ImmutablePureComponent {
 
           <div className={classNames('status', `status-${status.get('visibility')}`, { 'status-reply': !!status.get('in_reply_to_id'), muted: this.props.muted })} data-id={status.get('id')}>
             <div className='status__info'>
-              <a onClick={this.handleClick} href={status.get('url')} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
-                <span className='status__visibility-icon'><Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></span>
-                <RelativeTimestamp timestamp={status.get('created_at')} />{status.get('edited_at') && <abbr title={intl.formatMessage(messages.edited, { date: intl.formatDate(status.get('edited_at'), { hour12: false, year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) })}> *</abbr>}
-              </a>
+              <div className='status__info__icons'>
+                <StatusIcons
+                  status={status}
+                  mediaIcons={contentMediaIcons}
+                />
+                <a onClick={this.handleClick} href={status.get('url')} className='status__relative-time' target='_blank' rel='noopener noreferrer'>
+                  <span className='status__visibility-icon'><Icon id={visibilityIcon.icon} title={visibilityIcon.text} /></span>
+                  <RelativeTimestamp timestamp={status.get('created_at')} />{status.get('edited_at') && <abbr title={intl.formatMessage(messages.edited, { date: intl.formatDate(status.get('edited_at'), { hour12: false, year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) })}> *</abbr>}
+                </a>
+              </div>
 
               <a onClick={this.handleAccountClick} href={status.getIn(['account', 'url'])} title={status.getIn(['account', 'acct'])} className='status__display-name' target='_blank' rel='noopener noreferrer'>
                 <div className='status__avatar'>
@@ -530,12 +549,12 @@ class Status extends ImmutablePureComponent {
               onClick={this.handleClick}
               expanded={!status.get('hidden')}
               onExpandedToggle={this.handleExpandedToggle}
+              mediaIcons={contentMediaIcons}
+              media={media}
               onTranslate={this.handleTranslate}
               collapsable
               onCollapsedToggle={this.handleCollapsedToggle}
             />
-
-            {media}
 
             <StatusActionBar scrollKey={scrollKey} status={status} account={account} onFilter={matchedFilters ? this.handleFilterClick : null} {...other} />
           </div>

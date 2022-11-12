@@ -198,3 +198,18 @@ a.button.logo-button {
     }
   }
 }
+
+.status__info__icons {
+  order: 2;
+  display: flex;
+  align-items: baseline;
+  color: #606984;
+}
+
+.status__info__icons .status__media-icon,
+.status__info__icons .status__reply-icon,
+.status__info__icons .status__visibility-icon,
+.status__info__icons .text-icon,
+a.status__relative-time {
+  padding-left: 2px;
+}

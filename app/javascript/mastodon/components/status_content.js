@@ -73,6 +73,8 @@ class StatusContent extends React.PureComponent {
 
   static propTypes = {
     status: ImmutablePropTypes.map.isRequired,
+    media: PropTypes.node,
+    mediaIcons: PropTypes.arrayOf(PropTypes.string),
     expanded: PropTypes.bool,
     onExpandedToggle: PropTypes.func,
     onTranslate: PropTypes.func,
@@ -234,7 +236,7 @@ class StatusContent extends React.PureComponent {
   }
 
   render () {
-    const { status, intl } = this.props;
+    const { status, intl, media, mediaIcons} = this.props;
 
     const hidden = this.props.onExpandedToggle ? !this.props.expanded : this.state.hidden;
     const renderReadMore = this.props.onClick && status.get('collapsed');
@@ -272,7 +274,37 @@ class StatusContent extends React.PureComponent {
         </Permalink>
       )).reduce((aggregate, item) => [...aggregate, item, ' '], []);
 
-      const toggleText = hidden ? <FormattedMessage id='status.show_more' defaultMessage='Show more' /> : <FormattedMessage id='status.show_less' defaultMessage='Show less' />;
+      let toggleText = null;
+      if (hidden) {
+        toggleText = [
+          <FormattedMessage
+            id='status.show_more'
+            defaultMessage='Show more'
+            key='0'
+          />,
+        ];
+        if (mediaIcons) {
+          mediaIcons.forEach((mediaIcon, idx) => {
+            toggleText.push(
+              <Icon
+                fixedWidth
+                className='status__content__spoiler-icon'
+                id={mediaIcon}
+                aria-hidden='true'
+                key={`icon-${idx}`}
+              />,
+            );
+          });
+        }
+      } else {
+        toggleText = (
+          <FormattedMessage
+            id='status.show_less'
+            defaultMessage='Show less'
+            key='0'
+          />
+        );
+      }
 
       if (hidden) {
         mentionsPlaceholder = <div>{mentionLinks}</div>;
@@ -291,6 +323,7 @@ class StatusContent extends React.PureComponent {
           <div tabIndex={!hidden ? 0 : null} className={`status__content__text ${!hidden ? 'status__content__text--visible' : ''} translate`} lang={lang} dangerouslySetInnerHTML={content} />
 
           {!hidden && poll}
+          {!hidden && media}
           {!hidden && translateButton}
         </div>
       );
@@ -300,6 +333,7 @@ class StatusContent extends React.PureComponent {
           <div className={classNames} ref={this.setRef} tabIndex='0' onMouseDown={this.handleMouseDown} onMouseUp={this.handleMouseUp} key='status-content' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
             <div className='status__content__text status__content__text--visible translate' lang={lang} dangerouslySetInnerHTML={content} />
 
+            {media}
             {poll}
             {translateButton}
           </div>
@@ -312,6 +346,7 @@ class StatusContent extends React.PureComponent {
         <div className={classNames} ref={this.setRef} tabIndex='0' onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
           <div className='status__content__text status__content__text--visible translate' lang={lang} dangerouslySetInnerHTML={content} />
 
+          {media}
           {poll}
           {translateButton}
         </div>
