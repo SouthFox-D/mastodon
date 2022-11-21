@@ -36,3 +36,5 @@ jobs:
         with:
           push: true
           tags: southfox09/mastodon:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
