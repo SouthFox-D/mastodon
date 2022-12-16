@@ -2774,9 +2774,9 @@
   .column-link[href="/lists"] + div .column-link {
     margin-bottom: 2px;
   }
-  .column-link[href="/lists"] + div .column-link i {
-    opacity: 0.2;
-  }
+}
+.column-link[href="/lists"] + div .column-link i {
+  opacity: 0.2;
 }
 @media (min-width: 895px) {
   #mastodon .getting-started__trends,
