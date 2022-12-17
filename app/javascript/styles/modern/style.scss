@@ -30,7 +30,7 @@
 }
 #mastodon .unhandled-link,
 .modal-layout .unhandled-link {
-  text-decoration: underline;
+  text-decoration: unset;
   text-underline-offset: 0.2em;
 }
 #mastodon .compose-form__upload-thumbnail,
@@ -2079,7 +2079,7 @@
 }
 #mastodon .focusable:not(.detailed-status__wrapper) .status__content,
 .modal-layout .focusable:not(.detailed-status__wrapper) .status__content {
-  overflow: visible;
+  overflow: hidden;
 }
 #mastodon .focusable:not(.detailed-status__wrapper) .status__content .status__content__text,
 .modal-layout .focusable:not(.detailed-status__wrapper) .status__content .status__content__text {
@@ -3216,7 +3216,7 @@
     padding-top: 55px;
     height: 100vh;
     border: 0;
-    margin-inline-start: 1px;
+    margin-inline-start: 0px;
     padding-bottom: 80px;
   }
   #mastodon .notification__filter-bar + .scrollable,
