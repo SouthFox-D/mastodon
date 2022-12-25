@@ -89,7 +89,9 @@ class Reaction extends ImmutablePureComponent {
     if (reaction.get('me')) {
       removeReaction(statusId, reaction.get('name'));
     } else {
-      addReaction(statusId, reaction.get('name'));
+      if (reaction.get('name').indexOf('@') === -1) {
+        addReaction(statusId, reaction.get('name'));
+      }
     }
   }
 
