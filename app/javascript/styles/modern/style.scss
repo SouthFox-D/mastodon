@@ -2584,7 +2584,7 @@ button:focus-visible {
   font: normal normal normal 14px/1 FontAwesome;
 }
 #mastodon .focusable:not(.detailed-status__wrapper) .status__content {
-  overflow: visible;
+  overflow: hidden;
 }
 #mastodon
   .focusable:not(.detailed-status__wrapper)
