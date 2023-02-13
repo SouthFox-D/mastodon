@@ -2799,7 +2799,7 @@ button:focus-visible {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: unset !important;
+  width: unset;
   padding: 0.5em !important;
   height: unset !important;
   border-radius: var(--radius);
@@ -2852,7 +2852,6 @@ button:focus-visible {
 #mastodon .status__action-bar.picture-in-picture__footer {
   padding-inline: 15px !important;
 }
-#mastodon .detailed-status__action-bar.detailed-status__action-bar .icon-button,
 #mastodon .detailed-status__action-bar.picture-in-picture__footer .icon-button,
 #mastodon .picture-in-picture__footer.detailed-status__action-bar .icon-button,
 #mastodon .picture-in-picture__footer.picture-in-picture__footer .icon-button,
