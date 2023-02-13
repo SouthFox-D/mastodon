@@ -53,7 +53,7 @@ class Sanitize
     end
 
     UNSUPPORTED_ELEMENTS_TRANSFORMER = lambda do |env|
-      return unless %w(h1 h2 h3 h4 h5 h6 blockquote pre ul ol li).include?(env[:node_name])
+      return unless %w(h6).include?(env[:node_name])
 
       current_node = env[:node]
 
@@ -71,11 +71,13 @@ class Sanitize
     end
 
     MASTODON_STRICT ||= freeze_config(
-      elements: %w(p br span a),
+      elements: %w(p br span a abbr del pre blockquote code b strong i em h1 h2 h3 h4 h5 ul ol li),
 
       attributes: {
         'a'    => %w(href rel class),
         'span' => %w(class),
+        'abbr'       => %w(title),
+        'blockquote' => %w(cite),
       },
 
       add_attributes: {
@@ -85,7 +87,9 @@ class Sanitize
         },
       },
 
-      protocols: {},
+      protocols: {
+        'blockquote' => { 'cite' => HTTP_PROTOCOLS },
+      },
 
       transformers: [
         CLASS_WHITELIST_TRANSFORMER,
