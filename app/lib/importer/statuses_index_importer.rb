@@ -24,9 +24,7 @@ class Importer::StatusesIndexImporter < Importer::BaseImporter
           # is called before rendering the data and we need to filter based
           # on the results of the filter, so this filtering happens here instead
           bulk.map! do |entry|
-            new_entry = begin
-              entry
-            end
+            new_entry = entry
 
             if new_entry[:index]
               indexed += 1

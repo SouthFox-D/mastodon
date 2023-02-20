@@ -6,9 +6,9 @@ describe FetchOEmbedService, type: :service do
   subject { described_class.new }
 
   before do
-    stub_request(:get, "https://host.test/provider.json").to_return(status: 404)
-    stub_request(:get, "https://host.test/provider.xml").to_return(status: 404)
-    stub_request(:get, "https://host.test/empty_provider.json").to_return(status: 200)
+    stub_request(:get, 'https://host.test/provider.json').to_return(status: 404)
+    stub_request(:get, 'https://host.test/provider.xml').to_return(status: 404)
+    stub_request(:get, 'https://host.test/empty_provider.json').to_return(status: 200)
   end
 
   describe 'discover_provider' do
@@ -62,7 +62,7 @@ describe FetchOEmbedService, type: :service do
 
         it 'does not cache OEmbed endpoint' do
           subject.call('https://host.test/oembed.html', format: :xml)
-          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to eq false
+          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to be false
         end
       end
 
@@ -83,7 +83,7 @@ describe FetchOEmbedService, type: :service do
 
         it 'does not cache OEmbed endpoint' do
           subject.call('https://host.test/oembed.html')
-          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to eq false
+          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to be false
         end
       end
 
@@ -104,7 +104,7 @@ describe FetchOEmbedService, type: :service do
 
         it 'does not cache OEmbed endpoint' do
           subject.call('https://host.test/oembed.html')
-          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to eq false
+          expect(Rails.cache.exist?('oembed_endpoint:host.test')).to be false
         end
       end
 

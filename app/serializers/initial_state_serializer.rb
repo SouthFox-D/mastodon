@@ -72,7 +72,6 @@ class InitialStateSerializer < ActiveModel::Serializer
 
     store
   end
-  # rubocop:enable Metrics/AbcSize
 
   def compose
     store = {}

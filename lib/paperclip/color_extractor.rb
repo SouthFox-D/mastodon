@@ -161,13 +161,11 @@ module Paperclip
     def lighten_or_darken(color, by)
       hue, saturation, light = rgb_to_hsl(color.r, color.g, color.b)
 
-      light = begin
-        if light < 50
-          [100, light + by].min
-        else
-          [0, light - by].max
-        end
-      end
+      light = if light < 50
+                [100, light + by].min
+              else
+                [0, light - by].max
+              end
 
       ColorDiff::Color::RGB.new(*hsl_to_rgb(hue, saturation, light))
     end
@@ -185,7 +183,7 @@ module Paperclip
     end
 
     def rgb_to_hex(rgb)
-      '#%02x%02x%02x' % [rgb.r, rgb.g, rgb.b]
+      format('#%02x%02x%02x', rgb.r, rgb.g, rgb.b)
     end
   end
 end
