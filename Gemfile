@@ -117,6 +117,7 @@ end
 
 group :test do
   gem 'capybara', '~> 3.38'
+  gem 'climate_control'
   gem 'faker', '~> 3.1'
   gem 'json-schema', '~> 3.0'
   gem 'rack-test', '~> 2.0'
@@ -138,6 +139,7 @@ group :development do
   gem 'memory_profiler'
   gem 'brakeman', '~> 5.4', require: false
   gem 'bundler-audit', '~> 0.9', require: false
+  gem 'haml_lint', require: false
 
   gem 'capistrano', '~> 3.17'
   gem 'capistrano-rails', '~> 1.6'
