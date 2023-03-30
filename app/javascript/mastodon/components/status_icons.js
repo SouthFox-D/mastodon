@@ -104,4 +104,4 @@ class StatusIcons extends React.PureComponent {
 
 }
 
-export default injectIntl(Account);
+export default injectIntl(StatusIcons);
