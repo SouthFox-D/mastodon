@@ -41,10 +41,10 @@
 
     %h4= t 'appearance.discovery'
 
-  .fields-group.fields-row__column.fields-row__column-6
-    = f.input :visible_reactions, wrapper: :with_label, input_html: { type: 'number', min: '0', data: { default: '6' } }, hint: false
+    .fields-group.fields-row__column.fields-row__column-6
+      = f.input :visible_reactions, wrapper: :with_label, input_html: { type: 'number', min: '0', data: { default: '6' } }, hint: false
 
-  %h4= t 'appearance.discovery'
+    %h4= t 'appearance.discovery'
 
     .fields-group
       = ff.input :'web.trends', wrapper: :with_label, label: I18n.t('simple_form.labels.defaults.setting_trends')
