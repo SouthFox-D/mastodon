@@ -99,7 +99,7 @@ module HasUserSettings
     settings['web.disable_swiping']
   end
 
-  def visible_reactions
+  def setting_visible_reactions
     settings['visible_reactions']
   end
 
