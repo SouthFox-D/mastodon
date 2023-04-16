@@ -10,8 +10,8 @@ import { me } from '../initial_state';
 import RelativeTimestamp from './relative_timestamp';
 import Skeleton from 'mastodon/components/skeleton';
 import { Link } from 'react-router-dom';
-import { counterRenderer } from 'mastodon/components/common_counter';
-import ShortNumber from 'mastodon/components/short_number';
+// import { counterRenderer } from 'mastodon/components/common_counter';
+// import ShortNumber from 'mastodon/components/short_number';
 import Icon from 'mastodon/components/icon';
 import classNames from 'classnames';
 
@@ -184,7 +184,8 @@ class Account extends ImmutablePureComponent {
 
             <div>
               <DisplayName account={account} />
-              {!minimal && <><ShortNumber value={account.get('followers_count')} renderer={counterRenderer('followers')} /> {verification} {muteTimeRemaining}</>}
+              {!minimal && <>{intl.formatDate(account.get('created_at'), { year: 'numeric', month: 'short', day: '2-digit' })}
+                {verification} {muteTimeRemaining}</>}
             </div>
           </Link>
 
