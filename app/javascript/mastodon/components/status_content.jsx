@@ -11,9 +11,9 @@ import { autoPlayGif, languages as preloadedLanguages } from 'mastodon/initial_s
 
 const MAX_HEIGHT = 706; // 22px * 32 (+ 2px padding at the top)
 
-const linkRegex = /(?:\?\w+|\&\w+)/g;
+const linkRegex = /(?:\?\w+)/g;
 
-const isLinkMisleading = (link, checkUrlLike = true) => {
+const isLinkMisleading = (link) => {
 
   const targetURL = new URL(link.href);
   if (targetURL.host === 'b23.tv') {
@@ -21,9 +21,10 @@ const isLinkMisleading = (link, checkUrlLike = true) => {
   }
 
   var linkPara = (link.href).match(linkRegex);
-  if (linkPara != null && linkPara.length > 1) {
+  if (linkPara !== null && linkPara.length > 1) {
     return true;
   }
+  return null;
 
 };
 
@@ -83,7 +84,7 @@ class StatusContent extends React.PureComponent {
     onExpandedToggle: PropTypes.func,
     onTranslate: PropTypes.func,
     onClick: PropTypes.func,
-    collapsable: PropTypes.bool,
+    collapsible: PropTypes.bool,
     onCollapsedToggle: PropTypes.func,
     languages: ImmutablePropTypes.map,
     intl: PropTypes.object,
@@ -130,7 +131,7 @@ class StatusContent extends React.PureComponent {
         if (isLinkMisleading(link)) {
           const tag = document.createElement('span');
           tag.classList.add('link-origin-tag');
-          tag.textContent = `[👀❗]`;
+          tag.textContent = '[👀❗]';
           link.insertAdjacentText('beforeend', ' ');
           link.insertAdjacentElement('beforeend', tag);
         }
@@ -139,10 +140,10 @@ class StatusContent extends React.PureComponent {
     }
 
     if (status.get('collapsed', null) === null && onCollapsedToggle) {
-      const { collapsable, onClick } = this.props;
+      const { collapsible, onClick } = this.props;
 
       const collapsed =
-          collapsable
+          collapsible
           && onClick
           && node.clientHeight > MAX_HEIGHT
           && status.get('spoiler_text').length === 0;
@@ -248,7 +249,7 @@ class StatusContent extends React.PureComponent {
   };
 
   render () {
-    const { status, intl, media, mediaIcons} = this.props;
+    const { status, intl, media, mediaIcons } = this.props;
 
     const hidden = this.props.onExpandedToggle ? !this.props.expanded : this.state.hidden;
     const renderReadMore = this.props.onClick && status.get('collapsed');
