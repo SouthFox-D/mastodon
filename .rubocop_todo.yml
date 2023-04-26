@@ -1224,9 +1224,6 @@ Rails/ActiveRecordCallbacksOrder:
 Rails/ApplicationController:
   Exclude:
     - 'app/controllers/health_controller.rb'
-    - 'app/controllers/well_known/host_meta_controller.rb'
-    - 'app/controllers/well_known/nodeinfo_controller.rb'
-    - 'app/controllers/well_known/webfinger_controller.rb'
 
 # Configuration parameters: Database, Include.
 # SupportedDatabases: mysql, postgresql
@@ -1403,14 +1400,6 @@ Rails/HasManyOrHasOneDependent:
     - 'app/models/user.rb'
     - 'app/models/web/push_subscription.rb'
 
-# Configuration parameters: Include.
-# Include: app/helpers/**/*.rb
-Rails/HelperInstanceVariable:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/instance_helper.rb'
-    - 'app/helpers/jsonld_helper.rb'
-
 # This cop supports safe autocorrection (--autocorrect).
 # Configuration parameters: Include.
 # Include: spec/**/*, test/**/*
@@ -1499,15 +1488,6 @@ Rails/RakeEnvironment:
     - 'lib/tasks/mastodon.rake'
     - 'lib/tasks/repo.rake'
     - 'lib/tasks/statistics.rake'
-
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: Include.
-# Include: spec/controllers/**/*.rb, spec/requests/**/*.rb, test/controllers/**/*.rb, test/integration/**/*.rb
-Rails/ResponseParsedBody:
-  Exclude:
-    - 'spec/controllers/follower_accounts_controller_spec.rb'
-    - 'spec/controllers/following_accounts_controller_spec.rb'
-    - 'spec/controllers/settings/two_factor_authentication/webauthn_credentials_controller_spec.rb'
 
 # Configuration parameters: Include.
 # Include: db/**/*.rb
@@ -2270,12 +2250,6 @@ Style/MutableConstant:
 Style/NilLambda:
   Exclude:
     - 'config/initializers/paperclip.rb'
-
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
-Style/NumericLiterals:
-  Exclude:
-    - 'config/initializers/strong_migrations.rb'
 
 # Configuration parameters: AllowedMethods.
 # AllowedMethods: respond_to_missing?
