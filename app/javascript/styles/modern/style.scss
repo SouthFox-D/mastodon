@@ -2538,6 +2538,7 @@ button:focus-visible {
 }
 #mastodon .status__avatar {
   min-width: 45px;
+  box-shadow: unset;
 }
 #mastodon .account__avatar-overlay-base {
   width: 100%;
@@ -2620,8 +2621,6 @@ button:focus-visible {
 }
 #mastodon .status__content {
   padding-top: 2px;
-  margin-inline: -100px;
-  padding-inline: 100px;
   text-align: unset !important;
   line-height: 1.5;
 }
@@ -2786,7 +2785,6 @@ button:focus-visible {
   z-index: 2;
   pointer-events: none;
   gap: 18px;
-  justify-content: unset;
 }
 #mastodon .detailed-status__action-bar > *,
 #mastodon .picture-in-picture__footer > *,
@@ -3446,7 +3444,6 @@ button:focus-visible {
     justify-content: center;
   }
   #mastodon .status__action-bar {
-    justify-content: space-between;
     gap: 0;
     max-width: 350px;
   }
@@ -3587,7 +3584,6 @@ button:focus-visible {
     margin-bottom: 0 !important;
   }
   #mastodon .status__action-bar {
-    margin-inline: -10px;
     margin-bottom: -5px;
   }
   #mastodon .status__action-bar .icon-button {
