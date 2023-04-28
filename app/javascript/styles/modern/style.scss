@@ -2720,11 +2720,6 @@ button:focus-visible {
 #mastodon .picture-in-picture {
   box-shadow: var(--shadow);
 }
-#mastodon .detailed-status.detailed-status__wrapper,
-#mastodon .detailed-status__wrapper.detailed-status__wrapper,
-#mastodon .picture-in-picture.detailed-status__wrapper {
-  margin-block: 15px;
-}
 #mastodon .detailed-status .audio-player,
 #mastodon .detailed-status .media-gallery,
 #mastodon .detailed-status .picture-in-picture-placeholder,
