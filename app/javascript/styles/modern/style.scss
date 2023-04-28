@@ -2798,7 +2798,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   width: unset;
-  padding: 0.5em !important;
+  padding: 0.3em !important;
   height: unset !important;
   border-radius: var(--radius);
   position: relative;
@@ -3589,7 +3589,7 @@ button:focus-visible {
   #mastodon .status__action-bar .icon-button {
     margin: 0 !important;
     justify-content: center;
-    padding: 0.7em !important;
+    padding-top: 0.7em !important;
   }
   #mastodon .icon-button:after {
     content: unset !important;
