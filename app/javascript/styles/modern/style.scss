@@ -2677,6 +2677,7 @@ button:focus-visible {
   animation: scaleIn 0.4s;
   max-width: unset !important;
   max-height: 80vh !important;
+  margin-left: unset !important;
 }
 #mastodon .audio-player.status-card,
 #mastodon .media-gallery.status-card,
@@ -3498,7 +3499,7 @@ button:focus-visible {
   .ui__header [href='/publish'] {
     position: fixed;
     bottom: 15px;
-    right: 15px;
+    right: 60px;
     border-radius: 100px !important;
     height: 60px;
     width: 60px;
