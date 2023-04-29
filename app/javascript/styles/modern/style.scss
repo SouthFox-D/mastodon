@@ -2602,7 +2602,7 @@ button:focus-visible {
   -webkit-mask: linear-gradient(#000 300px, transparent);
 }
 #mastodon
-  .focusable:not(.detailed-status__wrapper)
+  .focusable .status--in-thread
   .status__content
   ~ .status__content__read-more-button {
   padding-top: 0 !important;
