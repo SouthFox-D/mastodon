@@ -2606,6 +2606,7 @@ button:focus-visible {
   .status__content
   ~ .status__content__read-more-button {
   padding-top: 0 !important;
+  margin-left: 56px;
 }
 #mastodon .focusable:not(.detailed-status__wrapper) .status__content::after,
 #mastodon .focusable:not(.detailed-status__wrapper) .status__content::before {
