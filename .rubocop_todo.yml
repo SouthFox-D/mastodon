@@ -119,15 +119,6 @@ Lint/ConstantDefinitionInBlock:
     - 'spec/lib/connection_pool/shared_timed_stack_spec.rb'
     - 'spec/models/concerns/remotable_spec.rb'
 
-# Configuration parameters: IgnoreLiteralBranches, IgnoreConstantBranches.
-Lint/DuplicateBranch:
-  Exclude:
-    - 'app/lib/permalink_redirector.rb'
-    - 'app/models/account_statuses_filter.rb'
-    - 'app/validators/email_mx_validator.rb'
-    - 'app/validators/vote_validator.rb'
-    - 'lib/mastodon/maintenance_cli.rb'
-
 # Configuration parameters: AllowComments, AllowEmptyLambdas.
 Lint/EmptyBlock:
   Exclude:
@@ -424,10 +415,6 @@ RSpec/AnyInstance:
     - 'spec/validators/follow_limit_validator_spec.rb'
     - 'spec/workers/activitypub/delivery_worker_spec.rb'
     - 'spec/workers/web/push_notification_worker_spec.rb'
-
-RSpec/BeforeAfterAll:
-  Exclude:
-    - 'spec/requests/localization_spec.rb'
 
 # Configuration parameters: Prefixes, AllowedPatterns.
 # Prefixes: when, with, without
@@ -745,6 +732,7 @@ RSpec/LetSetup:
     - 'spec/controllers/following_accounts_controller_spec.rb'
     - 'spec/controllers/oauth/authorized_applications_controller_spec.rb'
     - 'spec/controllers/oauth/tokens_controller_spec.rb'
+    - 'spec/controllers/settings/imports_controller_spec.rb'
     - 'spec/lib/activitypub/activity/delete_spec.rb'
     - 'spec/lib/vacuum/preview_cards_vacuum_spec.rb'
     - 'spec/models/account_spec.rb'
@@ -759,6 +747,7 @@ RSpec/LetSetup:
     - 'spec/services/activitypub/process_collection_service_spec.rb'
     - 'spec/services/batched_remove_status_service_spec.rb'
     - 'spec/services/block_domain_service_spec.rb'
+    - 'spec/services/bulk_import_service_spec.rb'
     - 'spec/services/delete_account_service_spec.rb'
     - 'spec/services/import_service_spec.rb'
     - 'spec/services/notify_service_spec.rb'
@@ -1203,16 +1192,6 @@ Rails/BulkChangeTable:
     - 'db/migrate/20220303000827_add_ordered_media_attachment_ids_to_status_edits.rb'
     - 'db/migrate/20220824164433_add_human_identifier_to_admin_action_logs.rb'
 
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Rails/CompactBlank:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/helpers/statuses_helper.rb'
-    - 'app/models/concerns/attachmentable.rb'
-    - 'app/models/poll.rb'
-    - 'app/services/import_service.rb'
-    - 'config/initializers/paperclip.rb'
-
 # Configuration parameters: Include.
 # Include: db/migrate/*.rb
 Rails/CreateTableWithTimestamps:
@@ -1335,31 +1314,10 @@ Rails/HasManyOrHasOneDependent:
     - 'app/models/user.rb'
     - 'app/models/web/push_subscription.rb'
 
-# Configuration parameters: Include.
-# Include: spec/**/*.rb, test/**/*.rb
-Rails/I18nLocaleAssignment:
-  Exclude:
-    - 'spec/controllers/auth/registrations_controller_spec.rb'
-    - 'spec/helpers/application_helper_spec.rb'
-    - 'spec/requests/localization_spec.rb'
-
 Rails/I18nLocaleTexts:
   Exclude:
     - 'lib/tasks/mastodon.rake'
     - 'spec/helpers/flashes_helper_spec.rb'
-
-# Configuration parameters: IgnoreScopes, Include.
-# Include: app/models/**/*.rb
-Rails/InverseOf:
-  Exclude:
-    - 'app/models/appeal.rb'
-    - 'app/models/concerns/account_interactions.rb'
-    - 'app/models/custom_emoji.rb'
-    - 'app/models/domain_block.rb'
-    - 'app/models/follow_recommendation.rb'
-    - 'app/models/instance.rb'
-    - 'app/models/notification.rb'
-    - 'app/models/status.rb'
 
 # Configuration parameters: Include.
 # Include: app/controllers/**/*.rb, app/mailers/**/*.rb
