@@ -36,11 +36,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
+        name: Generate version suffix
+        id: version_vars
+        if: github.repository == 'SouthFox-D/mastodon' && github.event_name == 'push' && github.ref_name == 'main'
+        run: |
+          echo mastodon_version_suffix=\"-$(git rev-parse --short HEAD)\" >> $GITHUB_OUTPUT
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v2
         with:
           push: true
           tags: southfox09/mastodon:latest
+          build-args: MASTODON_VERSION_SUFFIX=${{ steps.version_vars.outputs.mastodon_version_suffix }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
