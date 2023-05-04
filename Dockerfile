@@ -3,8 +3,8 @@
 ARG NODE_VERSION="16.20-bullseye-slim"
 
 # Use those args to specify your own version flags & suffixes
-ARG MASTODON_VERSION_FLAGS=""
-ARG MASTODON_VERSION_SUFFIX=""
+# ARG MASTODON_VERSION_FLAGS=""
+# ARG MASTODON_VERSION_SUFFIX=""
 
 FROM ghcr.io/moritzheiber/ruby-jemalloc:3.2.2-slim as ruby
 FROM node:${NODE_VERSION} as build
