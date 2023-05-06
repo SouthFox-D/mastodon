@@ -38,7 +38,7 @@ jobs:
         id: version_vars
         if: github.repository == 'SouthFox-D/mastodon' && github.event_name == 'push' && github.ref_name == 'main'
         run: |
-          echo mastodon_version_suffix=\"-$(git rev-parse --short HEAD)\" >> $GITHUB_OUTPUT
+          echo mastodon_version_suffix=-$(git rev-parse --short HEAD) >> $GITHUB_OUTPUT
       - name: Build and push
         id: docker_build
         uses: docker/build-push-action@v4
