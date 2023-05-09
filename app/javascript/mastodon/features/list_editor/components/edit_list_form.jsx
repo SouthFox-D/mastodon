@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeListEditorTitle, changeListEditorIsExclusive, submitListEditor } from '../../../actions/lists';
-import IconButton from '../../../components/icon_button';
+import { IconButton } from '../../../components/icon_button';
 import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Toggle from 'react-toggle';
 

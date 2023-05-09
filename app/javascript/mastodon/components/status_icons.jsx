@@ -6,7 +6,7 @@ import { defineMessages, injectIntl } from 'react-intl';
 
 //  Mastodon imports.
 import IconButton from './icon_button';
-import Icon from './icon';
+import { Icon } from './icon';
 import { languages } from '../initial_state';
 
 //  Messages for use with internationalization stuff.
