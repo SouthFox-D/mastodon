@@ -5,7 +5,7 @@ import { Avatar } from './avatar';
 import { AvatarOverlay } from './avatar_overlay';
 import { RelativeTimestamp } from './relative_timestamp';
 import { DisplayName } from './display_name';
-import { StatusIcons } from './status_icons';
+import StatusIcons from './status_icons';
 import StatusContent from './status_content';
 import StatusActionBar from './status_action_bar';
 import StatusReactions from './status_reactions';
