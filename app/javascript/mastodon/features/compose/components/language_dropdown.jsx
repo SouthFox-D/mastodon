@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { injectIntl, defineMessages } from 'react-intl';
 import TextIconButton from './text_icon_button';
@@ -15,9 +15,9 @@ const messages = defineMessages({
   clear: { id: 'emoji_button.clear', defaultMessage: 'Clear' },
 });
 
-const listenerOptions = supportsPassiveEvents ? { passive: true } : false;
+const listenerOptions = supportsPassiveEvents ? { passive: true, capture: true } : true;
 
-class LanguageDropdownMenu extends React.PureComponent {
+class LanguageDropdownMenu extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string.isRequired,
@@ -39,11 +39,12 @@ class LanguageDropdownMenu extends React.PureComponent {
   handleDocumentClick = e => {
     if (this.node && !this.node.contains(e.target)) {
       this.props.onClose();
+      e.stopPropagation();
     }
   };
 
   componentDidMount () {
-    document.addEventListener('click', this.handleDocumentClick, false);
+    document.addEventListener('click', this.handleDocumentClick, { capture: true });
     document.addEventListener('touchend', this.handleDocumentClick, listenerOptions);
 
     // Because of https://github.com/react-bootstrap/react-bootstrap/issues/2614 we need
@@ -57,7 +58,7 @@ class LanguageDropdownMenu extends React.PureComponent {
   }
 
   componentWillUnmount () {
-    document.removeEventListener('click', this.handleDocumentClick, false);
+    document.removeEventListener('click', this.handleDocumentClick, { capture: true });
     document.removeEventListener('touchend', this.handleDocumentClick, listenerOptions);
   }
 
@@ -237,7 +238,7 @@ class LanguageDropdownMenu extends React.PureComponent {
 
 }
 
-class LanguageDropdown extends React.PureComponent {
+class LanguageDropdown extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string,

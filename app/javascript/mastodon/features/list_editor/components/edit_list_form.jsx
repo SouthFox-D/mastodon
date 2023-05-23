@@ -1,4 +1,4 @@
-import React from 'react';
+import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { changeListEditorTitle, changeListEditorIsExclusive, submitListEditor } from '../../../actions/lists';
@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   onToggle: value => dispatch(changeListEditorIsExclusive(value)),
 });
 
-class ListForm extends React.PureComponent {
+class ListForm extends PureComponent {
 
   static propTypes = {
     value: PropTypes.string.isRequired,

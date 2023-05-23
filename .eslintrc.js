@@ -98,10 +98,17 @@ module.exports = {
     'react/jsx-filename-extension': ['error', { extensions: ['.jsx', 'tsx'] }],
     'react/jsx-boolean-value': 'error',
     'react/display-name': 'off',
+    'react/jsx-fragments': ['error', 'syntax'],
     'react/jsx-equals-spacing': 'error',
     'react/jsx-no-bind': 'error',
+    'react/jsx-no-useless-fragment': 'error',
     'react/jsx-no-target-blank': 'off',
+    'react/jsx-tag-spacing': 'error',
+    'react/jsx-uses-react': 'off', // not needed with new JSX transform
+    'react/jsx-wrap-multilines': 'error',
+    'react/no-deprecated': 'off',
     'react/no-unknown-property': 'off',
+    'react/react-in-jsx-scope': 'off', // not needed with new JSX transform
     'react/self-closing-comp': 'error',
 
     // recommended values found in https://github.com/jsx-eslint/eslint-plugin-jsx-a11y/blob/main/src/index.js
@@ -339,6 +346,9 @@ module.exports = {
         'import/no-default-export': 'warn',
         'react/prefer-stateless-function': 'warn',
         'react/function-component-definition': ['error', { namedComponents: 'arrow-function' }],
+        'react/jsx-uses-react': 'off', // not needed with new JSX transform
+        'react/react-in-jsx-scope': 'off', // not needed with new JSX transform
+        'react/prop-types': 'off',
       },
     },
     {
