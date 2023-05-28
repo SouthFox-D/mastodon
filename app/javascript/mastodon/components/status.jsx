@@ -17,7 +17,7 @@ import Card from '../features/status/components/card';
 // to use the progress bar to show download progress
 import Bundle from '../features/ui/components/bundle';
 import { MediaGallery, Video, Audio } from '../features/ui/util/async-components';
-import { displayMedia } from '../initial_state';
+import { displayMedia, visibleReactions } from '../initial_state';
 
 import AttachmentList from './attachment_list';
 import { Avatar } from './avatar';
@@ -26,6 +26,7 @@ import { DisplayName } from './display_name';
 import { RelativeTimestamp } from './relative_timestamp';
 import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
+import StatusReactions from './status_reactions';
 
 export const textForScreenReader = (intl, status, rebloggedByText = false) => {
   const displayName = status.getIn(['account', 'display_name']);

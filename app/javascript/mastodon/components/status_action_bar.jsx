@@ -12,7 +12,7 @@ import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/
 import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
 
 import DropdownMenuContainer from '../containers/dropdown_menu_container';
-import { me, maxreactions } from '../initial_state';
+import { me, maxReactions } from '../initial_state';
 
 import { IconButton } from './icon_button';
 
