@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class CacheCLI < Thor
-    include CLIHelper
-
-    def self.exit_on_failure?
-      true
-    end
-
+module Mastodon::CLI
+  class Cache < Base
     desc 'clear', 'Clear out the cache storage'
     def clear
       Rails.cache.clear

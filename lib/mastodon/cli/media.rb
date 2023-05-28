@@ -1,19 +1,12 @@
 # frozen_string_literal: true
 
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class MediaCLI < Thor
+module Mastodon::CLI
+  class Media < Base
     include ActionView::Helpers::NumberHelper
-    include CLIHelper
 
     VALID_PATH_SEGMENTS_SIZE = [7, 10].freeze
-
-    def self.exit_on_failure?
-      true
-    end
 
     option :days, type: :numeric, default: 7, aliases: [:d]
     option :prune_profiles, type: :boolean, default: false

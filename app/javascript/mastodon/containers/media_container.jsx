@@ -1,18 +1,21 @@
+import PropTypes from 'prop-types';
 import { PureComponent } from 'react';
 import { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
+
 import { IntlProvider, addLocaleData } from 'react-intl';
+
 import { fromJS } from 'immutable';
-import { getLocale } from 'mastodon/locales';
-import { getScrollbarWidth } from 'mastodon/utils/scrollbar';
-import MediaGallery from 'mastodon/components/media_gallery';
-import Poll from 'mastodon/components/poll';
+
 import { ImmutableHashtag as Hashtag } from 'mastodon/components/hashtag';
+import MediaGallery from 'mastodon/components/media_gallery';
 import ModalRoot from 'mastodon/components/modal_root';
+import Poll from 'mastodon/components/poll';
+import Audio from 'mastodon/features/audio';
+import Card from 'mastodon/features/status/components/card';
 import MediaModal from 'mastodon/features/ui/components/media_modal';
 import Video from 'mastodon/features/video';
-import Card from 'mastodon/features/status/components/card';
-import Audio from 'mastodon/features/audio';
+import { getLocale } from 'mastodon/locales';
+import { getScrollbarWidth } from 'mastodon/utils/scrollbar';
 
 const { localeData, messages } = getLocale();
 addLocaleData(localeData);
@@ -73,6 +76,13 @@ export default class MediaContainer extends PureComponent {
   render () {
     const { locale, components } = this.props;
 
+    let handleOpenVideo;
+
+    // Don't offer to expand the video in a lightbox if we're in a frame
+    if (window.self === window.top) {
+      handleOpenVideo = this.handleOpenVideo;
+    }
+
     return (
       <IntlProvider locale={locale} messages={messages}>
         <>
@@ -89,7 +99,7 @@ export default class MediaContainer extends PureComponent {
 
               ...(componentName === 'Video' ? {
                 componentIndex: i,
-                onOpenVideo: this.handleOpenVideo,
+                onOpenVideo: handleOpenVideo,
               } : {
                 onOpenMedia: this.handleOpenMedia,
               }),

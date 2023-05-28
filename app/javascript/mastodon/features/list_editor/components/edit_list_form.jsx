@@ -1,9 +1,12 @@
-import { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { PureComponent } from 'react';
+
+import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
+
+import { connect } from 'react-redux';
+
 import { changeListEditorTitle, changeListEditorIsExclusive, submitListEditor } from '../../../actions/lists';
 import { IconButton } from '../../../components/icon_button';
-import { FormattedMessage, defineMessages, injectIntl } from 'react-intl';
 import Toggle from 'react-toggle';
 
 const messages = defineMessages({

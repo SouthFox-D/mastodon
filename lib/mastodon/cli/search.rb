@@ -1,13 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class SearchCLI < Thor
-    include CLIHelper
-
+module Mastodon::CLI
+  class Search < Base
     # Indices are sorted by amount of data to be expected in each, so that
     # smaller indices can go online sooner
     INDICES = [

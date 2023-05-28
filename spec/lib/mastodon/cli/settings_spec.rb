@@ -1,11 +1,17 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'mastodon/settings_cli'
+require 'mastodon/cli/settings'
 
-RSpec.describe Mastodon::SettingsCLI do
+describe Mastodon::CLI::Settings do
+  describe '.exit_on_failure?' do
+    it 'returns true' do
+      expect(described_class.exit_on_failure?).to be true
+    end
+  end
+
   describe 'subcommand "registrations"' do
-    let(:cli) { Mastodon::RegistrationsCLI.new }
+    let(:cli) { Mastodon::CLI::Registrations.new }
 
     before do
       Setting.registrations_mode = nil

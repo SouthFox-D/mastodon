@@ -1,10 +1,16 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-require 'mastodon/ip_blocks_cli'
+require 'mastodon/cli/ip_blocks'
 
-RSpec.describe Mastodon::IpBlocksCLI do
+describe Mastodon::CLI::IpBlocks do
   let(:cli) { described_class.new }
+
+  describe '.exit_on_failure?' do
+    it 'returns true' do
+      expect(described_class.exit_on_failure?).to be true
+    end
+  end
 
   describe '#add' do
     let(:ip_list) do

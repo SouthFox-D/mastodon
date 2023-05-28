@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 require 'concurrent'
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class DomainsCLI < Thor
-    include CLIHelper
-
-    def self.exit_on_failure?
-      true
-    end
-
+module Mastodon::CLI
+  class Domains < Base
     option :concurrency, type: :numeric, default: 5, aliases: [:c]
     option :verbose, type: :boolean, aliases: [:v]
     option :dry_run, type: :boolean

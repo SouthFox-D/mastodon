@@ -1,18 +1,10 @@
 # frozen_string_literal: true
 
 require 'concurrent'
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class EmailDomainBlocksCLI < Thor
-    include CLIHelper
-
-    def self.exit_on_failure?
-      true
-    end
-
+module Mastodon::CLI
+  class EmailDomainBlocks < Base
     desc 'list', 'List blocked e-mail domains'
     def list
       EmailDomainBlock.where(parent_id: nil).order(id: 'DESC').find_each do |entry|

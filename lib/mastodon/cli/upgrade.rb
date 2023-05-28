@@ -1,17 +1,9 @@
 # frozen_string_literal: true
 
-require_relative '../../config/boot'
-require_relative '../../config/environment'
-require_relative 'cli_helper'
+require_relative 'base'
 
-module Mastodon
-  class UpgradeCLI < Thor
-    include CLIHelper
-
-    def self.exit_on_failure?
-      true
-    end
-
+module Mastodon::CLI
+  class Upgrade < Base
     CURRENT_STORAGE_SCHEMA_VERSION = 1
 
     option :dry_run, type: :boolean, default: false
