@@ -143,7 +143,7 @@ class Account extends ImmutablePureComponent {
     const firstVerifiedField = account.get('fields').find(item => !!item.get('verified_at'));
 
     if (firstVerifiedField) {
-      verification = <>· <VerifiedBadge link={firstVerifiedField.get('value')} /></>;
+      verification = <VerifiedBadge link={firstVerifiedField.get('value')} />;
     }
 
     return (
@@ -154,10 +154,12 @@ class Account extends ImmutablePureComponent {
               <Avatar account={account} size={size} />
             </div>
 
-            <div>
+            <div className='account__contents'>
               <DisplayName account={account} />
-              {!minimal && <>{intl.formatDate(account.get('created_at'), { year: 'numeric', month: 'short', day: '2-digit' })}
-                {verification} {muteTimeRemaining}</>}
+              {!minimal &&
+                <div className='account__details'>
+                    <>{intl.formatDate(account.get('created_at'), { year: 'numeric', month: 'short', day: '2-digit' })} {verification} {muteTimeRemaining}</>}
+                </div>
             </div>
           </Link>
 
