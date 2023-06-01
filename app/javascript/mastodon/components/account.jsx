@@ -158,8 +158,8 @@ class Account extends ImmutablePureComponent {
               <DisplayName account={account} />
               {!minimal &&
                 <div className='account__details'>
-                    <>{intl.formatDate(account.get('created_at'), { year: 'numeric', month: 'short', day: '2-digit' })} {verification} {muteTimeRemaining}</>}
-                </div>
+                    <>{intl.formatDate(account.get('created_at'), { year: 'numeric', month: 'short', day: '2-digit' })} {verification} {muteTimeRemaining}</>
+                </div>}
             </div>
           </Link>
 
