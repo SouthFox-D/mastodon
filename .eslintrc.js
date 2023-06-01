@@ -293,6 +293,7 @@ module.exports = {
         '.*rc.js',
         'ide-helper.js',
         'config/webpack/**/*',
+        'config/formatjs-formatter.js',
       ],
 
       env: {
@@ -323,7 +324,7 @@ module.exports = {
         'plugin:import/recommended',
         'plugin:import/typescript',
         'plugin:promise/recommended',
-        'plugin:jsdoc/recommended',
+        'plugin:jsdoc/recommended-typescript',
         'plugin:prettier/recommended',
       ],
 

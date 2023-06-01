@@ -169,8 +169,9 @@ const makeMapStateToProps = () => {
 };
 
 const truncate = (str, num) => {
-  if (str.length > num) {
-    return str.slice(0, num) + '…';
+  const arr = Array.from(str);
+  if (arr.length > num) {
+    return arr.slice(0, num).join('') + '…';
   } else {
     return str;
   }
@@ -445,7 +446,7 @@ class Status extends ImmutablePureComponent {
     const { dispatch } = this.props;
 
     if (status.get('translation')) {
-      dispatch(undoStatusTranslation(status.get('id')));
+      dispatch(undoStatusTranslation(status.get('id'), status.get('poll')));
     } else {
       dispatch(translateStatus(status.get('id')));
     }
