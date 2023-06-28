@@ -3498,6 +3498,9 @@ button:focus-visible {
     position: fixed;
     margin-inline: -35px;
   }
+  .ui__header [href^='/search'] {
+    margin-inline-start: 5px;
+  }
   .ui__header [href='/publish'] {
     position: fixed;
     bottom: 15px;
@@ -3513,6 +3516,7 @@ button:focus-visible {
     -o-user-drag: none;
     user-drag: none;
     animation: scaleIn 0.2s cubic-bezier(0, 0, 0, 1.1);
+    background: #e8b325;
   }
   .ui__header [href='/publish']::before {
     content: '';
