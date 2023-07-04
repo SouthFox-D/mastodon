@@ -171,6 +171,10 @@ const Firehose = ({ feedType, multiColumn }) => {
 
       <div className='scrollable scrollable--flex'>
         <div className='account__section-headline'>
+          <NavLink exact to='/public'>
+            <FormattedMessage tagName='div' id='firehose.all' defaultMessage='All' />
+          </NavLink>
+
           <NavLink exact to='/public/local'>
             <FormattedMessage tagName='div' id='firehose.local' defaultMessage='This server' />
           </NavLink>
@@ -179,9 +183,6 @@ const Firehose = ({ feedType, multiColumn }) => {
             <FormattedMessage tagName='div' id='firehose.remote' defaultMessage='Other servers' />
           </NavLink>
 
-          <NavLink exact to='/public'>
-            <FormattedMessage tagName='div' id='firehose.all' defaultMessage='All' />
-          </NavLink>
         </div>
 
         <StatusListContainer
