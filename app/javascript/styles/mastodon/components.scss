@@ -1138,12 +1138,12 @@ body > [data-popper-placement] {
 
     .status__content,
     .status__action-bar,
-    .media-gallery,
-    .video-player,
-    .audio-player,
-    .attachment-list,
-    .picture-in-picture-placeholder,
-    .status-card,
+    // .media-gallery,
+    // .video-player,
+    // .audio-player,
+    // .attachment-list,
+    // .picture-in-picture-placeholder,
+    // .status-card,
     .reactions-bar, {
       margin-inline-start: $thread-margin;
       width: calc(100% - ($thread-margin));
