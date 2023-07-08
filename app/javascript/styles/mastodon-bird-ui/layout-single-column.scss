@@ -1317,11 +1317,11 @@ body.embed .detailed-status,
   margin-left: auto;
   /* Need to override inline styles */
   /* stylelint-disable-next-line */
-  width: calc(100% - calc(var(--size-avatar) + var(--gap-default))) !important;
+  /* width: calc(100% - calc(var(--size-avatar) + var(--gap-default))) !important; */
 }
 
 .layout-single-column .status .status-card {
-  margin-left: calc(var(--size-avatar) + var(--gap-default));
+  /* margin-left: calc(var(--size-avatar) + var(--gap-default)); */
 }
 
 /* Detailed status update */
