@@ -351,6 +351,10 @@ body.layout-single-column {
   display: none;
 }
 
+.notification .status__info__icons {
+  display: none;
+}
+
 /* Things that should have the default font-size */
 .layout-single-column .notification__message,
 .layout-single-column .status__content,
