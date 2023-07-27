@@ -289,7 +289,7 @@ const mapDispatchToProps = (dispatch, { intl, contextType }) => ({
       modalProps: {
         type,
         accountId: status.getIn(['account', 'id']),
-        url: status.get('url'),
+        url: status.get('uri'),
       },
     }));
   },
