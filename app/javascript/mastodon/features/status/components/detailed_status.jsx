@@ -10,7 +10,7 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 
 import { AnimatedNumber } from 'mastodon/components/animated_number';
 import EditedTimestamp from 'mastodon/components/edited_timestamp';
-import { HashtagBar } from 'mastodon/components/hashtag_bar';
+import { getHashtagBarForStatus } from 'mastodon/components/hashtag_bar';
 import { Icon }  from 'mastodon/components/icon';
 import PictureInPicturePlaceholder from 'mastodon/components/picture_in_picture_placeholder';
 
@@ -296,6 +296,8 @@ class DetailedStatus extends ImmutablePureComponent {
       );
     }
 
+    const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
+
     return (
       <div style={outerStyle}>
         <div ref={this.setRef} className={classNames('detailed-status', { compact })}>
@@ -315,6 +317,7 @@ class DetailedStatus extends ImmutablePureComponent {
             expanded={!status.get('hidden')}
             onExpandedToggle={this.handleExpandedToggle}
             onTranslate={this.handleTranslate}
+            {...statusContentProps}
           />
 
           {media}
@@ -327,7 +330,7 @@ class DetailedStatus extends ImmutablePureComponent {
             canReact={this.context.identity.signedIn}
           />
 
-          <HashtagBar hashtags={status.get('tags')} text={status.get('content')} />
+          {hashtagBar}
 
           <div className='detailed-status__meta'>
             <a className='detailed-status__datetime' href={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} target='_blank' rel='noopener noreferrer'>
