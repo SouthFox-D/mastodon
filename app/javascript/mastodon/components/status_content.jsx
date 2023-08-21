@@ -132,14 +132,17 @@ class StatusContent extends PureComponent {
         link.setAttribute('title', link.href);
         link.classList.add('unhandled-link');
 
-        if (isLinkMisleading(link)) {
-          const tag = document.createElement('span');
-          tag.classList.add('link-origin-tag');
-          tag.textContent = '[👀❗]';
-          link.insertAdjacentText('beforeend', ' ');
-          link.insertAdjacentElement('beforeend', tag);
+        try {
+          if (isLinkMisleading(link)) {
+            const tag = document.createElement('span');
+            tag.classList.add('link-origin-tag');
+            tag.textContent = '[👀❗]';
+            link.insertAdjacentText('beforeend', ' ');
+            link.insertAdjacentElement('beforeend', tag);
+          }
+        } catch (e) {
+          if (e instanceof TypeError) link.removeAttribute('href');
         }
-
       }
     }
 
