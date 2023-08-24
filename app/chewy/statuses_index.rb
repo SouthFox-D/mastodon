@@ -18,14 +18,6 @@ class StatusesIndex < Chewy::Index
         language: 'possessive_english',
       },
     },
-    char_filter: {
-      tsconvert: {
-        type: 'stconvert',
-        keep_both: false,
-        delimiter: '#',
-        convert_type: 't2s',
-      },
-    },
 
     analyzer: {
       content: {
@@ -38,7 +30,6 @@ class StatusesIndex < Chewy::Index
           english_stop
           english_stemmer
         ),
-        char_filter: %w(tsconvert),
       },
     },
   }
