@@ -25,7 +25,7 @@ module Mastodon
     end
 
     def build_metadata
-      "foxsay#{ENV.fetch('MASTODON_VERSION_SUFFIX', nil)}"
+      "foxsay#{ENV.fetch('MASTODON_VERSION_METADATA', nil)}"
     end
 
     def to_a
