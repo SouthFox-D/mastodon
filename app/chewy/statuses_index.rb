@@ -2,6 +2,15 @@
 
 class StatusesIndex < Chewy::Index
   settings index: index_preset(refresh_interval: '30s', number_of_shards: 5), analysis: {
+    char_filter: {
+      tsconvert: {
+        type: 'stconvert',
+        keep_both: false,
+        delimiter: '#',
+        convert_type: 't2s',
+      },
+    },
+
     filter: {
       english_stop: {
         type: 'stop',
@@ -36,12 +45,12 @@ class StatusesIndex < Chewy::Index
           english_stop
           english_stemmer
         ),
+        char_filter: %w(tsconvert),
       },
 
       hashtag: {
         tokenizer: 'keyword',
         filter: %w(
-          word_delimiter_graph
           lowercase
           asciifolding
           cjk_width
