@@ -282,18 +282,18 @@ jobs:
   #       ports:
   #         - 6379:6379
 
-  #     elasticsearch:
-  #       image: docker.elastic.co/elasticsearch/elasticsearch:7.17.13
-  #       env:
-  #         discovery.type: single-node
-  #         xpack.security.enabled: false
-  #       options: >-
-  #         --health-cmd "curl http://localhost:9200/_cluster/health"
-  #         --health-interval 10s
-  #         --health-timeout 5s
-  #         --health-retries 10
-  #       ports:
-  #         - 9200:9200
+  #    search:
+  #      image: ${{ matrix.search-image }}
+  #      env:
+  #        discovery.type: single-node
+  #        xpack.security.enabled: false
+  #      options: >-
+  #        --health-cmd "curl http://localhost:9200/_cluster/health"
+  #        --health-interval 10s
+  #        --health-timeout 5s
+  #        --health-retries 10
+  #      ports:
+  #        - 9200:9200
 
   #   env:
   #     DB_HOST: localhost
@@ -306,13 +306,18 @@ jobs:
   #     ES_HOST: localhost
   #     ES_PORT: 9200
 
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       ruby-version:
-  #         - '3.0'
-  #         - '3.1'
-  #         - '.ruby-version'
+  #  strategy:
+  #    fail-fast: false
+  #    matrix:
+  #      ruby-version:
+  #        - '3.0'
+  #        - '3.1'
+  #        - '.ruby-version'
+  #      search-image:
+  #        - docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+  #      include:
+  #        - ruby-version: '.ruby-version'
+  #          search-image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
 
   #   steps:
   #     - uses: actions/checkout@v4
