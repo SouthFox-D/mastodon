@@ -426,7 +426,7 @@
   "notification.admin.sign_up": "{name} registrierte sich",
   "notification.favourite": "{name} favorisierte deinen Beitrag",
   "notification.reaction": "{name} hat auf deinen Beitrag reagiert",
-  "notification.follow": "{name} folgt dir jetzt",
+  "notification.follow": "{name} folgt dir",
   "notification.follow_request": "{name} möchte dir folgen",
   "notification.mention": "{name} erwähnte dich",
   "notification.own_poll": "Deine Umfrage ist beendet",
