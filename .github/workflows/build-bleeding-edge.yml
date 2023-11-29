@@ -13,9 +13,9 @@ jobs:
         env:
           TZ: Etc/UTC
         run: |
-          echo mastodon_version_prerelease=$(date +'%Y-%m-%d')>> $GITHUB_OUTPUT
+          echo mastodon_version_metadata=$(date +'%Y-%m-%d')>> $GITHUB_OUTPUT
     outputs:
-      prerelease: ${{ steps.version_vars.outputs.mastodon_version_prerelease }}
+      metadata: ${{ steps.version_vars.outputs.mastodon_version_metadata }}
 
   build-image:
     needs: compute-suffix
@@ -25,14 +25,14 @@ jobs:
       platforms: linux/amd64
       push_to_images: |
         southfox09/mastodon
-      version_prerelease: ${{ needs.compute-suffix.outputs.prerelease }}
+      version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
       labels: |
         org.opencontainers.image.description=Nightly build image used for testing purposes
       flavor: |
         latest=auto
       tags: |
         type=raw,value=latest
-        type=schedule,pattern=${{ needs.compute-suffix.outputs.prerelease }}
+        type=schedule,pattern=${{ needs.compute-suffix.outputs.metadata }}
     secrets: inherit
 
   build-image-streaming:
@@ -43,12 +43,12 @@ jobs:
       platforms: linux/amd64
       push_to_images: |
         southfox09/mastodon-streaming
-      version_prerelease: ${{ needs.compute-suffix.outputs.prerelease }}
+      version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
       labels: |
         org.opencontainers.image.description=Nightly build image used for testing purposes
       flavor: |
         latest=auto
       tags: |
         type=raw,value=latest
-        type=schedule,pattern=${{ needs.compute-suffix.outputs.prerelease }}
+        type=schedule,pattern=${{ needs.compute-suffix.outputs.metadata }}
     secrets: inherit
