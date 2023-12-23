@@ -13,7 +13,7 @@ jobs:
         env:
           TZ: Etc/UTC
         run: |
-          echo mastodon_version_metadata=$(date +'%Y-%m-%d')>> $GITHUB_OUTPUT
+          echo mastodon_version_metadata=+$(date +'%Y-%m-%d')>> $GITHUB_OUTPUT
     outputs:
       metadata: ${{ steps.version_vars.outputs.mastodon_version_metadata }}
 
