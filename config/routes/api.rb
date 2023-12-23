@@ -306,10 +306,6 @@ namespace :api, format: false do
       resources :statuses, only: [:show, :destroy]
     end
 
-    namespace :accounts do
-      resources :relationships, only: :index
-    end
-
     namespace :admin do
       resources :accounts, only: [:index]
     end
