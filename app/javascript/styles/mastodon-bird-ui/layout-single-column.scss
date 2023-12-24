@@ -1811,6 +1811,8 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
   display: none;
 }
 
+// Foxsay patch
+.layout-single-column .notification .status__info__icons,
 .layout-single-column .notification.notification-follow .verified-badge,
 .layout-single-column .notification.notification-admin-sign-up .account__contents,
 .layout-single-column .notification.notification-follow .account__contents,
@@ -1819,7 +1821,8 @@ body.embed .detailed-status__meta .detailed-status__link .fa-retweet,
 .layout-single-column .notification.notification-follow .display-name + span,
 .layout-single-column .notification.notification-favourite .status__wrapper-direct .status__prepend,
 .layout-single-column .notification.notification-reblog .display-name,
-.layout-single-column .notification.notification-favourite .display-name {
+.layout-single-column .notification.notification-favourite .display-name,
+.layout-single-column .notification.notification-reaction .display-name {
   display: none;
 }
 
