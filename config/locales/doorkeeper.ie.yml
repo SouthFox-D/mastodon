@@ -31,6 +31,7 @@ ie:
         redirect_uri: Usar un linea per URI
       index:
         application: Aplication
+        callback_url: URL de retrovocada
         delete: Deleter
         empty: Tu have null aplicationes.
         name: Nómine
@@ -42,6 +43,7 @@ ie:
       show:
         actions: Actiones
         application_id: Clave de client
+        callback_urls: URLs de retrovocada
         secret: Secrete de client
         title: 'Aplication: %{name}'
     authorizations:
@@ -51,6 +53,7 @@ ie:
       error:
         title: Alquo ha errat
       new:
+        review_permissions: Inspecter permissiones
         title: Autorisation besonat
     authorized_applications:
       buttons:
@@ -70,6 +73,10 @@ ie:
         invalid_redirect_uri: Li uri de redirection includet ne es valid.
         invalid_request:
           unknown: Li petition manca un postulat parametre, include un ne apoyat parametre-valore, o es altrimen mal format.
+        invalid_token:
+          expired: Li access-clave expirat
+          revoked: Li access-clave esset revocat
+          unknown: Li accesse-clave es ínvalid
         unsupported_grant_type: Li tip de autorisation concedet ne es subtenet per li autorisant servitor.
         unsupported_response_type: Li autorisant servitor ne subtene ti-ci tip de response.
     flash:
@@ -151,6 +158,7 @@ ie:
       write:filters: crea filtres
       write:follows: sequer homes
       write:lists: crear listes
+      write:media: adcargar files de medie
       write:mutes: silentiar persones e conversationes
       write:notifications: aclarar tui notificationes
       write:reports: raportar altri persones
