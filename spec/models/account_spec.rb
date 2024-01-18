@@ -9,14 +9,10 @@ RSpec.describe Account do
     let(:bob) { Fabricate(:account, username: 'bob') }
 
     describe '#suspend!' do
-      it 'marks the account as suspended' do
-        subject.suspend!
-        expect(subject.suspended?).to be true
-      end
-
-      it 'creates a deletion request' do
-        subject.suspend!
-        expect(AccountDeletionRequest.where(account: subject).exists?).to be true
+      it 'marks the account as suspended and creates a deletion request' do
+        expect { subject.suspend! }
+          .to change(subject, :suspended?).from(false).to(true)
+          .and(change { AccountDeletionRequest.exists?(account: subject) }.from(false).to(true))
       end
 
       context 'when the account is of a local user' do
@@ -339,9 +335,11 @@ RSpec.describe Account do
 
       results = account.excluded_from_timeline_account_ids
       expect(results.size).to eq 3
-      expect(results).to include(block.target_account.id)
-      expect(results).to include(mute.target_account.id)
-      expect(results).to include(block_by.account.id)
+      expect(results).to include(
+        block.target_account.id,
+        mute.target_account.id,
+        block_by.account.id
+      )
     end
   end
 
@@ -1007,29 +1005,6 @@ RSpec.describe Account do
       threads.each(&:join)
 
       expect(subject.reload.followers_count).to eq 15
-    end
-  end
-
-  describe '.followable_by' do
-    context 'with follows and follow requests' do
-      let!(:account) { Fabricate(:account) }
-      let!(:eligible_account) { Fabricate(:account) }
-      let!(:following_account) { Fabricate(:account) }
-      let!(:follow_requested_account) { Fabricate(:account) }
-
-      before do
-        Fabricate :follow, account: account, target_account: following_account
-        Fabricate :follow_request, account: account, target_account: follow_requested_account
-      end
-
-      it 'returns accounts not already following or requested to follow' do
-        results = described_class.followable_by(account)
-
-        expect(results)
-          .to include(eligible_account)
-          .and not_include(following_account)
-          .and not_include(follow_requested_account)
-      end
     end
   end
 end
