@@ -5,7 +5,12 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 import { defineMessages, injectIntl } from 'react-intl';
 
 //  Mastodon imports.
-import IconButton from './icon_button';
+import ForumIcon from '@/material-icons/400-24px/forum.svg?react';
+import ImageIcon from '@/material-icons/400-24px/image.svg?react';
+import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
+import LinkIcon from '@/material-icons/400-24px/link.svg?react';
+import MovieIcon from '@/material-icons/400-24px/movie.svg?react';
+import MusicNoteIcon from '@/material-icons/400-24px/music_note.svg?react';
 import { Icon } from './icon';
 import { languages } from '../initial_state';
 
@@ -21,6 +26,7 @@ const messages = defineMessages({
   audio: { id: 'status.has_audio', defaultMessage: 'Features attached audio files' },
   localOnly: { id: 'status.local_only', defaultMessage: 'Only visible from your instance' },
 });
+
 
 const LanguageIcon = ({ language }) => {
   if (!languages) return null;
@@ -65,12 +71,34 @@ class StatusIcons extends React.PureComponent {
   }
 
   renderIcon (mediaIcon) {
+
+    let iconComponent;
+
+    switch (mediaIcon) {
+    case 'link':
+      iconComponent = LinkIcon;
+      break;
+    case 'picture-o':
+      iconComponent = ImageIcon;
+      break;
+    case 'tasks':
+      iconComponent = InsertChartIcon;
+      break;
+    case 'video-camera':
+      iconComponent = MovieIcon;
+      break;
+    case 'music':
+      iconComponent = MusicNoteIcon;
+      break;
+    }
+
     return (
       <Icon
         fixedWidth
         className='status__media-icon'
         key={`media-icon--${mediaIcon}`}
         id={mediaIcon}
+        icon={iconComponent}
         aria-hidden='true'
         title={this.mediaIconTitleText(mediaIcon)}
       />
@@ -93,6 +121,7 @@ class StatusIcons extends React.PureComponent {
             className='status__reply-icon'
             fixedWidth
             id='reply-all'
+            icon={ForumIcon}
             aria-hidden='true'
             title={intl.formatMessage(messages.inReplyTo)}
           />
