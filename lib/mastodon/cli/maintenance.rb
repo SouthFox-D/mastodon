@@ -199,26 +199,24 @@ module Mastodon::CLI
 
     def verify_schema_version!
       if migrator_version < MIN_SUPPORTED_VERSION
-        say 'Your version of the database schema is too old and is not supported by this script.', :red
-        say 'Please update to at least Mastodon 3.0.0 before running this script.', :red
-        exit(1)
+        fail_with_message <<~ERROR
+          Your version of the database schema is too old and is not supported by this script.
+          Please update to at least Mastodon 3.0.0 before running this script.
+        ERROR
       elsif migrator_version > MAX_SUPPORTED_VERSION
         say 'Your version of the database schema is more recent than this script, this may cause unexpected errors.', :yellow
-        exit(1) unless yes?('Continue anyway? (Yes/No)')
+        fail_with_message 'Stopping maintenance script because data is more recent than script version.' unless yes?('Continue anyway? (Yes/No)')
       end
     end
 
     def verify_sidekiq_not_active!
-      if Sidekiq::ProcessSet.new.any?
-        say 'It seems Sidekiq is running. All Mastodon processes need to be stopped when using this script.', :red
-        exit(1)
-      end
+      fail_with_message 'It seems Sidekiq is running. All Mastodon processes need to be stopped when using this script.' if Sidekiq::ProcessSet.new.any?
     end
 
     def verify_backup_warning!
       say 'This task will take a long time to run and is potentially destructive.', :yellow
       say 'Please make sure to stop Mastodon and have a backup.', :yellow
-      exit(1) unless yes?('Continue? (Yes/No)')
+      fail_with_message 'Maintenance process stopped.' unless yes?('Continue? (Yes/No)')
     end
 
     def deduplicate_accounts!
@@ -244,10 +242,10 @@ module Mastodon::CLI
       end
 
       say 'Reindexing textual indexes on accounts…'
-      database_connection.execute('REINDEX INDEX search_index;')
-      database_connection.execute('REINDEX INDEX index_accounts_on_uri;')
-      database_connection.execute('REINDEX INDEX index_accounts_on_url;')
-      database_connection.execute('REINDEX INDEX index_accounts_on_domain_and_id;') if migrator_version >= 2023_05_24_190515
+      rebuild_index(:search_index)
+      rebuild_index(:index_accounts_on_uri)
+      rebuild_index(:index_accounts_on_url)
+      rebuild_index(:index_accounts_on_domain_and_id) if migrator_version >= 2023_05_24_190515
     end
 
     def deduplicate_users!
@@ -274,7 +272,7 @@ module Mastodon::CLI
         database_connection.add_index :users, ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, where: 'reset_password_token IS NOT NULL', opclass: :text_pattern_ops
       end
 
-      database_connection.execute('REINDEX INDEX index_users_on_unconfirmed_email;') if migrator_version >= 2023_07_02_151753
+      rebuild_index(:index_users_on_unconfirmed_email) if migrator_version >= 2023_07_02_151753
     end
 
     def deduplicate_users_process_email
@@ -734,6 +732,10 @@ module Mastodon::CLI
 
     def db_table_exists?(table)
       database_connection.table_exists?(table)
+    end
+
+    def rebuild_index(name)
+      database_connection.execute("REINDEX INDEX #{name}")
     end
   end
 end

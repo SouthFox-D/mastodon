@@ -19,7 +19,7 @@ describe 'ShareEntrypoint' do
 
   it 'can be used to post a new status' do
     expect(subject).to have_css('div#mastodon-compose')
-    expect(subject).to have_css('.compose-form__publish-button-wrapper > button')
+    expect(subject).to have_css('.compose-form__submit')
 
     status_text = 'This is a new status!'
 
