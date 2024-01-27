@@ -25,7 +25,7 @@ describe 'ShareEntrypoint' do
 
     within('.compose-form') do
       fill_in "What's on your mind?", with: status_text
-      click_on '🦊💬❓'
+      click_on '🦊💬'
     end
 
     expect(subject).to have_css('.notification-bar-message', text: 'Post published.')
