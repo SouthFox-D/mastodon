@@ -1739,6 +1739,7 @@ zh-CN:
     modern-contrast: 现代风（高对比度）
     modern-dark: 现代风暗色
     modern-light: 现代风亮色
+    system: 自动切换（使用系统主题）
   time:
     formats:
       default: "%Y年%m月%d日 %H:%M"
