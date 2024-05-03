@@ -284,33 +284,18 @@ jobs:
   #     ES_HOST: localhost
   #     ES_PORT: 9200
 
-<<<<<<< variant A
-  #   strategy:
-  #     fail-fast: false
-  #     matrix:
-  #       ruby-version:
-  #         - '3.1'
-  #         - '.ruby-version'
-  #         - '3.3'
-  #       search-image:
-  #         - docker.elastic.co/elasticsearch/elasticsearch:7.17.13
-  #       include:
-  #         - ruby-version: '.ruby-version'
-  #           search-image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
->>>>>>> variant B
-    strategy:
-      fail-fast: false
-      matrix:
-        ruby-version:
-          - '3.1'
-          - '3.2'
-          - '.ruby-version'
-        search-image:
-          - docker.elastic.co/elasticsearch/elasticsearch:7.17.13
-        include:
-          - ruby-version: '.ruby-version'
-            search-image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
-======= end
+  # strategy:
+  #   fail-fast: false
+  #   matrix:
+  #     ruby-version:
+  #       - '3.1'
+  #       - '3.2'
+  #       - '.ruby-version'
+  #     search-image:
+  #       - docker.elastic.co/elasticsearch/elasticsearch:7.17.13
+  #     include:
+  #       - ruby-version: '.ruby-version'
+  #         search-image: docker.elastic.co/elasticsearch/elasticsearch:8.10.2
 
   #   steps:
   #     - uses: actions/checkout@v4
