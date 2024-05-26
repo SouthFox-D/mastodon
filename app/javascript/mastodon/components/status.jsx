@@ -15,6 +15,7 @@ import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
 import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import { Icon }  from 'mastodon/components/icon';
 import PictureInPicturePlaceholder from 'mastodon/components/picture_in_picture_placeholder';
+import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { withOptionalRouter, WithOptionalRouterPropTypes } from 'mastodon/utils/react_router';
 
 import Card from '../features/status/components/card';
@@ -84,6 +85,7 @@ class Status extends ImmutablePureComponent {
   static contextType = SensitiveMediaContext;
 
   static propTypes = {
+    identity: identityContextPropShape,
     status: ImmutablePropTypes.map,
     account: ImmutablePropTypes.record,
     previousId: PropTypes.string,
@@ -360,7 +362,7 @@ class Status extends ImmutablePureComponent {
   render () {
     const { intl, hidden, featured, unread, showThread, scrollKey, pictureInPicture, previousId, nextInReplyToId, rootId } = this.props;
 
-    let { status, account, ...other } = this.props;
+    let { status, account, identity, ...other } = this.props;
 
     let contentMediaIcons = [];
     let mediaIcons = contentMediaIcons;
@@ -615,7 +617,7 @@ class Status extends ImmutablePureComponent {
                   numVisible={visibleReactions}
                   addReaction={this.props.onReactionAdd}
                   removeReaction={this.props.onReactionRemove}
-                  canReact={identity.signedIn}
+                  canReact={this.props.identity.signedIn}
                 />
               )}
             </IdentityConsumer>
@@ -632,4 +634,4 @@ class Status extends ImmutablePureComponent {
 
 }
 
-export default withOptionalRouter(injectIntl(Status));
+export default withOptionalRouter(injectIntl((withIdentity(Status))));

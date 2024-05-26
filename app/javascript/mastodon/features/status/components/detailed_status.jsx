@@ -15,6 +15,7 @@ import { getHashtagBarForStatus } from 'mastodon/components/hashtag_bar';
 import { Icon }  from 'mastodon/components/icon';
 import PictureInPicturePlaceholder from 'mastodon/components/picture_in_picture_placeholder';
 import { VisibilityIcon } from 'mastodon/components/visibility_icon';
+import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
 import { Avatar } from '../../../components/avatar';
@@ -29,13 +30,8 @@ import Video from '../../video';
 import Card from './card';
 
 class DetailedStatus extends ImmutablePureComponent {
-
-  static contextTypes = {
-    router: PropTypes.object,
-    identity: PropTypes.object,
-  };
-
   static propTypes = {
+    identity: identityContextPropShape,
     status: ImmutablePropTypes.map,
     onOpenMedia: PropTypes.func.isRequired,
     onOpenVideo: PropTypes.func.isRequired,
@@ -300,7 +296,7 @@ class DetailedStatus extends ImmutablePureComponent {
             reactions={status.get('reactions')}
             addReaction={this.props.onReactionAdd}
             removeReaction={this.props.onReactionRemove}
-            canReact={this.context.identity.signedIn}
+            canReact={this.props.identity.signedIn}
           />
 
           {expanded && hashtagBar}
@@ -331,4 +327,4 @@ class DetailedStatus extends ImmutablePureComponent {
 
 }
 
-export default withRouter(DetailedStatus);
+export default withRouter(withIdentity(DetailedStatus));
