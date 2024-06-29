@@ -57,7 +57,7 @@ export const HoverCardAccount = forwardRef<
 
           <div className='hover-card__number'>
             <ShortNumber
-              value={account.followers_count}
+              value="-"
               renderer={FollowersCounter}
             />
           </div>
