@@ -35,7 +35,7 @@ const messages = defineMessages({
   reaction: { id: 'notification.reaction', defaultMessage: '{name} reacted to your status' },
   follow: { id: 'notification.follow', defaultMessage: '{name} followed you' },
   ownPoll: { id: 'notification.own_poll', defaultMessage: 'Your poll has ended' },
-  poll: { id: 'notification.poll', defaultMessage: 'A poll you have voted in has ended' },
+  poll: { id: 'notification.poll', defaultMessage: 'A poll you voted in has ended' },
   reblog: { id: 'notification.reblog', defaultMessage: '{name} boosted your status' },
   status: { id: 'notification.status', defaultMessage: '{name} just posted' },
   update: { id: 'notification.update', defaultMessage: '{name} edited a post' },
@@ -102,7 +102,7 @@ class Notification extends ImmutablePureComponent {
     e.preventDefault();
 
     const { notification, onMention } = this.props;
-    onMention(notification.get('account'), this.props.history);
+    onMention(notification.get('account'));
   };
 
   handleHotkeyFavourite = () => {
@@ -373,7 +373,7 @@ class Notification extends ImmutablePureComponent {
               {ownPoll ? (
                 <FormattedMessage id='notification.own_poll' defaultMessage='Your poll has ended' />
               ) : (
-                <FormattedMessage id='notification.poll' defaultMessage='A poll you have voted in has ended' />
+                <FormattedMessage id='notification.poll' defaultMessage='A poll you voted in has ended' />
               )}
             </span>
           </div>
