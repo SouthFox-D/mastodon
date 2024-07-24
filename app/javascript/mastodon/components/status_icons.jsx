@@ -114,7 +114,7 @@ class StatusIcons extends React.PureComponent {
     } = this.props;
 
     return (
-      <div>
+      <>
         {status.get('language') && <LanguageIcon language={status.get('language')} />}
         {status.get('in_reply_to_id', null) !== null ? (
           <Icon
@@ -127,7 +127,7 @@ class StatusIcons extends React.PureComponent {
           />
         ) : null}
         {!!mediaIcons && mediaIcons.map(icon => this.renderIcon(icon))}
-      </div>
+      </>
     );
   }
 

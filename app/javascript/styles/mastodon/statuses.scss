@@ -159,6 +159,12 @@
   white-space: nowrap;
 }
 
+
+.status__info__icons > .icon {
+  height: 16px;
+  width: 16px;
+}
+
 .status__info__icons .status__media-icon,
 .status__info__icons .status__reply-icon,
 .status__info__icons .status__visibility-icon,
