@@ -126,6 +126,7 @@ class Status extends ImmutablePureComponent {
     avatarSize: PropTypes.number,
     deployPictureInPicture: PropTypes.func,
     emojiMap: ImmutablePropTypes.map.isRequired,
+    unfocusable: PropTypes.bool,
     pictureInPicture: ImmutablePropTypes.contains({
       inUse: PropTypes.bool,
       available: PropTypes.bool,
@@ -362,7 +363,7 @@ class Status extends ImmutablePureComponent {
   };
 
   render () {
-    const { intl, hidden, featured, unread, showThread, scrollKey, pictureInPicture, previousId, nextInReplyToId, rootId, skipPrepend, avatarSize = 46 } = this.props;
+    const { intl, hidden, featured, unfocusable, unread, showThread, scrollKey, pictureInPicture, previousId, nextInReplyToId, rootId, skipPrepend, avatarSize = 46 } = this.props;
 
     let { status, account, identity, ...other } = this.props;
 
@@ -391,8 +392,8 @@ class Status extends ImmutablePureComponent {
 
     if (hidden) {
       return (
-        <HotKeys handlers={handlers}>
-          <div ref={this.handleRef} className={classNames('status__wrapper', { focusable: !this.props.muted })} tabIndex={0}>
+        <HotKeys handlers={handlers} tabIndex={unfocusable ? null : -1}>
+          <div ref={this.handleRef} className={classNames('status__wrapper', { focusable: !this.props.muted })} tabIndex={unfocusable ? null : 0}>
             <span>{status.getIn(['account', 'display_name']) || status.getIn(['account', 'username'])}</span>
             <span>{status.get('content')}</span>
           </div>
@@ -412,8 +413,8 @@ class Status extends ImmutablePureComponent {
       };
 
       return (
-        <HotKeys handlers={minHandlers}>
-          <div className='status__wrapper status__wrapper--filtered focusable' tabIndex={0} ref={this.handleRef}>
+        <HotKeys handlers={minHandlers} tabIndex={unfocusable ? null : -1}>
+          <div className='status__wrapper status__wrapper--filtered focusable' tabIndex={unfocusable ? null : 0} ref={this.handleRef}>
             <FormattedMessage id='status.filtered' defaultMessage='Filtered' />: {matchedFilters.join(', ')}.
             {' '}
             <button className='status__wrapper--filtered__button' onClick={this.handleUnfilterClick}>
@@ -569,8 +570,8 @@ class Status extends ImmutablePureComponent {
     const expanded = !status.get('hidden') || status.get('spoiler_text').length === 0;
 
     return (
-      <HotKeys handlers={handlers}>
-        <div className={classNames('status__wrapper', `status__wrapper-${status.get('visibility')}`, { 'status__wrapper-reply': !!status.get('in_reply_to_id'), unread, focusable: !this.props.muted })} tabIndex={this.props.muted ? null : 0} data-featured={featured ? 'true' : null} aria-label={textForScreenReader(intl, status, rebloggedByText)} ref={this.handleRef} data-nosnippet={status.getIn(['account', 'noindex'], true) || undefined}>
+      <HotKeys handlers={handlers} tabIndex={unfocusable ? null : -1}>
+        <div className={classNames('status__wrapper', `status__wrapper-${status.get('visibility')}`, { 'status__wrapper-reply': !!status.get('in_reply_to_id'), unread, focusable: !this.props.muted })} tabIndex={this.props.muted || unfocusable ? null : 0} data-featured={featured ? 'true' : null} aria-label={textForScreenReader(intl, status, rebloggedByText)} ref={this.handleRef} data-nosnippet={status.getIn(['account', 'noindex'], true) || undefined}>
           {!skipPrepend && prepend}
 
           <div className={classNames('status', `status-${status.get('visibility')}`, { 'status-reply': !!status.get('in_reply_to_id'), 'status--in-thread': !!rootId, 'status--first-in-thread': previousId && (!connectUp || connectToRoot), muted: this.props.muted })} data-id={status.get('id')}>
