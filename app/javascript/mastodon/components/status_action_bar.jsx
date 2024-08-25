@@ -17,7 +17,6 @@ import ReplyIcon from '@/material-icons/400-24px/reply.svg?react';
 import ReplyAllIcon from '@/material-icons/400-24px/reply_all.svg?react';
 import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
-import VisibilityIcon from '@/material-icons/400-24px/visibility.svg?react';
 import RepeatActiveIcon from '@/svg-icons/repeat_active.svg?react';
 import RepeatDisabledIcon from '@/svg-icons/repeat_disabled.svg?react';
 import RepeatPrivateIcon from '@/svg-icons/repeat_private.svg?react';
@@ -63,7 +62,6 @@ const messages = defineMessages({
   admin_status: { id: 'status.admin_status', defaultMessage: 'Open this post in the moderation interface' },
   admin_domain: { id: 'status.admin_domain', defaultMessage: 'Open moderation interface for {domain}' },
   copy: { id: 'status.copy', defaultMessage: 'Copy link to post' },
-  hide: { id: 'status.hide', defaultMessage: 'Hide post' },
   blockDomain: { id: 'account.block_domain', defaultMessage: 'Block domain {domain}' },
   unblockDomain: { id: 'account.unblock_domain', defaultMessage: 'Unblock domain {domain}' },
   unmute: { id: 'account.unmute', defaultMessage: 'Unmute @{name}' },
@@ -248,10 +246,6 @@ class StatusActionBar extends ImmutablePureComponent {
     navigator.clipboard.writeText(url);
   };
 
-  handleHideClick = () => {
-    this.props.onFilter();
-  };
-
   handleNoOp = () => {} // hack for reaction add button
 
   render () {
@@ -385,11 +379,6 @@ class StatusActionBar extends ImmutablePureComponent {
       reblogTitle = intl.formatMessage(messages.cannot_reblog);
       reblogIconComponent = RepeatDisabledIcon;
     }
-
-    const filterButton = this.props.onFilter && (
-      <IconButton className='status__action-bar__button' title={intl.formatMessage(messages.hide)} icon='eye' iconComponent={VisibilityIcon} onClick={this.handleHideClick} />
-    );
-
     const canReact = signedIn && status.get('reactions').filter(r => r.get('count') > 0 && r.get('me')).size < maxReactions;
     const reactButton = (
       <IconButton
@@ -414,8 +403,6 @@ class StatusActionBar extends ImmutablePureComponent {
             ? <EmojiPickerDropdown className='status__action-bar-button' onPickEmoji={this.handleEmojiPick} button={reactButton} disabled={!canReact} />
             : reactButton
         }
-
-        {filterButton}
 
         <DropdownMenuContainer
           scrollKey={scrollKey}
