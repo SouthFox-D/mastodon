@@ -281,11 +281,11 @@ class Status < ApplicationRecord
     @emojis = CustomEmoji.from_text(fields.join(' '), account.domain)
   end
 
-  def reactions(account = nil)
+  def reactions(account_id = nil)
     records = begin
       scope = status_reactions.group(:status_id, :name, :custom_emoji_id).order(Arel.sql('MIN(created_at) ASC'))
 
-      if account.nil?
+      if account_id.nil?
         scope.select('name, custom_emoji_id, count(*) as count, false as me')
       else
         scope.select("name, custom_emoji_id, count(*) as count, exists(select 1 from status_reactions r where r.account_id = #{account.id} and r.status_id = status_reactions.status_id and r.name = status_reactions.name) as me")
