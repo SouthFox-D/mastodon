@@ -6,7 +6,6 @@ import {
   unmuteAccount,
   unblockAccount,
 } from '../actions/accounts';
-import { showAlertForError } from '../actions/alerts';
 import { initBlockModal } from '../actions/blocks';
 import {
   replyCompose,
@@ -111,10 +110,7 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
   onEmbed (status) {
     dispatch(openModal({
       modalType: 'EMBED',
-      modalProps: {
-        id: status.get('id'),
-        onError: error => dispatch(showAlertForError(error)),
-      },
+      modalProps: { id: status.get('id') },
     }));
   },
 
