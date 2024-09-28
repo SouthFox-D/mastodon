@@ -460,7 +460,26 @@ class Status extends ImmutablePureComponent {
     } else if (status.get('media_attachments').size > 0) {
       const language = status.getIn(['translation', 'language']) || status.get('language');
 
-      if (status.getIn(['media_attachments', 0, 'type']) === 'audio') {
+      if (['image', 'gifv'].includes(status.getIn(['media_attachments', 0, 'type'])) || status.get('media_attachments').size > 1) {
+        media = (
+          <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery}>
+            {Component => (
+              <Component
+                media={status.get('media_attachments')}
+                lang={language}
+                sensitive={status.get('sensitive')}
+                height={110}
+                onOpenMedia={this.handleOpenMedia}
+                cacheWidth={this.props.cacheMediaWidth}
+                defaultWidth={this.props.cachedMediaWidth}
+                visible={this.state.showMedia}
+                onToggleVisibility={this.handleToggleMediaVisibility}
+              />
+            )}
+          </Bundle>
+        );
+        mediaIcons.push('picture-o');
+      } else if (status.getIn(['media_attachments', 0, 'type']) === 'audio') {
         const attachment = status.getIn(['media_attachments', 0]);
         const description = attachment.getIn(['translation', 'description']) || attachment.get('description');
 
@@ -513,26 +532,6 @@ class Status extends ImmutablePureComponent {
             )}
           </Bundle>
         );
-        mediaIcons.push('video-camera');
-      } else {
-        media = (
-          <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery}>
-            {Component => (
-              <Component
-                media={status.get('media_attachments')}
-                lang={language}
-                sensitive={status.get('sensitive')}
-                height={110}
-                onOpenMedia={this.handleOpenMedia}
-                cacheWidth={this.props.cacheMediaWidth}
-                defaultWidth={this.props.cachedMediaWidth}
-                visible={this.state.showMedia}
-                onToggleVisibility={this.handleToggleMediaVisibility}
-              />
-            )}
-          </Bundle>
-        );
-        mediaIcons.push('picture-o');
       }
     } else if (status.get('spoiler_text').length === 0 && status.get('card')) {
       media = (
