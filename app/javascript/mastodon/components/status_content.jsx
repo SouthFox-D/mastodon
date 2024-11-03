@@ -279,7 +279,7 @@ class StatusContent extends PureComponent {
     );
 
     const poll = !!status.get('poll') && (
-      <PollContainer pollId={status.get('poll')} lang={language} />
+      <PollContainer pollId={status.get('poll')} status={status} lang={language} />
     );
 
     if (this.props.onClick) {
