@@ -72,6 +72,7 @@ jobs:
           build-args: |
             MASTODON_VERSION_PRERELEASE=${{ inputs.version_prerelease }}
             MASTODON_VERSION_METADATA=${{ inputs.version_metadata }}
+            SOURCE_COMMIT=${{ github.sha }}
           platforms: ${{ inputs.platforms }}
           provenance: false
           push: ${{ inputs.push_to_images != '' }}
