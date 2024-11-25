@@ -4,7 +4,7 @@ module Notification::Groups
   extend ActiveSupport::Concern
 
   # `set_group_key!` needs to be updated if this list changes
-  GROUPABLE_NOTIFICATION_TYPES = %i(favourite reblog follow).freeze
+  GROUPABLE_NOTIFICATION_TYPES = %i(favourite reaction reblog follow).freeze
   MAXIMUM_GROUP_SPAN_HOURS = 12
 
   def set_group_key!
