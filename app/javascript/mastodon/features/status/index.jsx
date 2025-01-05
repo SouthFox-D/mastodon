@@ -490,6 +490,10 @@ class Status extends ImmutablePureComponent {
     this.handleToggleMediaVisibility();
   };
 
+  handleHotkeyTranslate = () => {
+    this.handleTranslate(this.props.status);
+  };
+
   handleMoveUp = id => {
     const { status, ancestorsIds, descendantsIds } = this.props;
 
@@ -666,6 +670,7 @@ class Status extends ImmutablePureComponent {
       toggleHidden: this.handleHotkeyToggleHidden,
       toggleSensitive: this.handleHotkeyToggleSensitive,
       openMedia: this.handleHotkeyOpenMedia,
+      onTranslate: this.handleHotkeyTranslate,
     };
 
     return (
