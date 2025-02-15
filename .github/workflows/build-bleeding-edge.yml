@@ -22,7 +22,6 @@ jobs:
     uses: ./.github/workflows/build-container-image.yml
     with:
       file_to_build: Dockerfile
-      platforms: linux/amd64
       push_to_images: |
         southfox09/mastodon
       version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
@@ -40,7 +39,6 @@ jobs:
     uses: ./.github/workflows/build-container-image.yml
     with:
       file_to_build: streaming/Dockerfile
-      platforms: linux/amd64
       push_to_images: |
         southfox09/mastodon-streaming
       version_metadata: ${{ needs.compute-suffix.outputs.metadata }}
