@@ -118,11 +118,17 @@ export const SearchResults: React.FC<{ multiColumn: boolean }> = ({
   }, [dispatch, mappedType]);
 
   // We request 1 more result than we display so we can tell if there'd be a next page
-  const hasMore =
+  let hasMore =
     mappedType !== 'all' && results
       ? results[mappedType].length > INITIAL_PAGE_LIMIT &&
         results[mappedType].length % INITIAL_PAGE_LIMIT === 1
       : false;
+
+  if (mappedType === 'statuses') {
+    hasMore = results
+        ? results[mappedType].length !== 0
+        : false;
+  }
 
   let filteredResults;
 
