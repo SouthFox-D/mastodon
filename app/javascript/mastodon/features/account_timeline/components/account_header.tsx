@@ -1017,7 +1017,7 @@ export const AccountHeader: React.FC<{
                   title={intl.formatNumber(account.followers_count)}
                 >
                   <ShortNumber
-                    value={account.followers_count}
+                    value='-'
                     renderer={FollowersCounter}
                   />
                 </NavLink>
