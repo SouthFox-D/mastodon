@@ -2,71 +2,71 @@ import ImmutablePureComponent from 'react-immutable-pure-component';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import { autoPlayGif, reduceMotion } from '../initial_state';
-import spring from 'react-motion/lib/spring';
-import TransitionMotion from 'react-motion/lib/TransitionMotion';
 import classNames from 'classnames';
-import React from 'react';
+import { PureComponent, useMemo } from 'react';
+import { animated, useTransition } from '@react-spring/web';
 import { unicodeMapping } from '../features/emoji/emoji_unicode_mapping_light';
 import { AnimatedNumber } from './animated_number';
 import { assetHost } from '../utils/config';
 
-export default class StatusReactions extends ImmutablePureComponent {
-
-  static propTypes = {
-    statusId: PropTypes.string.isRequired,
-    reactions: ImmutablePropTypes.list.isRequired,
-    numVisible: PropTypes.number,
-    addReaction: PropTypes.func.isRequired,
-    canReact: PropTypes.bool.isRequired,
-    removeReaction: PropTypes.func.isRequired,
-  };
-
-  willEnter() {
-    return { scale: reduceMotion ? 1 : 0 };
-  }
-
-  willLeave() {
-    return { scale: reduceMotion ? 0 : spring(0, { stiffness: 170, damping: 26 }) };
-  }
-
-  render() {
-    const { reactions, numVisible } = this.props;
-    let visibleReactions = reactions
+const StatusReactions = ({
+  statusId,
+  reactions,
+  numVisible,
+  addReaction,
+  canReact,
+  removeReaction,
+}) => {
+  const visibleReactions = useMemo(() => {
+    let visible = reactions
       .filter(x => x.get('count') > 0)
       .sort((a, b) => b.get('count') - a.get('count'));
 
     if (numVisible >= 0) {
-      visibleReactions = visibleReactions.filter((_, i) => i < numVisible);
+      visible = visible.filter((_, i) => i < numVisible);
     }
 
-    const styles = visibleReactions.map(reaction => ({
-      key: reaction.get('name'),
-      data: reaction,
-      style: { scale: reduceMotion ? 1 : spring(1, { stiffness: 150, damping: 13 }) },
-    })).toArray();
+    return visible.toArray();
+  }, [numVisible, reactions]);
 
-    return (
-      <TransitionMotion styles={styles} willEnter={this.willEnter} willLeave={this.willLeave}>
-        {items => (
-          <div className={classNames('reactions-bar', { 'reactions-bar--empty': visibleReactions.isEmpty() })}>
-            {items.map(({ key, data, style }) => (
-              <Reaction
-                key={key}
-                statusId={this.props.statusId}
-                reaction={data}
-                style={{ transform: `scale(${style.scale})`, position: style.scale < 0.5 ? 'absolute' : 'static' }}
-                addReaction={this.props.addReaction}
-                removeReaction={this.props.removeReaction}
-                canReact={this.props.canReact}
-              />
-            ))}
-          </div>
-        )}
-      </TransitionMotion>
-    );
-  }
+  const transitions = useTransition(visibleReactions, {
+    from: {
+      scale: 0,
+    },
+    enter: {
+      scale: 1,
+    },
+    leave: {
+      scale: 0,
+    },
+    immediate: reduceMotion,
+    keys: visibleReactions.map(x => x.get('name')),
+  });
 
-}
+  return (
+    <div className={classNames('reactions-bar', { 'reactions-bar--empty': visibleReactions.length === 0 })}>
+      {transitions(({ scale }, reaction) => (
+        <Reaction
+          key={reaction.get('name')}
+          statusId={statusId}
+          reaction={reaction}
+          style={{ transform: scale.to((s) => `scale(${s})`) }}
+          addReaction={addReaction}
+          removeReaction={removeReaction}
+          canReact={canReact}
+        />
+      ))}
+    </div>
+  );
+};
+StatusReactions.propTypes = {
+  statusId: PropTypes.string.isRequired,
+  reactions: ImmutablePropTypes.list.isRequired,
+  numVisible: PropTypes.number,
+  addReaction: PropTypes.func,
+  canReact: PropTypes.bool.isRequired,
+  removeReaction: PropTypes.func,
+};
 
 class Reaction extends ImmutablePureComponent {
 
@@ -103,7 +103,8 @@ class Reaction extends ImmutablePureComponent {
     const { reaction } = this.props;
 
     return (
-      <button
+      <animated.button
+        type='button'
         className={classNames('reactions-bar__item', { active: reaction.get('me') })}
         onClick={this.handleClick}
         onMouseEnter={this.handleMouseEnter}
@@ -122,13 +123,13 @@ class Reaction extends ImmutablePureComponent {
         <span className='reactions-bar__item__count'>
           <AnimatedNumber value={reaction.get('count')} />
         </span>
-      </button>
+      </animated.button>
     );
   }
 
 }
 
-class Emoji extends React.PureComponent {
+class Emoji extends PureComponent {
 
   static propTypes = {
     emoji: PropTypes.string.isRequired,
@@ -170,3 +171,5 @@ class Emoji extends React.PureComponent {
   }
 
 }
+
+export default StatusReactions;
