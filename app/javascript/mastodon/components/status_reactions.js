@@ -33,6 +33,9 @@ const StatusReactions = ({
     from: {
       scale: 0,
     },
+    initial: {
+      scale: 1,
+    },
     enter: {
       scale: 1,
     },
