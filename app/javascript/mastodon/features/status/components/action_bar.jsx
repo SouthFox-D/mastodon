@@ -25,7 +25,7 @@ import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/
 import EmojiPickerDropdown from '../../compose/containers/emoji_picker_dropdown_container';
 
 import { IconButton } from '../../../components/icon_button';
-import DropdownMenuContainer from '../../../containers/dropdown_menu_container';
+import { Dropdown } from 'mastodon/components/dropdown_menu';
 import { me, maxReactions } from '../../../initial_state';
 
 const messages = defineMessages({
@@ -344,7 +344,7 @@ class ActionBar extends PureComponent {
         </div>
 
         <div className='detailed-status__action-bar-dropdown'>
-          <DropdownMenuContainer icon='ellipsis-h' iconComponent={MoreHorizIcon} status={status} items={menu} direction='left' title={intl.formatMessage(messages.more)} />
+          <Dropdown icon='ellipsis-h' iconComponent={MoreHorizIcon} status={status} items={menu} direction='left' title={intl.formatMessage(messages.more)} />
         </div>
       </div>
     );
