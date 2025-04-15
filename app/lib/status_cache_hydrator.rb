@@ -26,7 +26,6 @@ class StatusCacheHydrator
 
   def hydrate_non_reblog_payload(empty_payload, account_id)
     empty_payload.tap do |payload|
-      payload[:reactions]  = serialized_reactions(account_id, @status)
       fill_status_payload(payload, @status, account_id)
 
       if payload[:poll]
@@ -45,8 +44,6 @@ class StatusCacheHydrator
       # If the reblogged status is being delivered to the author who disabled the display of the application
       # used to create the status, we need to hydrate it here too
       payload[:reblog][:application] = payload_reblog_application if payload[:reblog][:application].nil? && @status.reblog.account_id == account_id
-
-      payload[:reblog][:reactions]  = serialized_reactions(account_id, @status.reblog)
 
       fill_status_payload(payload[:reblog], @status.reblog, account_id)
 
@@ -74,6 +71,7 @@ class StatusCacheHydrator
     payload[:bookmarked] = Bookmark.exists?(account_id: account_id, status_id: status.id)
     payload[:pinned]     = StatusPin.exists?(account_id: account_id, status_id: status.id) if status.account_id == account_id
     payload[:filtered]   = mapped_applied_custom_filter(account_id, status)
+    payload[:reactions]  = serialized_reactions(account_id, status)
   end
 
   def mapped_applied_custom_filter(account_id, status)
