@@ -1,13 +1,18 @@
-import ImmutablePureComponent from 'react-immutable-pure-component';
 import PropTypes from 'prop-types';
-import ImmutablePropTypes from 'react-immutable-proptypes';
-import { autoPlayGif, reduceMotion } from '../initial_state';
-import classNames from 'classnames';
 import { PureComponent, useMemo } from 'react';
+
+import classNames from 'classnames';
+
+import ImmutablePropTypes from 'react-immutable-proptypes';
+import ImmutablePureComponent from 'react-immutable-pure-component';
+
 import { animated, useTransition } from '@react-spring/web';
+
 import { unicodeMapping } from '../features/emoji/emoji_unicode_mapping_light';
-import { AnimatedNumber } from './animated_number';
+import { autoPlayGif, reduceMotion } from '../initial_state';
 import { assetHost } from '../utils/config';
+
+import { AnimatedNumber } from './animated_number';
 
 const StatusReactions = ({
   statusId,
@@ -76,8 +81,8 @@ class Reaction extends ImmutablePureComponent {
   static propTypes = {
     statusId: PropTypes.string,
     reaction: ImmutablePropTypes.map.isRequired,
-    addReaction: PropTypes.func.isRequired,
-    removeReaction: PropTypes.func.isRequired,
+    addReaction: PropTypes.func,
+    removeReaction: PropTypes.func,
     canReact: PropTypes.bool.isRequired,
     style: PropTypes.object,
   };
@@ -87,20 +92,19 @@ class Reaction extends ImmutablePureComponent {
   };
 
   handleClick = () => {
-    const { reaction, statusId, addReaction, removeReaction } = this.props;
+    const { reaction, statusId, addReaction, removeReaction, canReact } = this.props;
+    if (!canReact) return;
 
-    if (reaction.get('me')) {
+    if (reaction.get('me') && removeReaction) {
       removeReaction(statusId, reaction.get('name'));
-    } else {
-      if (reaction.get('name').indexOf('@') === -1) {
-        addReaction(statusId, reaction.get('name'));
-      }
+    } else if (addReaction) {
+      addReaction(statusId, reaction.get('name'));
     }
-  }
+  };
 
-  handleMouseEnter = () => this.setState({ hovered: true })
+  handleMouseEnter = () => this.setState({ hovered: true });
 
-  handleMouseLeave = () => this.setState({ hovered: false })
+  handleMouseLeave = () => this.setState({ hovered: false });
 
   render() {
     const { reaction } = this.props;
@@ -112,7 +116,6 @@ class Reaction extends ImmutablePureComponent {
         onClick={this.handleClick}
         onMouseEnter={this.handleMouseEnter}
         onMouseLeave={this.handleMouseLeave}
-        disabled={!this.props.canReact}
         style={this.props.style}
       >
         <span className='reactions-bar__item__emoji'>
