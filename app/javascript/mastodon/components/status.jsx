@@ -182,9 +182,8 @@ class Status extends ImmutablePureComponent {
     }
   };
 
-  handleMouseUp = e => {
+  handleHeaderClick = e => {
     // Only handle clicks on the empty space above the content
-
     if (e.target !== e.currentTarget && e.detail >= 1) {
       return;
     }
@@ -565,7 +564,7 @@ class Status extends ImmutablePureComponent {
           <div className={classNames('status', `status-${status.get('visibility')}`, { 'status-reply': !!status.get('in_reply_to_id'), 'status--in-thread': !!rootId, 'status--first-in-thread': previousId && (!connectUp || connectToRoot), muted: this.props.muted })} data-id={status.get('id')}>
             {(connectReply || connectUp || connectToRoot) && <div className={classNames('status__line', { 'status__line--full': connectReply, 'status__line--first': !status.get('in_reply_to_id') && !connectToRoot })} />}
 
-            <div onMouseUp={this.handleMouseUp} className='status__info'>
+            <div onClick={this.handleHeaderClick} onAuxClick={this.handleHeaderClick} onMouseUp={this.handleMouseUp} className='status__info'>
               <div className='status__info__icons'>
                 <StatusIcons
                   status={status}
