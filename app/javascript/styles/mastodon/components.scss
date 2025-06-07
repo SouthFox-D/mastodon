@@ -1918,16 +1918,18 @@ a.status__relative-time {
 }
 
 .status__quote {
+  --quote-margin: 36px;
+
   position: relative;
   margin-block-start: 16px;
-  margin-inline-start: 36px;
+  margin-inline-start: calc(var(--quote-margin) + var(--thread-margin, 0px));
   border-radius: 8px;
   color: var(--nested-card-text);
   background: var(--nested-card-background);
   border: var(--nested-card-border);
 
-  @media screen and (min-width: $mobile-breakpoint) {
-    margin-inline-start: 56px;
+  @container (width > 460px) {
+    --quote-margin: 56px;
   }
 }
 
@@ -1987,7 +1989,7 @@ a.status__relative-time {
     transform: translateY(-50%);
   }
 
-  @media screen and (min-width: $mobile-breakpoint) {
+  @container (width > 460px) {
     inset-inline-start: -50px;
   }
 }
@@ -2914,6 +2916,7 @@ a.account__display-name {
       display: flex;
       flex-direction: column;
       contain: inline-size layout paint style;
+      container: column / inline-size;
 
       @media screen and (min-width: $no-gap-breakpoint) {
         max-width: 600px;
@@ -6641,7 +6644,6 @@ a.status-card {
 
   ul {
     overflow-y: auto;
-    flex-shrink: 0;
     padding-bottom: 8px;
   }
 
@@ -7105,18 +7107,19 @@ a.status-card {
 }
 
 .audio-player {
-  overflow: hidden;
   box-sizing: border-box;
+  container: audio-player / inline-size;
   position: relative;
-  background: var(--player-background-color, var(--background-color));
-  color: var(--player-foreground-color);
-  border-radius: 8px;
-  padding-bottom: 44px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
   width: 100%;
+  aspect-ratio: 16 / 9;
+  color: var(--player-foreground-color);
+  background: var(--player-background-color, var(--background-color));
+  border-radius: 8px;
   outline: 1px solid var(--media-outline-color);
   outline-offset: -1px;
-  aspect-ratio: 16 / 9;
-  container: audio-player / inline-size;
 
   &__controls {
     display: grid;
@@ -7165,7 +7168,15 @@ a.status-card {
   }
 
   &__visualizer {
+    width: 100%;
     max-width: 200px;
+  }
+
+  .video-player__seek {
+    position: absolute;
+    inset: 0 0 auto;
+    height: 24px;
+    z-index: 1; /* Ensure this renders on top of audio player controls */
   }
 
   &.inactive {
@@ -8230,6 +8241,20 @@ noscript {
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 10px;
+
+    &__loading-indicator-wrapper {
+      position: relative;
+      height: 37px;
+
+      .loading-indicator {
+        left: 10px;
+      }
+
+      .circular-progress {
+        width: 14px;
+        height: 14px;
+      }
+    }
 
     label {
       display: block;
@@ -11094,6 +11119,8 @@ noscript {
   &__slide {
     flex: 0 0 auto;
     flex-basis: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
   .status {
