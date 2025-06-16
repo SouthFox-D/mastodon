@@ -368,7 +368,7 @@ export const NavigationPanel: React.FC = () => {
             {(signedIn || timelinePreview) && (
               <ColumnLink
                 transparent
-                to='/public/local'
+                to='/public'
                 isActive={isFirehoseActive}
                 icon='globe'
                 iconComponent={PublicIcon}
