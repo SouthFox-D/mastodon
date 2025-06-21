@@ -134,7 +134,7 @@ class REST::InstanceSerializer < ActiveModel::Serializer
   end
 
   def limited_federation?
-    Rails.configuration.x.limited_federation_mode
+    Rails.configuration.x.mastodon.limited_federation_mode
   end
 
   def markdown
