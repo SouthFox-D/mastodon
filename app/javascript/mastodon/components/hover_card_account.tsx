@@ -121,7 +121,7 @@ export const HoverCardAccount = forwardRef<
 
               <div className='hover-card__numbers'>
                 <ShortNumber
-                  value={account.followers_count}
+                  value='-'
                   renderer={FollowersCounter}
                 />
                 {shouldDisplayFamiliarFollowers && (
