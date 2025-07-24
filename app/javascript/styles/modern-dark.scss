@@ -1,6 +1,6 @@
-@import 'modern/dark';
-@import 'application';
-@import 'modern/style';
+@use 'modern/dark';
+@use 'application';
+@use 'modern/style';
 
 .layout-multiple-columns .column {
 	flex-grow: 1;

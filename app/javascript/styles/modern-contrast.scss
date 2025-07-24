@@ -1,7 +1,7 @@
-@import 'modern/contrast';
-@import 'application';
-@import 'modern/style';
-@import 'contrast/diff';
+@use 'modern/contrast';
+@use 'application';
+@use 'modern/style';
+@use 'contrast/diff';
 
 .layout-multiple-columns .column {
 	flex-grow: 1;
