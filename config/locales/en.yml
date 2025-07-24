@@ -1944,13 +1944,13 @@ en:
   themes:
     contrast: Mastodon (High contrast)
     default: Mastodon (Dark)
-    # mastodon-bird-ui-contrast: Mastodon Bird UI (Korkea kontrasti)
-    # mastodon-bird-ui-dark: Mastodon Bird UI (Tumma)
-    # mastodon-bird-ui-light: Mastodon Bird UI (Vaalea)
+    mastodon-bird-ui-contrast: Mastodon Bird UI (Korkea kontrasti)
+    mastodon-bird-ui-dark: Mastodon Bird UI (Tumma)
+    mastodon-bird-ui-light: Mastodon Bird UI (Vaalea)
     mastodon-light: Mastodon (Light)
-    # modern-contrast: Modern Contrast
-    # modern-dark: Modern Dark
-    # modern-light: Modern Light
+    modern-contrast: Modern Contrast
+    modern-dark: Modern Dark
+    modern-light: Modern Light
     system: Automatic (use system theme)
   time:
     formats:
