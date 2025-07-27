@@ -33,6 +33,7 @@ class REST::StatusSerializer < ActiveModel::Serializer
   has_one :quote, key: :quote, serializer: REST::QuoteSerializer
   has_one :preview_card, key: :card, serializer: REST::PreviewCardSerializer
   has_one :preloadable_poll, key: :poll, serializer: REST::PollSerializer
+  has_one :quote_approval, if: -> { Mastodon::Feature.outgoing_quotes_enabled? }
 
   def quote
     object.quote if object.quote&.acceptable?
@@ -162,6 +163,14 @@ class REST::StatusSerializer < ActiveModel::Serializer
 
   def reactions
     object.reactions(current_user&.account&.id)
+  end
+
+  def quote_approval
+    {
+      automatic: object.quote_policy_as_keys(:automatic),
+      manual: object.quote_policy_as_keys(:manual),
+      current_user: object.quote_policy_for_account(current_user&.account),
+    }
   end
 
   private
