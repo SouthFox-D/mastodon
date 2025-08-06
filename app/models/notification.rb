@@ -24,13 +24,14 @@ class Notification < ApplicationRecord
   include Redisable
 
   LEGACY_TYPE_CLASS_MAP = {
-    'Mention'        => :mention,
-    'Status'         => :reblog,
-    'Follow'         => :follow,
-    'FollowRequest'  => :follow_request,
-    'Favourite'      => :favourite,
+    'Mention' => :mention,
+    'Status' => :reblog,
+    'Follow' => :follow,
+    'FollowRequest' => :follow_request,
+    'Favourite' => :favourite,
     'StatusReaction' => :reaction,
-    'Poll'           => :poll,
+    'Poll' => :poll,
+    'Quote' => :quote,
   }.freeze
 
   # Please update app/javascript/api_types/notification.ts if you change this
