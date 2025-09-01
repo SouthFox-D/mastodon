@@ -12,6 +12,7 @@ import {
   mentionCompose,
   directCompose,
 } from '../actions/compose';
+import { quoteComposeById } from '../actions/compose_typed';
 import {
   initDomainBlockModal,
   unblockDomain,
@@ -48,6 +49,8 @@ import Status from '../components/status';
 import { deleteModal } from '../initial_state';
 import { makeGetStatus, makeGetPictureInPicture, makeCustomEmojiMap } from '../selectors';
 
+import { isFeatureEnabled } from 'mastodon/utils/environment';
+
 const makeMapStateToProps = () => {
   const getStatus = makeGetStatus();
   const getPictureInPicture = makeGetPictureInPicture();
@@ -78,6 +81,12 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
 
   onReblog (status, e) {
     dispatch(toggleReblog(status.get('id'), e.shiftKey));
+  },
+  
+  onQuote (status) {
+    if (isFeatureEnabled('outgoing_quotes')) {
+      dispatch(quoteComposeById(status.get('id')));
+    }
   },
 
   onFavourite (status) {
@@ -119,7 +128,13 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
     if (!deleteModal) {
       dispatch(deleteStatus(status.get('id'), withRedraft));
     } else {
-      dispatch(openModal({ modalType: 'CONFIRM_DELETE_STATUS', modalProps: { statusId: status.get('id'), withRedraft } }));
+      dispatch(openModal({
+        modalType: 'CONFIRM_DELETE_STATUS',
+        modalProps: {
+          statusId: status.get('id'),
+          withRedraft
+        }
+      }));
     }
   },
 
