@@ -17,7 +17,7 @@ import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../features/compose/containers/emoji_picker_dropdown_container';
+import EmojiPickerDropdown from '../../features/compose/containers/emoji_picker_dropdown_container';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
 import { Dropdown } from 'mastodon/components/dropdown_menu';
