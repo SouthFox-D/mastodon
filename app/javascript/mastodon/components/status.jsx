@@ -124,7 +124,7 @@ class Status extends ImmutablePureComponent {
     unread: PropTypes.bool,
     showThread: PropTypes.bool,
     isQuotedPost: PropTypes.bool,
-    shouldHighlightOnMount: PropTypes.bool, 
+    shouldHighlightOnMount: PropTypes.bool,
     getScrollPosition: PropTypes.func,
     updateScrollBottom: PropTypes.func,
     cacheMediaWidth: PropTypes.func,
@@ -636,7 +636,7 @@ class Status extends ImmutablePureComponent {
             </IdentityConsumer>
             {matchedFilters && <FilterWarning title={matchedFilters.join(', ')} expanded={this.state.showDespiteFilter} onClick={this.handleFilterToggle} />}
 
-            {(status.get('spoiler_text').length > 0 && (!matchedFilters || this.state.showDespiteFilter)) && <ContentWarning text={status.getIn(['translation', 'spoilerHtml']) || status.get('spoilerHtml')} expanded={expanded} onClick={this.handleExpandedToggle} />}
+            {(!matchedFilters || this.state.showDespiteFilter) && <ContentWarning status={status} expanded={expanded} onClick={this.handleExpandedToggle} />}
 
             {expanded && (
               <>

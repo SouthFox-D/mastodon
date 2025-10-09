@@ -32,7 +32,7 @@ import { useIdentity } from 'mastodon/identity_context';
 import { Audio } from 'mastodon/features/audio';
 import scheduleIdleTask from 'mastodon/features/ui/util/schedule_idle_task';
 import { Video } from 'mastodon/features/video';
-import { me } from 'mastodon/initial_state';
+import { useIdentity } from 'mastodon/identity_context';
 
 import StatusReactions from '../../../components/status_reactions';
 import { visibleReactions } from '../../../initial_state';
@@ -82,6 +82,8 @@ export const DetailedStatus: React.FC<{
   const [height, setHeight] = useState(0);
   const [showDespiteFilter, setShowDespiteFilter] = useState(false);
   const nodeRef = useRef<HTMLDivElement>();
+  const { signedIn } = useIdentity();
+
   const { signedIn } = useIdentity();
 
   const handleOpenVideo = useCallback(
@@ -292,7 +294,7 @@ export const DetailedStatus: React.FC<{
 
   if (['private', 'direct'].includes(status.get('visibility') as string)) {
     quotesLink = '';
-  } else if (status.getIn(['account', 'id']) === me) {
+  } else if (signedIn) {
     quotesLink = (
       <Link
         to={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}/quotes`}
@@ -401,17 +403,13 @@ export const DetailedStatus: React.FC<{
           />
         )}
 
-        {status.get('spoiler_text').length > 0 &&
-          (!matchedFilters || showDespiteFilter) && (
-            <ContentWarning
-              text={
-                status.getIn(['translation', 'spoilerHtml']) ||
-                status.get('spoilerHtml')
-              }
-              expanded={expanded}
-              onClick={handleExpandedToggle}
-            />
-          )}
+        {(!matchedFilters || showDespiteFilter) && (
+          <ContentWarning
+            status={status}
+            expanded={expanded}
+            onClick={handleExpandedToggle}
+          />
+        )}
 
         {expanded && (
           <>
