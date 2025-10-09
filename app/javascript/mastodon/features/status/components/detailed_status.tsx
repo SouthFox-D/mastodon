@@ -28,14 +28,13 @@ import { PictureInPicturePlaceholder } from 'mastodon/components/picture_in_pict
 import StatusContent from 'mastodon/components/status_content';
 import { QuotedStatus } from 'mastodon/components/status_quoted';
 import { VisibilityIcon } from 'mastodon/components/visibility_icon';
-import { useIdentity } from 'mastodon/identity_context';
 import { Audio } from 'mastodon/features/audio';
 import scheduleIdleTask from 'mastodon/features/ui/util/schedule_idle_task';
 import { Video } from 'mastodon/features/video';
 import { useIdentity } from 'mastodon/identity_context';
 
-import StatusReactions from '../../../components/status_reactions';
-import { visibleReactions } from '../../../initial_state';
+import StatusReactions from 'mastodon/components/status_reactions';
+import { visibleReactions } from 'mastodon/initial_state';
 
 import Card from './card';
 
@@ -82,7 +81,6 @@ export const DetailedStatus: React.FC<{
   const [height, setHeight] = useState(0);
   const [showDespiteFilter, setShowDespiteFilter] = useState(false);
   const nodeRef = useRef<HTMLDivElement>();
-  const { signedIn } = useIdentity();
 
   const { signedIn } = useIdentity();
 
