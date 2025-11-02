@@ -15,8 +15,6 @@ import { Poll } from 'mastodon/components/poll';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { languages as preloadedLanguages } from 'mastodon/initial_state';
 
-import { isModernEmojiEnabled } from '../utils/environment';
-
 import { EmojiHTML } from './emoji/html';
 import { HandledLink } from './status/handled_link';
 
@@ -90,6 +88,17 @@ const mapStateToProps = state => ({
   languages: state.getIn(['server', 'translationLanguages', 'items']),
 });
 
+const compareUrls = (href1, href2) => {
+  try {
+    const url1 = new URL(href1);
+    const url2 = new URL(href2);
+
+    return url1.origin === url2.origin && url1.pathname === url2.pathname && url1.search === url2.search;
+  } catch {
+    return false;
+  }
+};
+
 class StatusContent extends PureComponent {
   static propTypes = {
     identity: identityContextPropShape,
@@ -129,11 +138,6 @@ class StatusContent extends PureComponent {
           && status.get('spoiler_text').length === 0;
 
       onCollapsedToggle(collapsed);
-    }
-
-    // Exit if modern emoji is enabled, as it handles links using the HandledLink component.
-    if (isModernEmojiEnabled()) {
-      return;
     }
 
     const links = node.querySelectorAll('a');
@@ -187,22 +191,6 @@ class StatusContent extends PureComponent {
     this._updateStatusLinks();
   }
 
-  onMentionClick = (mention, e) => {
-    if (this.props.history && e.button === 0 && !(e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-      this.props.history.push(`/@${mention.get('acct')}`);
-    }
-  };
-
-  onHashtagClick = (hashtag, e) => {
-    hashtag = hashtag.replace(/^#/, '');
-
-    if (this.props.history && e.button === 0 && !(e.ctrlKey || e.metaKey)) {
-      e.preventDefault();
-      this.props.history.push(`/tags/${hashtag}`);
-    }
-  };
-
   handleMouseDown = (e) => {
     this.startXY = [e.clientX, e.clientY];
   };
@@ -240,7 +228,7 @@ class StatusContent extends PureComponent {
 
   handleElement = (element, { key, ...props }, children) => {
     if (element instanceof HTMLAnchorElement) {
-      const mention = this.props.status.get('mentions').find(item => element.href === item.get('url'));
+      const mention = this.props.status.get('mentions').find(item => compareUrls(element.href, item.get('url')));
       return (
         <HandledLink
           {...props}
@@ -253,7 +241,7 @@ class StatusContent extends PureComponent {
           {children}
         </HandledLink>
       );
-    } else if (element instanceof HTMLParagraphElement && element.classList.contains('quote-inline')) {
+    } else if (element.classList.contains('quote-inline') && this.props.status.get('quote')) {
       return null;
     }
     return undefined;
