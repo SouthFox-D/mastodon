@@ -155,19 +155,9 @@ class StatusContent extends PureComponent {
 
       mention = this.props.status.get('mentions').find(item => link.href === item.get('url'));
 
-      if (mention) {
-        link.addEventListener('click', this.onMentionClick.bind(this, mention), false);
-        link.setAttribute('title', `@${mention.get('acct')}`);
-        link.setAttribute('href', `/@${mention.get('acct')}`);
-        link.setAttribute('data-hover-card-account', mention.get('id'));
-      } else if (link.textContent[0] === '#' || (link.previousSibling && link.previousSibling.textContent && link.previousSibling.textContent[link.previousSibling.textContent.length - 1] === '#')) {
-        link.addEventListener('click', this.onHashtagClick.bind(this, link.text), false);
-        link.setAttribute('href', `/tags/${link.text.replace(/^#/, '')}`);
-        link.setAttribute('data-menu-hashtag', this.props.status.getIn(['account', 'id']));
-      } else {
-        link.setAttribute('title', link.href);
-        link.classList.add('unhandled-link');
-
+      if (mention) {}
+        else if (link.textContent[0] === '#' || (link.previousSibling && link.previousSibling.textContent && link.previousSibling.textContent[link.previousSibling.textContent.length - 1] === '#')) {}
+        else {
         try {
           if (isLinkMisleading(link)) {
             const tag = document.createElement('span');
