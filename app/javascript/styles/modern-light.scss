@@ -1,8 +1,7 @@
-@use 'mastodon-light/variables';
+@use 'mastodon-light/css_variables';
 @use 'application';
 @use 'modern/light';
 @use 'modern/style';
-@use 'mastodon-light/diff';
 
 .layout-multiple-columns .column {
 	flex-grow: 1;
