@@ -1,6 +1,6 @@
-@use 'mastodon-light/css_variables';
+@use 'mastodon/theme/_light.scss';
 @use 'application';
-@use 'modern/light';
+@use 'modern/modern-light';
 @use 'modern/style';
 
 .layout-multiple-columns .column {
