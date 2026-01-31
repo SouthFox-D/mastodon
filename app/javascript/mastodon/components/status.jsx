@@ -153,6 +153,7 @@ class Status extends ImmutablePureComponent {
     'hidden',
     'unread',
     'pictureInPicture',
+    'onQuoteCancel',
   ];
 
   state = {
