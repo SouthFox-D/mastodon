@@ -1,16 +1,13 @@
 import PropTypes from 'prop-types';
-import StatusIcons from './status_icons';
 import { injectIntl, defineMessages, FormattedMessage } from 'react-intl';
 
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import ImmutablePureComponent from 'react-immutable-pure-component';
 
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import CancelFillIcon from '@/material-icons/400-24px/cancel-fill.svg?react';
 import { Hotkeys } from 'mastodon/components/hotkeys';
 import { ContentWarning } from 'mastodon/components/content_warning';
 import { FilterWarning } from 'mastodon/components/filter_warning';
@@ -28,17 +25,13 @@ import { IdentityConsumer } from '../features/ui/util/identity_consumer';
 import { SensitiveMediaContext } from '../features/ui/util/sensitive_media_context';
 import { displayMedia, visibleReactions } from '../initial_state';
 
-import { Avatar } from './avatar';
-import { AvatarOverlay } from './avatar_overlay';
+import { StatusHeader } from './status/header'
 import { LinkedDisplayName } from './display_name';
 import { getHashtagBarForStatus } from './hashtag_bar';
-import { RelativeTimestamp } from './relative_timestamp';
 import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
 import StatusReactions from './status_reactions';
 import { StatusThreadLabel } from './status_thread_label';
-import { VisibilityIcon } from './visibility_icon';
-import { IconButton } from './icon_button';
 
 const domParser = new DOMParser();
 
@@ -118,10 +111,10 @@ class Status extends ImmutablePureComponent {
     onToggleCollapsed: PropTypes.func,
     onTranslate: PropTypes.func,
     onInteractionModal: PropTypes.func,
-    onQuoteCancel: PropTypes.func,
     muted: PropTypes.bool,
     hidden: PropTypes.bool,
     unread: PropTypes.bool,
+    featured: PropTypes.bool,
     showThread: PropTypes.bool,
     showActions: PropTypes.bool,
     isQuotedPost: PropTypes.bool,
@@ -136,6 +129,7 @@ class Status extends ImmutablePureComponent {
     deployPictureInPicture: PropTypes.func,
     emojiMap: ImmutablePropTypes.map.isRequired,
     unfocusable: PropTypes.bool,
+    headerRenderFn: PropTypes.func,
     pictureInPicture: ImmutablePropTypes.contains({
       inUse: PropTypes.bool,
       available: PropTypes.bool,
@@ -153,7 +147,7 @@ class Status extends ImmutablePureComponent {
     'hidden',
     'unread',
     'pictureInPicture',
-    'onQuoteCancel',
+    'headerRenderFn',
   ];
 
   state = {
@@ -371,10 +365,6 @@ class Status extends ImmutablePureComponent {
     this.setState(state => ({ ...state, showDespiteFilter: !state.showDespiteFilter }));
   };
 
-  handleQuoteCancel = () => {
-    this.props.onQuoteCancel?.();
-  }
-
   _properStatus () {
     const { status } = this.props;
 
@@ -390,7 +380,24 @@ class Status extends ImmutablePureComponent {
   };
 
   render () {
-    const { intl, hidden, featured, unfocusable, unread, showThread, showActions = true, isQuotedPost = false, scrollKey, pictureInPicture, previousId, nextInReplyToId, rootId, skipPrepend, avatarSize = 46, children } = this.props;
+    const {
+      intl,
+      hidden,
+      featured,
+      unfocusable,
+      unread,
+      showThread,
+      showActions = true,
+      isQuotedPost = false,
+      scrollKey,
+      pictureInPicture,
+      previousId,
+      nextInReplyToId,
+      rootId,
+      skipPrepend,
+      avatarSize = 46,
+      children,
+    } = this.props;
 
     let { status, account, identity, ...other } = this.props;
 
@@ -415,7 +422,7 @@ class Status extends ImmutablePureComponent {
       onTranslate: this.handleTranslate,
     };
 
-    let media, statusAvatar, prepend, rebloggedByText;
+    let media, prepend, rebloggedByText;
 
     const connectUp = previousId && previousId === status.get('in_reply_to_id');
     const connectToRoot = rootId && rootId === status.get('in_reply_to_id');
@@ -565,13 +572,20 @@ class Status extends ImmutablePureComponent {
       contentMediaIcons.push('tasks');
     }
 
-    if (account === undefined || account === null) {
-      statusAvatar = <Avatar account={status.get('account')} size={avatarSize} />;
-    } else {
-      statusAvatar = <AvatarOverlay account={status.get('account')} friend={account} />;
-    }
-
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);
+
+    const header = this.props.headerRenderFn
+      ? this.props.headerRenderFn({ status, account, avatarSize, messages, onHeaderClick: this.handleHeaderClick, featured })
+      : (
+        <StatusHeader
+          status={status}
+          account={account}
+          mediaIcons={mediaIcons}
+          avatarSize={avatarSize}
+          onHeaderClick={this.handleHeaderClick}
+        />
+      );
+
     return (
       <Hotkeys handlers={handlers} focusable={!unfocusable}>
         <div className={classNames('status__wrapper', `status__wrapper-${status.get('visibility')}`, { 'status__wrapper-reply': !!status.get('in_reply_to_id'), unread, focusable: !this.props.muted })} tabIndex={this.props.muted || unfocusable ? null : 0} data-featured={featured ? 'true' : null} aria-label={textForScreenReader({intl, status, rebloggedByText, isQuote: isQuotedPost})} ref={this.handleRef} data-nosnippet={status.getIn(['account', 'noindex'], true) || undefined}>
@@ -593,34 +607,7 @@ class Status extends ImmutablePureComponent {
           >
             {(connectReply || connectUp || connectToRoot) && <div className={classNames('status__line', { 'status__line--full': connectReply, 'status__line--first': !status.get('in_reply_to_id') && !connectToRoot })} />}
 
-            <div onClick={this.handleHeaderClick} onAuxClick={this.handleHeaderClick} onMouseUp={this.handleMouseUp} className='status__info'>
-              <div className='status__info__icons'>
-                <StatusIcons
-                  status={status}
-                  mediaIcons={contentMediaIcons}
-                />
-                <Link to={`/@${status.getIn(['account', 'acct'])}/${status.get('id')}`} className='status__relative-time'>
-                  <span className='status__visibility-icon'><VisibilityIcon visibility={status.get('visibility')} /></span>
-                  <RelativeTimestamp timestamp={status.get('created_at')} />{status.get('edited_at') && <abbr title={intl.formatMessage(messages.edited, { date: intl.formatDate(status.get('edited_at'), { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) })}> *</abbr>}
-                </Link>
-              </div>
-
-              <LinkedDisplayName displayProps={{account: status.get('account')}} className='status__display-name'>
-                <div className='status__avatar'>
-                  {statusAvatar}
-                </div>
-              </LinkedDisplayName>
-
-              {isQuotedPost && !!this.props.onQuoteCancel &&  (
-                <IconButton
-                  onClick={this.handleQuoteCancel}
-                  className='status__quote-cancel'
-                  title={intl.formatMessage(messages.quote_cancel)}
-                  icon="cancel-fill"
-                  iconComponent={CancelFillIcon}
-                />
-              )}
-            </div>
+            {header}
 
             <IdentityConsumer>
               {identity => (
