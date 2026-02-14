@@ -1,7 +1,6 @@
 @use 'modern/modern-contrast';
 @use 'application';
 @use 'modern/style';
-@use 'contrast';
 
 .layout-multiple-columns .column {
 	flex-grow: 1;
