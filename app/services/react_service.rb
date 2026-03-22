@@ -12,7 +12,7 @@ class ReactService < BaseService
 
     reaction = StatusReaction.create!(account: account, status: status, name: name, custom_emoji: custom_emoji)
 
-    json = Oj.dump(serialize_payload(reaction, ActivityPub::EmojiReactionSerializer))
+    json = serialize_payload(reaction, ActivityPub::EmojiReactionSerializer).to_json
     if status.account.local?
       NotifyService.new.call(status.account, :reaction, reaction)
       ActivityPub::RawDistributionWorker.perform_async(json, status.account.id)
