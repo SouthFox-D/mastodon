@@ -2,7 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import { defineMessages, injectIntl } from 'react-intl';
+import { defineMessages } from 'react-intl';
+import { injectIntl } from './intl';
 
 //  Mastodon imports.
 import ForumIcon from '@/material-icons/400-24px/forum.svg?react';
