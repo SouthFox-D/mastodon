@@ -34,6 +34,7 @@ import StatusActionBar from './status_action_bar';
 import StatusContent from './status_content';
 import StatusReactions from './status_reactions';
 import { StatusThreadLabel } from './status_thread_label';
+import { CollectionPreviewCard } from '../features/collections/components/collection_preview_card';
 
 const domParser = new DOMParser();
 
@@ -488,7 +489,7 @@ class Status extends ImmutablePureComponent {
 
       if (['image', 'gifv', 'unknown'].includes(status.getIn(['media_attachments', 0, 'type'])) || status.get('media_attachments').size > 1) {
         media = (
-          <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery}>
+          <Bundle fetchComponent={MediaGallery} loading={this.renderLoadingMediaGallery} key='gallery'>
             {Component => (
               <Component
                 media={status.get('media_attachments')}
@@ -511,7 +512,7 @@ class Status extends ImmutablePureComponent {
         const description = attachment.getIn(['translation', 'description']) || attachment.get('description');
 
         media = (
-          <Bundle fetchComponent={Audio} loading={this.renderLoadingAudioPlayer} >
+          <Bundle fetchComponent={Audio} loading={this.renderLoadingAudioPlayer} key='audio'>
             {Component => (
               <Component
                 src={attachment.get('url')}
@@ -538,7 +539,7 @@ class Status extends ImmutablePureComponent {
         const description = attachment.getIn(['translation', 'description']) || attachment.get('description');
 
         media = (
-          <Bundle fetchComponent={Video} loading={this.renderLoadingVideoPlayer} >
+          <Bundle fetchComponent={Video} loading={this.renderLoadingVideoPlayer} key='video'>
             {Component => (
               <Component
                 preview={attachment.get('preview_url')}
@@ -560,18 +561,35 @@ class Status extends ImmutablePureComponent {
         );
       }
     } else if (status.get('card') && !status.get('quote')) {
-      media = (
-        <Card
-          key={`${status.get('id')}-${status.get('edited_at')}`}
-          card={status.get('card')}
-          sensitive={status.get('sensitive')}
-        />
-      );
       mediaIcons.push('link');
-    }
+      const cardUrl = status.getIn(['card', 'url']);
 
-    if (status.get('poll')) {
-      contentMediaIcons.push('tasks');
+      if (status.get('poll')) {
+        contentMediaIcons.push('tasks');
+      }
+
+      const taggedCollection = (
+        status.get('tagged_collections')
+      ).find((item) => compareUrls(item.get('url'), cardUrl));
+  
+      if (taggedCollection) {
+        media = <CollectionPreviewCard collection={taggedCollection} />;
+      } else {
+        media = (
+          <Card
+            key={`${status.get('id')}-${status.get('edited_at')}`}
+            card={status.get('card')}
+            sensitive={status.get('sensitive')}
+          />
+        );
+      }
+    } else if (status.get('tagged_collections').size) {
+      const firstLinkedCollection = status.get('tagged_collections').first();
+      if (firstLinkedCollection) {
+        media = (
+          <CollectionPreviewCard collection={firstLinkedCollection.toJS()} />
+        );
+      }
     }
 
     const {statusContentProps, hashtagBar} = getHashtagBarForStatus(status);

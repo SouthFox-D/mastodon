@@ -1499,8 +1499,9 @@ body > [data-popper-placement] {
   .media-gallery,
   .video-player,
   .audio-player,
-  .attachment-list {
-    margin-top: 16px;
+  .attachment-list,
+  .collection-preview {
+    margin-top: 14px;
   }
 
   .reactions-bar--empty {
@@ -1526,6 +1527,7 @@ body > [data-popper-placement] {
     & > .more-from-author,
     & > .status-card,
     & > .reactions-bar,
+    & > .collection-preview,
     & > .hashtag-bar,
     & > .content-warning,
     & > .filter-warning,
@@ -1806,7 +1808,8 @@ body > [data-popper-placement] {
 
   .media-gallery,
   .video-player,
-  .audio-player {
+  .audio-player,
+  .collection-preview {
     margin-top: 16px;
   }
 
@@ -6411,7 +6414,7 @@ a.status-card {
 
   &__top {
     border-radius: 16px 16px 0 0;
-    border-bottom: 0;
+    border-bottom-width: 0;
     gap: 16px;
   }
 
