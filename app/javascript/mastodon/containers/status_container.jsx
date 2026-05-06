@@ -46,7 +46,7 @@ import { setStatusQuotePolicy } from '../actions/statuses_typed';
 import { injectIntl } from '../components/intl';
 import Status from '../components/status';
 import { deleteModal } from '../initial_state';
-import { makeGetStatus, makeGetPictureInPicture, makeCustomEmojiMap } from '../selectors';
+import { makeGetStatus, makeGetPictureInPicture } from '../selectors';
 
 const makeMapStateToProps = () => {
   const getStatus = makeGetStatus();
@@ -56,7 +56,6 @@ const makeMapStateToProps = () => {
     status: getStatus(state, props),
     nextInReplyToId: props.nextId ? state.getIn(['statuses', props.nextId, 'in_reply_to_id']) : null,
     pictureInPicture: getPictureInPicture(state, props),
-    emojiMap: makeCustomEmojiMap(state),
   });
 
   return mapStateToProps;

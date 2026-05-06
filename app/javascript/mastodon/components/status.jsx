@@ -15,6 +15,7 @@ import { FilterWarning } from 'mastodon/components/filter_warning';
 import { Icon }  from 'mastodon/components/icon';
 import { PictureInPicturePlaceholder } from 'mastodon/components/picture_in_picture_placeholder';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
+import { useCustomEmojis } from 'mastodon/hooks/useCustomEmojis';
 import { withOptionalRouter, WithOptionalRouterPropTypes } from 'mastodon/utils/react_router';
 
 import Card from '../features/status/components/card';
@@ -674,4 +675,9 @@ class Status extends ImmutablePureComponent {
 
 }
 
-export default withOptionalRouter(injectIntl((withIdentity(Status))));
+const StatusWithEmojis = (props) => {
+  const emojiMap = useCustomEmojis();
+  return <Status {...props} emojiMap={emojiMap} />;
+};
+
+export default withOptionalRouter(injectIntl(withIdentity(StatusWithEmojis)));

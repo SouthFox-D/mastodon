@@ -123,11 +123,3 @@ export const makeGetReport = () => createSelector([
   (_, base) => base,
   (state, _, targetAccountId) => state.getIn(['accounts', targetAccountId]),
 ], (base, targetAccount) => base.set('target_account', targetAccount));
-
-export const makeCustomEmojiMap = createSelector(
-  [state => state.get('custom_emojis')],
-  items => items.reduce(
-    (map, emoji) => map.set(emoji.get('shortcode'), emoji),
-    ImmutableMap(),
-  ),
-);
