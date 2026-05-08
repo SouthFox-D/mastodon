@@ -9,7 +9,7 @@ class UnreactService < BaseService
 
     reaction.destroy!
 
-    json = Oj.dump(serialize_payload(reaction, ActivityPub::UndoEmojiReactionSerializer))
+    json = serialize_payload(reaction, ActivityPub::UndoEmojiReactionSerializer).to_json
     if status.account.local?
       ActivityPub::RawDistributionWorker.perform_async(json, status.account.id)
     else
