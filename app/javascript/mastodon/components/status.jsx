@@ -575,7 +575,7 @@ class Status extends ImmutablePureComponent {
       ).find((item) => compareUrls(item.get('url'), cardUrl));
   
       if (taggedCollection) {
-        media = <CollectionPreviewCard collection={taggedCollection} />;
+        media = <CollectionPreviewCard collection={taggedCollection.toJS()} />;
       } else {
         media = (
           <Card
