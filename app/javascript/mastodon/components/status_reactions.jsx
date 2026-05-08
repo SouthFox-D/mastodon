@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 
 import classNames from 'classnames';
@@ -10,7 +10,7 @@ import { animated, useTransition } from '@react-spring/web';
 import { AnimatedNumber } from '@/mastodon/components/animated_number';
 import { Emoji } from '@/mastodon/components/emoji';
 import { isUnicodeEmoji } from '@/mastodon/features/emoji/utils';
-import { reduceMotion } from '@/mastodon/initial_state';
+import { autoPlayGif, reduceMotion } from '@/mastodon/initial_state';
 
 const StatusReactions = ({
   statusId,
@@ -75,6 +75,13 @@ const Reaction = ({
   style,
 }) => {
   const name = reaction.get('name');
+  const url = reaction.get('url');
+  const staticUrl = reaction.get('static_url');
+  const me = reaction.get('me');
+
+  const [hovered, setHovered] = useState(false);
+  const handleMouseEnter = useCallback(() => setHovered(true), []);
+  const handleMouseLeave = useCallback(() => setHovered(false), []);
 
   const handleClick = useCallback(() => {
     if (!canReact) return;
@@ -86,17 +93,30 @@ const Reaction = ({
     }
   }, [canReact, reaction, removeReaction, addReaction, statusId, name]);
 
-  const code = isUnicodeEmoji(name) ? name : `:${name}:`;
+  const isCustom = !!url;
 
   return (
     <animated.button
       type='button'
-      className={classNames('reactions-bar__item', { active: reaction.get('me') })}
+      className={classNames('reactions-bar__item', { active: me })}
       onClick={handleClick}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       style={style}
     >
       <span className='reactions-bar__item__emoji'>
-        <Emoji code={code} />
+        {isCustom ? (
+          <img
+            draggable='false'
+            className='emojione custom-emoji'
+            alt={`:${name}:`}
+            title={`:${name}:`}
+            src={(autoPlayGif || hovered) ? url : staticUrl}
+            loading='lazy'
+          />
+        ) : (
+          <Emoji code={name} />
+        )}
       </span>
       <span className='reactions-bar__item__count'>
         <AnimatedNumber value={reaction.get('count')} />
