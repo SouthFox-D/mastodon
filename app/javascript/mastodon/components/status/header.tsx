@@ -61,23 +61,24 @@ export const StatusHeader: FC<StatusHeaderProps> = ({
           status={status}
           mediaIcons={mediaIcons}
         />
-        <StatusDisplayName
+      </div>
+
+      <StatusDisplayName
           statusAccount={statusAccount}
           friendAccount={account}
           avatarSize={avatarSize}
-        />
+      />
 
-        {contentBeforeDate}
+      {contentBeforeDate}
 
-        <Link
+      <Link
           to={`/@${statusAccount?.acct}/${status.get('id') as string}`}
           className='status__relative-time'
-         >
+          >
           <StatusVisibility visibility={status.get('visibility')} />
           <RelativeTimestamp timestamp={status.get('created_at') as string} />
           {editedAt && <StatusEditedAt editedAt={editedAt} />}
-        </Link>
-      </div>
+      </Link>
 
       {contentAfterDate}
     </div>
