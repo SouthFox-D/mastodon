@@ -22,7 +22,7 @@ const messages = defineMessages({
 });
 
 const mapStateToProps = state => ({
-  server: state.getIn(['server', 'server']),
+  server: state.server.server,
 });
 
 class ServerBanner extends PureComponent {
@@ -40,7 +40,7 @@ class ServerBanner extends PureComponent {
 
   render () {
     const { server, intl } = this.props;
-    const isLoading = server.get('isLoading');
+    const isLoading = server.isLoading;
 
     return (
       <div className='server-banner'>
@@ -50,8 +50,8 @@ class ServerBanner extends PureComponent {
 
         <NavLink to='/about'>
           <ServerHeroImage
-            blurhash={server.getIn(['thumbnail', 'blurhash'])}
-            src={server.getIn(['thumbnail', 'url'])}
+            blurhash={server.item?.thumbnail.blurhash}
+            src={server.item?.thumbnail.url}
             alt={intl.formatMessage(messages.aboutThisServer)}
             className='server-banner__hero'
           />
@@ -66,16 +66,33 @@ class ServerBanner extends PureComponent {
               <br />
               <Skeleton width='70%' />
             </>
-          ) : server.get('description')}
+          ) : server.item?.description}
         </div>
 
         <div className='server-banner__meta'>
           <div className='server-banner__meta__column'>
             <h4><FormattedMessage id='server_banner.administered_by' defaultMessage='Administered by:' /></h4>
 
-            <Account id={server.getIn(['contact', 'account', 'id'])} size={36} minimal />
+            <Account id={server.item?.contact.account?.id} size={36} minimal />
           </div>
 
+          <div className='server-banner__meta__column'>
+            <h4><FormattedMessage id='server_banner.server_stats' defaultMessage='Server stats:' /></h4>
+
+            {isLoading ? (
+              <>
+                <strong className='server-banner__number'><Skeleton width='10ch' /></strong>
+                <br />
+                <span className='server-banner__number-label'><Skeleton width='5ch' /></span>
+              </>
+            ) : (
+              <>
+                <strong className='server-banner__number'><ShortNumber value={server.item?.usage.users.active_month} /></strong>
+                <br />
+                <span className='server-banner__number-label' title={intl.formatMessage(messages.aboutActiveUsers)}><FormattedMessage id='server_banner.active_users' defaultMessage='active users' /></span>
+              </>
+            )}
+          </div>
         </div>
       </div>
     );

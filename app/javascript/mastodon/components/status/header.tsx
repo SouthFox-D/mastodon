@@ -22,7 +22,8 @@ export interface StatusHeaderProps {
   account?: Account;
   avatarSize?: number;
   mediaIcons?: string[];
-  children?: ReactNode;
+  contentBeforeDate?: ReactNode;
+  contentAfterDate?: ReactNode;
   wrapperProps?: HTMLAttributes<HTMLDivElement>;
   displayNameProps?: DisplayNameProps;
   onHeaderClick?: MouseEventHandler<HTMLDivElement>;
@@ -35,11 +36,12 @@ export type StatusHeaderRenderFn = (args: StatusHeaderProps) => ReactNode;
 export const StatusHeader: FC<StatusHeaderProps> = ({
   status,
   account,
-  children,
   className,
   mediaIcons,
   avatarSize = 48,
   wrapperProps,
+  contentBeforeDate,
+  contentAfterDate,
   onHeaderClick,
 }) => {
   const statusAccount = status.get('account') as Account | undefined;
@@ -59,6 +61,14 @@ export const StatusHeader: FC<StatusHeaderProps> = ({
           status={status}
           mediaIcons={mediaIcons}
         />
+        <StatusDisplayName
+          statusAccount={statusAccount}
+          friendAccount={account}
+          avatarSize={avatarSize}
+        />
+
+        {contentBeforeDate}
+
         <Link
           to={`/@${statusAccount?.acct}/${status.get('id') as string}`}
           className='status__relative-time'
@@ -69,13 +79,7 @@ export const StatusHeader: FC<StatusHeaderProps> = ({
         </Link>
       </div>
 
-      <StatusDisplayName
-        statusAccount={statusAccount}
-        friendAccount={account}
-        avatarSize={avatarSize}
-      />
-
-      {children}
+      {contentAfterDate}
     </div>
   );
 };
