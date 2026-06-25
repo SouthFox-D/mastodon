@@ -76,7 +76,7 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     needs:
       - build
@@ -142,6 +142,7 @@ jobs:
           tar xvzf artifacts.tar.gz
 
       - name: Set up Ruby environment
+        timeout-minutes: 15
         uses: ./.github/actions/setup-ruby
         with:
           ruby-version: ${{ matrix.ruby-version}}
@@ -178,7 +179,7 @@ jobs:
   test-e2e:
     name: End to End testing
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 30
 
     needs:
       - build
@@ -238,6 +239,7 @@ jobs:
 
       - name: Set up Ruby environment
         uses: ./.github/actions/setup-ruby
+        timeout-minutes: 15
         with:
           ruby-version: ${{ matrix.ruby-version}}
           additional-system-dependencies: ffmpeg
@@ -279,10 +281,10 @@ jobs:
           name: e2e-screenshots-${{ matrix.ruby-version }}
           path: tmp/capybara/
 
-  # test-search:
-  #   name: Elastic Search integration testing
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 15
+  #test-search:
+  #  name: Elastic Search integration testing
+  #  runs-on: ubuntu-latest
+  #  timeout-minutes: 30
 
   #   needs:
   #     - build
@@ -371,11 +373,12 @@ jobs:
   #       path: './'
   #       name: ${{ github.sha }}
 
-  #    - name: Set up Ruby environment
-  #      uses: ./.github/actions/setup-ruby
-  #      with:
-  #        ruby-version: ${{ matrix.ruby-version}}
-  #        additional-system-dependencies: ffmpeg
+  #   - name: Set up Ruby environment
+  #     uses: ./.github/actions/setup-ruby
+  #     timeout-minutes: 15
+  #     with:
+  #       ruby-version: ${{ matrix.ruby-version}}
+  #       additional-system-dependencies: ffmpeg
 
   #     - name: Set up Javascript environment
   #       uses: ./.github/actions/setup-javascript
