@@ -49,10 +49,21 @@ LanguageIcon.propTypes = {
 class StatusIcons extends React.PureComponent {
 
   static propTypes = {
-    status: ImmutablePropTypes.map.isRequired,
+    status: PropTypes.oneOfType([
+      ImmutablePropTypes.map,
+      PropTypes.object,
+    ]).isRequired,
     mediaIcons: PropTypes.arrayOf(PropTypes.string),
     intl: PropTypes.object.isRequired,
   };
+
+  getStatusValue(key, defaultValue) {
+    const { status } = this.props;
+    if (typeof status.get === 'function') {
+      return status.get(key, defaultValue);
+    }
+    return status[key] !== undefined ? status[key] : defaultValue;
+  }
 
   mediaIconTitleText (mediaIcon) {
     const { intl } = this.props;
@@ -116,8 +127,8 @@ class StatusIcons extends React.PureComponent {
 
     return (
       <>
-        {status.get('language') && <LanguageIcon language={status.get('language')} />}
-        {status.get('in_reply_to_id', null) !== null ? (
+        {this.getStatusValue('language') && <LanguageIcon language={this.getStatusValue('language')} />}
+        {this.getStatusValue('in_reply_to_id', null) !== null ? (
           <Icon
             className='status__reply-icon'
             fixedWidth
