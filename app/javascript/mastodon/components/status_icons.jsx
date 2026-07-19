@@ -11,7 +11,7 @@ import ImageIcon from '@/material-icons/400-24px/image.svg?react';
 import InsertChartIcon from '@/material-icons/400-24px/insert_chart.svg?react';
 import LinkIcon from '@/material-icons/400-24px/link.svg?react';
 import MovieIcon from '@/material-icons/400-24px/movie.svg?react';
-import MusicNoteIcon from '@/material-icons/400-24px/music_note.svg?react';
+import VolumeUpIcon from '@/material-icons/400-24px/volume_up.svg?react';
 import { Icon } from './icon';
 import { languages } from '../initial_state';
 
@@ -100,7 +100,7 @@ class StatusIcons extends React.PureComponent {
       iconComponent = MovieIcon;
       break;
     case 'music':
-      iconComponent = MusicNoteIcon;
+      iconComponent = VolumeUpIcon;
       break;
     }
 
