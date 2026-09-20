@@ -5,39 +5,39 @@ import { defineMessages, FormattedMessage } from 'react-intl';
 import classNames from 'classnames';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import ImmutablePureComponent from 'react-immutable-pure-component';
+import { ImmutablePureComponent } from 'react-immutable-pure-component';
 
 import AlternateEmailIcon from '@/material-icons/400-24px/alternate_email.svg?react';
 import RepeatIcon from '@/material-icons/400-24px/repeat.svg?react';
-import { Hotkeys } from 'mastodon/components/hotkeys';
-import { ContentWarning } from 'mastodon/components/content_warning';
-import { FilterWarning } from 'mastodon/components/filter_warning';
-import { Icon }  from 'mastodon/components/icon';
-import { PictureInPicturePlaceholder } from 'mastodon/components/picture_in_picture_placeholder';
+import { Hotkeys } from '@/mastodon/components/hotkeys';
+import { Icon }  from '@/mastodon/components/icon';
+import { PictureInPicturePlaceholder } from './picture_in_picture_placeholder';
+import { IdentityConsumer } from '../../../features/ui/util/identity_consumer';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { useCustomEmojis } from 'mastodon/hooks/useCustomEmojis';
-import { withOptionalRouter, WithOptionalRouterPropTypes } from 'mastodon/utils/react_router';
+import { withOptionalRouter, WithOptionalRouterPropTypes } from '@/mastodon/utils/react_router';
 
-import Card from '../features/status/components/card';
+import Card from '@/mastodon/features/status/components/card';
 // We use the component (and not the container) since we do not want
 // to use the progress bar to show download progress
-import Bundle from '../features/ui/components/bundle';
-import { MediaGallery, Video, Audio } from '../features/ui/util/async-components';
-import { IdentityConsumer } from '../features/ui/util/identity_consumer';
-import { SensitiveMediaContext } from '../features/ui/util/sensitive_media_context';
-import { displayMedia, visibleReactions } from '../initial_state';
+import Bundle from '@/mastodon/features/ui/components/bundle';
+import { MediaGallery, Video, Audio } from '@/mastodon/features/ui/util/async-components';
+import { SensitiveMediaContext } from '@/mastodon/features/ui/util/sensitive_media_context';
+import { displayMedia, visibleReactions } from '@/mastodon/initial_state';
+import { CollectionPreviewCard } from '@/mastodon/features/collections/components/collection_preview_card';
+import { compareUrls } from '@/mastodon/utils/compare_urls';
+import { FOCUS_TARGET } from '@/mastodon/components/navigation_focus_target';
+import { LinkedDisplayName } from '@/mastodon/components/display_name';
 
-import { injectIntl } from './intl';
-import { StatusHeader } from './status/header'
-import { LinkedDisplayName } from './display_name';
+import { injectIntl } from '../../intl';
+import { ContentWarning } from './content_warning';
+import { FilterWarning } from './filter_warning';
+import { StatusHeader } from './header'
 import { getHashtagBarForStatus } from './hashtag_bar';
-import StatusActionBar from './status_action_bar';
-import StatusContent from './status_content';
+import StatusActionBar from './action_bar';
+import StatusContent from './content';
 import StatusReactions from './status_reactions';
-import { StatusThreadLabel } from './status_thread_label';
-import { CollectionPreviewCard } from '../features/collections/components/collection_preview_card';
-import { compareUrls } from '../utils/compare_urls';
-import { FOCUS_TARGET } from './navigation_focus_target';
+import { StatusThreadLabel } from './thread_label';
 
 const domParser = new DOMParser();
 

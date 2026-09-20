@@ -5,7 +5,7 @@ import { defineMessages } from 'react-intl';
 import { withRouter } from 'react-router-dom';
 
 import ImmutablePropTypes from 'react-immutable-proptypes';
-import ImmutablePureComponent from 'react-immutable-pure-component';
+import { ImmutablePureComponent } from 'react-immutable-pure-component';
 import { connect } from 'react-redux';
 
 import BookmarkIcon from '@/material-icons/400-24px/bookmark-fill.svg?react';
@@ -17,17 +17,17 @@ import StarIcon from '@/material-icons/400-24px/star-fill.svg?react';
 import StarBorderIcon from '@/material-icons/400-24px/star.svg?react';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../../features/compose/containers/emoji_picker_dropdown_container';
+import EmojiPickerDropdown from '../../../../features/compose/containers/emoji_picker_dropdown_container';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
-import { Dropdown } from 'mastodon/components/dropdown_menu';
-import { me, maxReactions, quickBoosting } from '../../initial_state';
+import { Dropdown } from '@/mastodon/components/dropdown_menu';
+import { me, maxReactions, quickBoosting } from '@/mastodon/initial_state';
 
-import { IconButton } from '../icon_button';
-import { injectIntl } from '../intl';
-import { BoostButton } from '../status/boost_button';
+import { IconButton } from '@/mastodon/components/icon_button';
+import { injectIntl } from '@/mastodon/components/intl';
+import { BoostButton } from '../boost_button';
 import { RemoveQuoteHint } from './remove_quote_hint';
-import { quoteItemState } from '../status/boost_button_utils';
+import { quoteItemState } from '../../boost_button_utils';
 import { selectStatusConditions } from '@/mastodon/selectors/statuses';
 
 

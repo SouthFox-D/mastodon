@@ -18,10 +18,10 @@ import { identityContextPropShape, withIdentity } from 'mastodon/identity_contex
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
 import EmojiPickerDropdown from '../../compose/containers/emoji_picker_dropdown_container';
 
-import { IconButton } from '../../../components/icon_button';
+import { IconButton } from '@/mastodon/components/icon_button';
 import { Dropdown } from 'mastodon/components/dropdown_menu';
-import { me, maxReactions, quickBoosting } from '../../../initial_state';
-import { BoostButton } from '@/mastodon/components/status/boost_button';
+import { me, maxReactions, quickBoosting } from '@/mastodon/initial_state';
+import { BoostButton } from '@/mastodon/components/status/legacy/boost_button';
 import { quoteItemState } from '@/mastodon/components/status/boost_button_utils';
 import { selectStatusConditions } from '@/mastodon/selectors/statuses';
 
