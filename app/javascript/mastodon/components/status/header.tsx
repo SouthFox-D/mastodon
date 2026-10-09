@@ -18,7 +18,7 @@ import { VisibilityIcon } from '../visibility_icon';
 import { Skeleton } from '../skeleton';
 
 import classes from './header.module.scss';
-import { statusLink } from './utils';
+import { accountStatusLinkProps, statusLink } from './utils';
 
 interface StatusRedesignHeaderProps {
   status: Pick<
@@ -49,21 +49,12 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
   );
 
   const handleId = useId();
-  const accountLinkProps = {
-    to: {
-      pathname: `/@${account.acct}`,
-      state: { reference: 'status' },
-    },
-    title: `@${account.acct}`,
-    'data-id': account.id,
-    'data-hover-card-account': account.id,
-    'data-hover-card-reference': 'status',
-  };
+  const accountLinkProps = accountStatusLinkProps(account);
 
   let displayName = (
     <Link
       {...accountLinkProps}
-      className={classes.headerNameLink}
+      className={classes.nameLink}
       aria-describedby={handleId}
     >
       <DisplayName account={account} variant='noDomain' />
@@ -111,12 +102,12 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
   }
 
   return (
-    <header className={classNames(className, classes.header)}>
+    <header className={classNames(className, classes.root)}>
       <Link
         {...accountLinkProps}
         role='presentation'
         tabIndex={-1}
-        className={classes.headerAvatar}
+        className={classes.avatar}
       >
         <div className='status__info__icons'>
             <StatusIcons
@@ -128,7 +119,7 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
       </Link>
 
       <div>
-        <p className={classes.headerName}>
+        <p className={classes.name}>
           {displayName}
           &bull;
           <Link
@@ -136,12 +127,13 @@ export const StatusRedesignHeader: React.FC<StatusRedesignHeaderProps> = ({
               pathname: statusLink(status),
               state: { reference: 'status' },
             }}
+            className={classes.date}
           >
             <RelativeTimestamp timestamp={status.created_at} />
           </Link>
         </p>
 
-        <p className={classes.headerHandle}>
+        <p className={classes.handle}>
           <Link
             {...accountLinkProps}
             role='presentation'
