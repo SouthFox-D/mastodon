@@ -72,7 +72,7 @@ const mapDispatchToProps = (dispatch, { contextType }) => ({
   },
 
   onQuote (status) {
-    dispatch(quoteComposeById(status.get('id')));
+    dispatch(quoteComposeById({ statusId: status.get('id') }));
   },
 
   onFavourite (status) {

@@ -315,7 +315,7 @@ class Status extends ImmutablePureComponent {
   handleQuote = (status) => {
     const { dispatch } = this.props;
 
-    dispatch(quoteComposeById(status.get('id')));
+    dispatch(quoteComposeById({ statusId: status.get('id') }));
   };
 
   handleEditClick = (status) => {
@@ -452,7 +452,7 @@ class Status extends ImmutablePureComponent {
   };
 
   handleHotkeyQuote = () => {
-    this.props.dispatch(quoteComposeById(this.props.status.get('id')));
+    this.props.dispatch(quoteComposeById({ statusId: this.props.status.get('id') }));
   };
 
   handleHotkeyMention = e => {

@@ -1,7 +1,20 @@
-default: styles/application.scss
-modern-dark: styles/modern-dark.scss
-modern-light: styles/modern-light.scss
-modern-contrast: styles/modern-contrast.scss
-mastodon-bird-ui-dark: styles/mastodon-bird-ui-dark.scss
-mastodon-bird-ui-light: styles/mastodon-bird-ui-light.scss
-mastodon-bird-ui-contrast: styles/mastodon-bird-ui-contrast.scss
+default:
+  path: styles/application.scss
+  colors:
+    - indigo
+    - lime
+    - pink
+    - orange
+    - cyan
+modern-dark:
+  path: styles/modern-dark.scss
+modern-light:
+  path: styles/modern-light.scss
+modern-contrast:
+  path: styles/modern-contrast.scss
+mastodon-bird-ui-dark:
+  path: styles/mastodon-bird-ui-dark.scss
+mastodon-bird-ui-light:
+  path: styles/mastodon-bird-ui-light.scss
+mastodon-bird-ui-contrast:
+  path: styles/mastodon-bird-ui-contrast.scss
