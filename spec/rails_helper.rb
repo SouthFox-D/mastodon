@@ -13,6 +13,8 @@ abort('The Rails environment is running in production mode!') if Rails.env.produ
 
 require 'spec_helper'
 require 'rspec/rails'
+require 'shoulda/matchers'
+require 'shoulda/matchers/integrations/rails'
 require 'webmock/rspec'
 require 'paperclip/matchers'
 require 'capybara/rspec'
@@ -75,6 +77,7 @@ RSpec.configure do |config|
     metadata[:search] = true
   end
 
+  config.include Capybara::RSpecMatchers, type: :request
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Devise::Test::ControllerHelpers, type: :helper
   config.include Devise::Test::ControllerHelpers, type: :view
