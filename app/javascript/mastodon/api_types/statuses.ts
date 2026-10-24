@@ -82,6 +82,14 @@ export interface ApiFilterResultJSON {
   status_matches: string[];
 }
 
+export interface ApiStatusReactionJSON {
+  name: string;
+  count: number;
+  me?: boolean;
+  url?: string;
+  static_url?: string;
+}
+
 export interface ApiStatusJSON {
   id: string;
   created_at: string;
@@ -104,6 +112,8 @@ export interface ApiStatusJSON {
   muted?: boolean;
   bookmarked?: boolean;
   pinned?: boolean;
+
+  reactions?: ApiStatusReactionJSON[];
 
   filtered?: ApiFilterResultJSON[];
   content?: string;

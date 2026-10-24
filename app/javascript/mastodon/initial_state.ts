@@ -26,7 +26,7 @@ interface InitialStateMeta {
   limited_federation_mode: boolean;
   locale: string;
   mascot: string | null;
-  maxReactions: number;
+  max_reactions: number;
   me?: string;
   moved_to_account_id?: string;
   owner?: string;
@@ -50,7 +50,7 @@ interface InitialStateMeta {
   use_blurhash: boolean;
   use_pending_items?: boolean;
   version: string;
-  visibleReactions: number;
+  visible_reactions: number;
   sso_redirect: string;
   status_page_url: string;
   terms_of_service_enabled: boolean;
@@ -86,6 +86,7 @@ export interface InitialState {
   languages: InitialStateLanguage[];
   compose: InitialStateCompose;
   critical_updates_pending?: boolean;
+  max_reactions: number;
   meta: InitialStateMeta;
   role?: IntialStateRole;
   features: string[];

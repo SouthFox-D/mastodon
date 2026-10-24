@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { PureComponent } from 'react';
+import { cloneElement, PureComponent } from 'react';
 
 import { defineMessages, FormattedMessage } from 'react-intl';
 
@@ -288,6 +288,7 @@ class EmojiPickerDropdown extends PureComponent {
     onSkinTone: PropTypes.func.isRequired,
     skinTone: PropTypes.number.isRequired,
     disabled: PropTypes.bool,
+    button: PropTypes.node,
   };
 
   state = {
@@ -335,22 +336,31 @@ class EmojiPickerDropdown extends PureComponent {
   };
 
   render() {
-    const { intl, onPickEmoji, onSkinTone, skinTone, frequentlyUsedEmojis, disabled } = this.props;
+    const { intl, onPickEmoji, onSkinTone, skinTone, frequentlyUsedEmojis, disabled, button } = this.props;
     const title = intl.formatMessage(messages.emoji);
     const { active, loading, target } = this.state;
 
     return (
       <div className='emoji-picker-dropdown' ref={this.setTargetRef}>
-        <IconButton
-          title={title}
-          aria-expanded={active}
-          active={active}
-          iconComponent={MoodIcon}
-          onClick={this.onToggle}
-          disabled={disabled}
-          id="emoji"
-          inverted
-        />
+        {button ? (
+          cloneElement(button, {
+            onClick: this.onToggle,
+            'aria-expanded': active,
+            'aria-haspopup': 'menu',
+            disabled,
+          })
+        ) : (
+          <IconButton
+            title={title}
+            aria-expanded={active}
+            active={active}
+            iconComponent={MoodIcon}
+            onClick={this.onToggle}
+            disabled={disabled}
+            id="emoji"
+            inverted
+          />
+        )}
 
         <Popover
           isOpen={active}

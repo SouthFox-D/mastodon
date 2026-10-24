@@ -23,6 +23,7 @@ import type {
   ApiPreviewCardAuthorJSON,
   ApiPreviewCardJSON,
   ApiStatusHistoryJSON,
+  ApiStatusReactionJSON,
   ApiStatusTranslationJSON,
   ApiTagJSON,
   StatusVisibility,
@@ -82,6 +83,7 @@ export interface StatusShape {
   favourites_count: number;
   quote_approval: ApiQuotePolicyJSON | null;
   quotes_count: number;
+  reactions?: ApiStatusReactionJSON[];
   reblogged: boolean;
   reblogs_count: number;
   replies_count: number;

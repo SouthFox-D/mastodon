@@ -2,13 +2,17 @@ import { useCallback } from 'react';
 
 import { FormattedMessage } from 'react-intl';
 
-import { DotsThreeIcon, ShareFatIcon } from '@phosphor-icons/react';
+import { DotsThreeIcon, ShareFatIcon, SmileyIcon } from '@phosphor-icons/react';
 
-import { statusInteraction } from '@/mastodon/actions/interactions';
+import {
+  addReaction,
+  statusInteraction,
+} from '@/mastodon/actions/interactions';
 import { fetchStatus } from '@/mastodon/actions/statuses';
+import EmojiPickerDropdown from '@/mastodon/features/compose/containers/emoji_picker_dropdown_container';
 import { useCurrentAccountId } from '@/mastodon/hooks/useAccountId';
 import { useAccountStatus } from '@/mastodon/hooks/useStatus';
-import { quickBoosting } from '@/mastodon/initial_state';
+import { maxReactions, quickBoosting } from '@/mastodon/initial_state';
 import type { AccountStatusShape } from '@/mastodon/models/status';
 import { useAppDispatch, useAppSelector } from '@/mastodon/store';
 
@@ -78,6 +82,16 @@ export const StatusActionBar: React.FC<StatusActionBarProps> = ({
 
   const { reply, like, bookmark } = useStatusIcons(statusId);
 
+  const handleReactionPick = useCallback(
+    (emoji: { native?: string; id?: string; imageUrl?: string }) => {
+      const name = emoji.native?.replace(/:/g, '') ?? emoji.id;
+      if (name) {
+        dispatch(addReaction(statusId, name, emoji.imageUrl));
+      }
+    },
+    [dispatch, statusId],
+  );
+
   if (!status) {
     return null;
   }
@@ -88,6 +102,12 @@ export const StatusActionBar: React.FC<StatusActionBarProps> = ({
   const isQuotingMe = quotedAccountId === currentAccountId;
   const shouldShowQuoteRemovalHint =
     isQuotingMe && contextType === 'notifications';
+
+  const signedIn = !!currentAccountId;
+  const canAddReaction =
+    signedIn &&
+    (status.reactions?.filter((reaction) => reaction.me).length ?? 0) <
+      maxReactions;
 
   return (
     <div className={classes.actions}>
@@ -138,6 +158,18 @@ export const StatusActionBar: React.FC<StatusActionBarProps> = ({
       >
         {bookmark.title}
       </ToggleIconButton>
+
+      {signedIn && (
+        <EmojiPickerDropdown
+          onPickEmoji={handleReactionPick}
+          disabled={!canAddReaction}
+          button={
+            <IconButton size='sm' variant='ghost' icon={SmileyIcon}>
+              <FormattedMessage id='status.react' defaultMessage='React' />
+            </IconButton>
+          }
+        />
+      )}
 
       <RemoveQuoteHint
         className='status__action-bar__button-wrapper'

@@ -4,6 +4,7 @@ import classNames from 'classnames';
 
 import type { Merge } from 'type-fest';
 
+import { visibleReactions } from '@/mastodon/initial_state';
 import type { ExpandedStatusShape } from '@/mastodon/models/status';
 import { selectStatusLoadingState } from '@/mastodon/selectors/statuses';
 import { createAppSelector, useAppSelector } from '@/mastodon/store';
@@ -30,6 +31,7 @@ import {
 import { computeHashtagBarForStatus } from './legacy/hashtag_bar';
 import { StatusMeta } from './meta';
 import { StatusPrepend } from './prepend';
+import { StatusReactionsBar } from './reactions_bar';
 import classes from './styles.module.scss';
 import { TranslateButton } from './translate';
 import type { StatusContainerProps, StatusContextType } from './types';
@@ -251,6 +253,13 @@ export const StatusRedesign: React.FC<StatusRedesignProps> = ({
             accountId={status.account.id}
           />
         </div>
+
+        <StatusReactionsBar
+          className={classes.reactions}
+          statusId={status.id}
+          reactions={status.reactions}
+          numVisible={variant === 'page' ? undefined : visibleReactions}
+        />
 
         {(variant === 'page' || (showActions && !isQuotedPost)) && (
           <footer className={classes.footer}>

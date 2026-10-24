@@ -1493,6 +1493,7 @@
   "status.replies_count": "{count, plural, other {{counter} 条回复}}",
   "status.reply": "回复",
   "status.replyAll": "回复此嘟文串",
+  "status.react": "贴表情回应",
   "status.replying_to": "回复 {name}",
   "status.replying_to_thread": "回复嘟文串",
   "status.report": "举报 @{name}",

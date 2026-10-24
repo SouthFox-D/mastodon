@@ -1493,6 +1493,7 @@
   "status.replies_count": "{count, plural, other {{counter} 則回嘟}}",
   "status.reply": "回覆",
   "status.replyAll": "回覆討論串",
+  "status.react": "加入表情反應",
   "status.replying_to": "回覆 {name}",
   "status.replying_to_thread": "於討論串中回覆",
   "status.report": "檢舉 @{name}",

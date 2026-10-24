@@ -732,6 +732,7 @@
   "status.replied_to": "回覆 {name}",
   "status.reply": "回應",
   "status.replyAll": "回應所有人",
+  "status.react": "表情反應",
   "status.report": "舉報 @{name}",
   "status.sensitive_warning": "敏感內容",
   "status.share": "分享",
