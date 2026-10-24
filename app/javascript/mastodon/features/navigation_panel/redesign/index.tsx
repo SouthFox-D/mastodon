@@ -190,8 +190,8 @@ export const RedesignNavigationPanel: React.FC<{
             <NavigationLink to='/home' iconComponent={HouseIcon}>
               <FormattedMessage id='tabs_bar.home' defaultMessage='Home' />
             </NavigationLink>
-            <ExploreLink />
             <PublicFeedsLink />
+            <ExploreLink />
 
             {isAdmin && (
               <NavigationLink
@@ -418,7 +418,7 @@ const PublicFeedsLink: React.FC = () => {
 
   return (
     <NavigationLink
-      to={canViewLocalFeed ? '/public/local' : '/public/remote'}
+      to={canViewLocalFeed ? '/public' : '/public/remote'}
       iconComponent={FediIcon}
       isActive={isFediverseFeedsLinkActive}
     >
