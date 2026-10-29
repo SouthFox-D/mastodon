@@ -11,12 +11,12 @@ import { connect } from 'react-redux';
 import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../../../../features/compose/containers/emoji_picker_dropdown_container';
 import { WithRouterPropTypes } from 'mastodon/utils/react_router';
 
 import { Dropdown } from '@/mastodon/components/dropdown_menu';
 import { me, maxReactions, quickBoosting } from '@/mastodon/initial_state';
 
+import { EmojiPickerTrigger } from '@/mastodon/components/emoji/picker_trigger';
 import { IconButton } from '@/mastodon/components/icon_button';
 import { injectIntl } from '@/mastodon/components/intl';
 import { BoostButton } from '../boost_button';
@@ -261,8 +261,6 @@ class StatusActionBar extends ImmutablePureComponent {
     navigator.clipboard.writeText(url);
   };
 
-  handleNoOp = () => {} // hack for reaction add button
-
   render () {
     const { status, relationship, statusQuoteState, quotedAccountId, contextType, intl, withDismiss, withCounters, scrollKey } = this.props;
     const { signedIn, permissions } = this.props.identity;
@@ -401,7 +399,6 @@ class StatusActionBar extends ImmutablePureComponent {
     const reactButton = (
       <IconButton
         className='status__action-bar-button'
-        onClick={this.handleNoOp} // EmojiPickerDropdown handles that
         title={intl.formatMessage(messages.react)}
         disabled={!canReact}
         icon='plus'
@@ -426,11 +423,15 @@ class StatusActionBar extends ImmutablePureComponent {
           <IconButton className='status__action-bar__button star-icon' animate active={status.get('favourited')} title={favouriteTitle} icon='star' iconComponent={status.get('favourited') ? StatusLikeActiveIcon : StatusLikeIcon} onClick={this.handleFavouriteClick} counter={withCounters ? status.get('favourites_count') : undefined} />
         </div>
         <div className='status__action-bar__button-wrapper'>
-          {
-          signedIn
-              ? <EmojiPickerDropdown className='status__action-bar-button' onPickEmoji={this.handleEmojiPick} button={reactButton} disabled={!canReact} />
-              : reactButton
-          }
+          {signedIn
+            ? (
+              <EmojiPickerTrigger
+                onPick={this.handleEmojiPick}
+                disabled={!canReact}
+                button={reactButton}
+              />
+            )
+            : reactButton}
         </div>
         <div className='status__action-bar__button-wrapper'>
           <IconButton className='status__action-bar__button bookmark-icon' disabled={!signedIn} active={status.get('bookmarked')} title={bookmarkTitle} icon='bookmark' iconComponent={status.get('bookmarked') ? StatusBookmarkActiveIcon : StatusBookmarkIcon} onClick={this.handleBookmarkClick} />

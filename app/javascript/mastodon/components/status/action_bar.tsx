@@ -9,7 +9,9 @@ import {
   statusInteraction,
 } from '@/mastodon/actions/interactions';
 import { fetchStatus } from '@/mastodon/actions/statuses';
-import EmojiPickerDropdown from '@/mastodon/features/compose/containers/emoji_picker_dropdown_container';
+import type { OnEmojiPick } from '@/mastodon/components/emoji/picker';
+import { emojiToString } from '@/mastodon/components/emoji/picker';
+import { EmojiPickerTrigger } from '@/mastodon/components/emoji/picker_trigger';
 import { useCurrentAccountId } from '@/mastodon/hooks/useAccountId';
 import { useAccountStatus } from '@/mastodon/hooks/useStatus';
 import { maxReactions, quickBoosting } from '@/mastodon/initial_state';
@@ -82,11 +84,17 @@ export const StatusActionBar: React.FC<StatusActionBarProps> = ({
 
   const { reply, like, bookmark } = useStatusIcons(statusId);
 
-  const handleReactionPick = useCallback(
-    (emoji: { native?: string; id?: string; imageUrl?: string }) => {
-      const name = emoji.native?.replace(/:/g, '') ?? emoji.id;
+  const handleReactionPick: OnEmojiPick = useCallback(
+    (emoji) => {
+      const name = emojiToString(emoji).replaceAll(':', '');
       if (name) {
-        dispatch(addReaction(statusId, name, emoji.imageUrl));
+        dispatch(
+          addReaction(
+            statusId,
+            name,
+            'imageUrl' in emoji ? emoji.imageUrl : undefined,
+          ),
+        );
       }
     },
     [dispatch, statusId],
@@ -160,8 +168,8 @@ export const StatusActionBar: React.FC<StatusActionBarProps> = ({
       </ToggleIconButton>
 
       {signedIn && (
-        <EmojiPickerDropdown
-          onPickEmoji={handleReactionPick}
+        <EmojiPickerTrigger
+          onPick={handleReactionPick}
           disabled={!canAddReaction}
           button={
             <IconButton size='sm' variant='ghost' icon={SmileyIcon}>
@@ -234,6 +242,7 @@ const StatusReblogButton: React.FC<{
         size='sm'
         variant='ghost'
         active={boost.active}
+        disabled={boost.disabled && quote.disabled}
         tooltip={{
           type: 'label',
           text: (

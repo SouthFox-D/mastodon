@@ -95,7 +95,7 @@
   gap: 6px;
   font-family: inherit;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: bold;
   letter-spacing: 0;
   line-height: 22px;
   overflow: hidden;
@@ -357,7 +357,7 @@
     display: block;
     width: auto;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   &.copyable {
@@ -563,7 +563,7 @@ body > [data-popover-placement] {
     font-weight: 400;
 
     strong {
-      font-weight: 500;
+      font-weight: bold;
 
       @each $lang in $cjk-langs {
         &:lang(#{$lang}) {
@@ -574,7 +574,7 @@ body > [data-popover-placement] {
 
     a {
       color: var(--color-text-brand);
-      font-weight: 500;
+      font-weight: bold;
       text-decoration: underline;
 
       &:hover,
@@ -734,7 +734,7 @@ body > [data-popover-placement] {
       border-radius: 6px;
       font-size: 12px;
       line-height: 16px;
-      font-weight: 500;
+      font-weight: bold;
       padding: 4px 8px;
       font-family: inherit;
 
@@ -878,7 +878,7 @@ body > [data-popover-placement] {
       &__label {
         flex: 0 0 auto;
         font-size: 11px;
-        font-weight: 500;
+        font-weight: bold;
         line-height: 16px;
         letter-spacing: 0.5px;
         color: var(--color-text-secondary);
@@ -894,7 +894,7 @@ body > [data-popover-placement] {
         border: none;
         padding: 0;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: bold;
         line-height: 20px;
         letter-spacing: 0.1px;
         color: var(--color-text-brand);
@@ -1749,7 +1749,7 @@ body > [data-popover-placement] {
   gap: 8px;
   font-size: 15px;
   line-height: 22px;
-  font-weight: 500;
+  font-weight: bold;
   color: var(--color-text-secondary);
 
   .status__wrapper-reply.status__wrapper--in-thread & {
@@ -1922,7 +1922,7 @@ a.status__relative-time {
 
   .animated-number {
     color: var(--color-text-primary);
-    font-weight: 500;
+    font-weight: bold;
   }
 }
 
@@ -2066,7 +2066,7 @@ a.status__relative-time {
     color: var(--color-text-primary);
     font-size: 15px;
     line-height: 21px;
-    font-weight: 500;
+    font-weight: bold;
   }
 }
 
@@ -2133,7 +2133,7 @@ a.status__relative-time {
     border-radius: 4px;
     border: 0;
     color: var(--color-text-brand);
-    font-weight: 500;
+    font-weight: bold;
     font-size: 12px;
     line-height: 16px;
     padding: 4px 8px;
@@ -2198,7 +2198,7 @@ a.status__relative-time {
         &__label {
           font-size: 11px;
           line-height: 16px;
-          font-weight: 500;
+          font-weight: bold;
         }
 
         &__handle {
@@ -2234,7 +2234,7 @@ a.status__relative-time {
         h6 {
           font-size: 14px;
           line-height: 20px;
-          font-weight: 500;
+          font-weight: bold;
           color: var(--color-text-primary);
         }
       }
@@ -2288,13 +2288,13 @@ a.status__relative-time {
 
   h6 {
     font-size: inherit;
-    font-weight: 500;
+    font-weight: bold;
     line-height: inherit;
     letter-spacing: 0.1px;
   }
 
   .link-button {
-    font-weight: 500;
+    font-weight: bold;
   }
 }
 
@@ -2388,7 +2388,7 @@ a.status__relative-time {
     border-style: solid;
     border-color: var(--color-bg-primary);
     font-size: 11px;
-    font-weight: 500;
+    font-weight: bold;
     text-align: center;
   }
 }
@@ -2585,7 +2585,7 @@ a.account__display-name {
     }
 
     strong {
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
@@ -2627,7 +2627,7 @@ a.account__display-name {
   color: var(--color-text-secondary);
   font-size: 15px;
   line-height: 22px;
-  font-weight: 500;
+  font-weight: bold;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -2675,7 +2675,7 @@ a.account__display-name {
 
 .notification__display-name {
   color: inherit;
-  font-weight: 500;
+  font-weight: bold;
   text-decoration: none;
 
   &:hover {
@@ -2697,7 +2697,7 @@ a.account__display-name {
 }
 
 .display-name__html {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .status__relative-time,
@@ -2729,7 +2729,6 @@ a.account__display-name {
     height: auto;
     outline: 1px solid var(--color-border-media);
     outline-offset: -1px;
-    border-radius: 8px;
     touch-action: none;
     user-select: none;
   }
@@ -2797,7 +2796,7 @@ a.account__display-name {
     &__display-name {
       font-size: 14px;
       line-height: 20px;
-      font-weight: 500;
+      font-weight: bold;
       outline-offset: 0;
 
       .display-name__account {
@@ -2934,7 +2933,7 @@ a.account__display-name {
 .dropdown-menu__item {
   font-size: 13px;
   line-height: 18px;
-  font-weight: 500;
+  font-weight: bold;
   display: block;
 
   &--dangerous {
@@ -3132,7 +3131,7 @@ a.account__display-name {
     border: none;
     gap: 8px;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: bold;
     line-height: 16px;
     padding-top: 11px;
     padding-bottom: 15px;
@@ -3592,7 +3591,7 @@ a.account__display-name {
     padding: 1px 6px;
     border-radius: 6px;
     font-size: 10px;
-    font-weight: 500;
+    font-weight: bold;
     line-height: 14px;
   }
 
@@ -4150,7 +4149,7 @@ a.account__display-name {
   border-radius: 4px;
   font-size: 12px;
   line-height: 19px;
-  font-weight: 500;
+  font-weight: bold;
   background: var(--color-bg-primary);
   padding: 4px 8px;
   margin: -6px 10px;
@@ -4175,7 +4174,7 @@ a.account__display-name {
     padding: 10px;
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: bold;
 
     .navigation-panel & {
       padding: 10px 12px;
@@ -4391,7 +4390,7 @@ a.status-card {
   text-overflow: ellipsis;
 
   strong {
-    font-weight: 500;
+    font-weight: bold;
   }
 }
 
@@ -4523,7 +4522,7 @@ a.status-card {
 }
 
 .load-gap {
-  border-bottom: 1px solid var(--color-border-primary);
+  border-bottom: var(--border-thin);
 }
 
 .timeline-hint {
@@ -4536,7 +4535,7 @@ a.status-card {
   line-height: 21px;
 
   strong {
-    font-weight: 500;
+    font-weight: bold;
   }
 
   a {
@@ -4552,7 +4551,7 @@ a.status-card {
   }
 
   &--with-descendants {
-    border-top: 1px solid var(--color-border-primary);
+    border-top: var(--border-thin);
   }
 }
 
@@ -4581,7 +4580,7 @@ a.status-card {
     font-size: 16px;
 
     strong {
-      font-weight: 500;
+      font-weight: bold;
       display: block;
       margin-bottom: 10px;
       color: var(--color-text-secondary);
@@ -5124,7 +5123,7 @@ a.status-card {
     color: var(--color-text-secondary);
     cursor: default;
     display: block;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   .column-header__links {
@@ -5148,7 +5147,7 @@ a.status-card {
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.5px;
-    font-weight: 500;
+    font-weight: bold;
     color: var(--color-text-primary);
     margin-bottom: 16px;
   }
@@ -5301,7 +5300,7 @@ a.status-card {
   p {
     color: var(--color-text-primary);
     font-size: 15px;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 20px;
   }
 }
@@ -5402,8 +5401,8 @@ a.status-card {
 
 .emoji-picker-dropdown__modifiers {
   position: absolute;
-  top: 60px;
-  inset-inline-end: 11px;
+  inset-block-start: 66px;
+  inset-inline-end: 15px;
   cursor: pointer;
 }
 
@@ -5491,7 +5490,7 @@ a.status-card {
   text-align: center;
   color: var(--color-text-primary);
   font-size: 18px;
-  font-weight: 500;
+  font-weight: bold;
   border: 2px dashed var(--color-border-primary);
   border-radius: 4px;
 }
@@ -5513,7 +5512,7 @@ a.status-card {
   span {
     font-size: 12px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: bold;
     display: block;
   }
 }
@@ -5681,7 +5680,7 @@ a.status-card {
 
   strong {
     color: var(--color-text-primary);
-    font-weight: 500;
+    font-weight: bold;
     display: block;
 
     @each $lang in $cjk-langs {
@@ -5745,7 +5744,7 @@ a.status-card {
         font-size: 14px;
         line-height: 20px;
         letter-spacing: 0.25px;
-        font-weight: 500;
+        font-weight: bold;
         padding: 8px 12px;
         border-radius: 4px;
         overflow: hidden;
@@ -5785,7 +5784,7 @@ a.status-card {
     border-radius: 4px;
 
     h3 {
-      font-weight: 500;
+      font-weight: bold;
       margin-bottom: 4px;
     }
 
@@ -5803,7 +5802,7 @@ a.status-card {
 
   &__label {
     display: block;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 8px;
   }
 
@@ -5865,7 +5864,7 @@ a.status-card {
     h4 {
       text-transform: uppercase;
       color: var(--color-text-secondary);
-      font-weight: 500;
+      font-weight: bold;
       padding: 0 10px;
       margin-bottom: 10px;
     }
@@ -6031,7 +6030,7 @@ a.status-card {
     border-bottom: 1px solid var(--color-border-primary);
     background: var(--color-bg-tertiary);
     padding: 15px;
-    font-weight: 500;
+    font-weight: bold;
     font-size: 14px;
     color: var(--color-text-secondary);
     display: flex;
@@ -6443,7 +6442,7 @@ a.status-card {
       font-size: 16px;
       line-height: 24px;
       color: var(--color-text-primary);
-      font-weight: 500;
+      font-weight: bold;
     }
 
     :where(h1:not(:only-child)) {
@@ -6557,7 +6556,7 @@ a.status-card {
     padding: 0 12px;
 
     strong {
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
@@ -6616,13 +6615,14 @@ a.status-card {
     align-items: center;
     justify-content: space-between;
     flex-direction: row-reverse;
-    padding: 12px 24px;
+    padding: var(--space-3);
+    padding-inline: var(--space-6) var(--space-4);
     min-height: 61px;
 
     &__title {
       font-size: 16px;
       line-height: 24px;
-      font-weight: 500;
+      font-weight: bold;
       letter-spacing: 0.15px;
     }
   }
@@ -6800,7 +6800,7 @@ a.status-card {
     a {
       text-decoration: none;
       color: var(--color-text-brand);
-      font-weight: 500;
+      font-weight: bold;
 
       &:hover {
         text-decoration: underline;
@@ -6877,7 +6877,7 @@ a.status-card {
 
       strong {
         font-size: 17px;
-        font-weight: 500;
+        font-weight: bold;
         line-height: 22px;
         color: var(--color-text-primary);
         display: block;
@@ -6925,7 +6925,7 @@ a.status-card {
     & > span {
       display: block;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: bold;
       line-height: 20px;
     }
   }
@@ -7009,7 +7009,7 @@ a.status-card {
   font-size: 16px;
 
   strong {
-    font-weight: 500;
+    font-weight: bold;
 
     @each $lang in $cjk-langs {
       &:lang(#{$lang}) {
@@ -7189,7 +7189,7 @@ a.status-card {
   h4 {
     font-size: 15px;
     line-height: 20px;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 8px;
   }
 
@@ -7242,7 +7242,7 @@ a.status-card {
     a {
       text-decoration: none;
       color: var(--color-text-tertiary);
-      font-weight: 500;
+      font-weight: bold;
 
       &:hover {
         text-decoration: underline;
@@ -7759,7 +7759,7 @@ a.status-card {
     &__subtitle {
       display: block;
       font-size: 11px;
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
@@ -7792,7 +7792,7 @@ a.status-card {
       background: transparent;
       border: 0;
       color: rgb(from var(--color-text-on-media) r g b / 75%);
-      font-weight: 500;
+      font-weight: bold;
 
       &:active,
       &:hover,
@@ -7818,7 +7818,7 @@ a.status-card {
   &__time-current {
     color: var(--color-text-on-media);
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   &__time-sep {
@@ -7898,7 +7898,7 @@ a.status-card {
     a {
       text-decoration: none;
       font-size: 14px;
-      font-weight: 500;
+      font-weight: bold;
       color: var(--color-text-on-media);
 
       &:hover,
@@ -7986,7 +7986,7 @@ a.status-card {
 
     &__label {
       font-size: 15px;
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
@@ -8075,7 +8075,7 @@ a.status-card {
     color: var(--color-text-secondary);
     padding: 15px 0;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: bold;
     text-align: center;
     text-decoration: none;
     position: relative;
@@ -8318,7 +8318,7 @@ noscript {
 
   a {
     color: inherit;
-    font-weight: 500;
+    font-weight: bold;
     text-decoration: none;
   }
 
@@ -8344,14 +8344,14 @@ noscript {
       white-space: nowrap;
 
       strong {
-        font-weight: 500;
+        font-weight: bold;
       }
 
       a {
         color: var(--color-text-primary);
         text-decoration: none;
         font-size: 14px;
-        font-weight: 500;
+        font-weight: bold;
         display: block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -8370,7 +8370,7 @@ noscript {
     &__current {
       flex: 0 0 auto;
       font-size: 24px;
-      font-weight: 500;
+      font-weight: bold;
       text-align: end;
       color: var(--color-text-primary);
       text-decoration: none;
@@ -8580,7 +8580,7 @@ noscript {
 
   &__range {
     display: block;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 10px;
     padding-inline-end: 28px;
   }
@@ -8667,7 +8667,7 @@ noscript {
       display: block;
       min-width: 9px;
       font-size: 13px;
-      font-weight: 500;
+      font-weight: bold;
       text-align: center;
       margin-inline-start: 6px;
     }
@@ -8831,7 +8831,7 @@ noscript {
   margin-top: 16px;
   font-size: 15px;
   line-height: 21px;
-  font-weight: 500;
+  font-weight: bold;
   cursor: pointer;
   color: var(--color-text-tertiary);
   aspect-ratio: 16 / 9;
@@ -8871,7 +8871,7 @@ noscript {
 
   h2 {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: bold;
     margin-bottom: 15px;
     text-align: center;
   }
@@ -8947,7 +8947,7 @@ noscript {
       display: block;
       font-size: 19px;
       line-height: 24px;
-      font-weight: 500;
+      font-weight: bold;
       margin-bottom: 8px;
       text-decoration: none;
       color: var(--color-text-primary);
@@ -8975,7 +8975,7 @@ noscript {
         text-decoration: none;
         padding: 4px 12px;
         font-size: 12px;
-        font-weight: 500;
+        font-weight: bold;
         line-height: 16px;
         flex-shrink: 0;
       }
@@ -8985,7 +8985,7 @@ noscript {
         align-items: center;
         gap: 4px;
         color: var(--color-text-primary);
-        font-weight: 500;
+        font-weight: bold;
         text-decoration: none;
 
         &:hover,
@@ -8997,7 +8997,7 @@ noscript {
     }
 
     strong {
-      font-weight: 500;
+      font-weight: bold;
     }
   }
 
@@ -9119,7 +9119,7 @@ noscript {
 
   &__number-label {
     color: var(--color-text-secondary);
-    font-weight: 500;
+    font-weight: bold;
     font-size: 14px;
   }
 
@@ -9549,7 +9549,7 @@ noscript {
     padding: 15px;
     font-size: 15px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: bold;
     color: var(--color-text-primary);
 
     p {
@@ -9717,7 +9717,7 @@ noscript {
       font-size: 15px;
       text-transform: uppercase;
       color: var(--color-text-secondary);
-      font-weight: 500;
+      font-weight: bold;
       margin-bottom: 20px;
     }
 
@@ -9769,7 +9769,7 @@ noscript {
   &__mail {
     color: var(--color-text-primary);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: bold;
 
     &:hover,
     &:focus,
@@ -9846,7 +9846,7 @@ noscript {
         display: flex;
         gap: 10px;
         justify-content: space-between;
-        font-weight: 500;
+        font-weight: bold;
         margin-bottom: 4px;
       }
 
@@ -10052,7 +10052,7 @@ noscript {
     padding: 4px 12px;
     background: var(--color-bg-brand-softest);
     border-radius: 4px;
-    font-weight: 500;
+    font-weight: bold;
 
     &:hover,
     &:focus,
@@ -10255,7 +10255,7 @@ noscript {
 
           &__html {
             font-size: 15px;
-            font-weight: 500;
+            font-weight: bold;
             color: var(--color-text-primary);
           }
 
@@ -10444,7 +10444,7 @@ noscript {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-weight: 500;
+    font-weight: bold;
     color: var(--color-text-primary);
     text-decoration: none;
     min-width: 0;
@@ -10656,7 +10656,7 @@ noscript {
     color: var(--color-text-tertiary);
     font-size: 15px;
     line-height: 22px;
-    font-weight: 500;
+    font-weight: bold;
     padding-inline-start: var(--space-4);
 
     &__icon {
@@ -10827,7 +10827,7 @@ noscript {
     &-label {
       color: var(--color-text-tertiary);
       font-size: 12px;
-      font-weight: 500;
+      font-weight: bold;
       text-transform: uppercase;
     }
 
@@ -10844,7 +10844,7 @@ noscript {
 
   &__limited-account-note {
     text-align: center;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   .display-name {
@@ -10852,7 +10852,7 @@ noscript {
     line-height: 22px;
 
     bdi {
-      font-weight: 500;
+      font-weight: bold;
       color: var(--color-text-primary);
     }
 
@@ -10894,7 +10894,7 @@ noscript {
 
       dd {
         flex: 1 1 auto;
-        font-weight: 500;
+        font-weight: bold;
         min-width: 0;
         overflow: hidden;
         white-space: nowrap;
@@ -10918,7 +10918,7 @@ noscript {
           }
 
           a {
-            font-weight: 500;
+            font-weight: bold;
           }
 
           .icon {
@@ -10946,13 +10946,13 @@ noscript {
 
   p {
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   .link-button {
     font-size: inherit;
     line-height: inherit;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   &--filter {
@@ -10963,7 +10963,7 @@ noscript {
     }
 
     .filter-name {
-      font-weight: 500;
+      font-weight: bold;
       color: var(--color-text-primary);
     }
   }
@@ -11095,7 +11095,7 @@ noscript {
   &__title {
     flex-grow: 1;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: bold;
     text-transform: uppercase;
     display: flex;
     align-items: center;

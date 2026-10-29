@@ -40,7 +40,7 @@ import { compareUrls } from 'mastodon/utils/compare_urls';
 import StatusReactions from 'mastodon/components/status/legacy/status_reactions';
 import { visibleReactions } from 'mastodon/initial_state';
 
-import Card from './card';
+import { Card } from './card';
 
 interface VideoModalOptions {
   startTime: number;

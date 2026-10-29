@@ -10,8 +10,7 @@ import MoreHorizIcon from '@/material-icons/400-24px/more_horiz.svg?react';
 import { injectIntl } from '@/mastodon/components/intl';
 import { identityContextPropShape, withIdentity } from 'mastodon/identity_context';
 import { PERMISSION_MANAGE_USERS, PERMISSION_MANAGE_FEDERATION } from 'mastodon/permissions';
-import EmojiPickerDropdown from '../../compose/containers/emoji_picker_dropdown_container';
-
+import { EmojiPickerTrigger } from '@/mastodon/components/emoji/picker_trigger';
 import { IconButton } from '@/mastodon/components/icon_button';
 import { Dropdown } from 'mastodon/components/dropdown_menu';
 import { me, maxReactions, quickBoosting } from '@/mastodon/initial_state';
@@ -95,6 +94,7 @@ class ActionBar extends PureComponent {
     onBookmark: PropTypes.func.isRequired,
     onDelete: PropTypes.func.isRequired,
     onRevokeQuote: PropTypes.func,
+    onQuote: PropTypes.func,
     onQuotePolicyChange: PropTypes.func,
     onEdit: PropTypes.func.isRequired,
     onDirect: PropTypes.func.isRequired,
@@ -125,7 +125,7 @@ class ActionBar extends PureComponent {
   };
 
   handleEmojiPick = data => {
-    this.props.onReactionAdd(this.props.status.get('id'), data.native.replace(/:/g, ''));
+    this.props.onReactionAdd(this.props.status.get('id'), data.native.replace(/:/g, ''), data.imageUrl);
   }
 
   handleBookmarkClick = (e) => {
@@ -226,8 +226,6 @@ class ActionBar extends PureComponent {
     const url = this.props.status.get('url');
     navigator.clipboard.writeText(url);
   };
-
-  handleNoOp = () => {} // hack for reaction add button
 
   render () {
     const { status, relationship, statusQuoteState, quotedAccountId, intl } = this.props;
@@ -341,7 +339,6 @@ class ActionBar extends PureComponent {
     const reactButton = (
       <IconButton
         className='plus-icon'
-        onClick={this.handleNoOp} // EmojiPickerDropdown handles that
         title={intl.formatMessage(messages.react)}
         disabled={!canReact}
         icon='plus'
@@ -371,11 +368,11 @@ class ActionBar extends PureComponent {
           <BoostButton statusId={status.get('id')} />
         </div>
         <div className='detailed-status__button'>
-          {
-            canReact
-              ? <EmojiPickerDropdown onPickEmoji={this.handleEmojiPick} button={reactButton} disabled={!canReact} />
-              : reactButton
-          }
+          <EmojiPickerTrigger
+            onPick={this.handleEmojiPick}
+            disabled={!canReact}
+            button={reactButton}
+          />
           <IconButton className='star-icon' animate active={status.get('favourited')} title={favouriteTitle} icon='star' iconComponent={status.get('favourited') ? StatusLikeActiveIcon : StatusLikeIcon} onClick={this.handleFavouriteClick} />
         </div>
         <div className='detailed-status__button'>
