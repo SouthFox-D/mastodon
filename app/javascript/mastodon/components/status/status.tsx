@@ -32,6 +32,7 @@ import { computeHashtagBarForStatus } from './legacy/hashtag_bar';
 import { StatusMeta } from './meta';
 import { StatusPrepend } from './prepend';
 import { StatusReactionsBar } from './reactions_bar';
+import { StatusQuote } from './quote';
 import classes from './styles.module.scss';
 import { TranslateButton } from './translate';
 import type { StatusContainerProps, StatusContextType } from './types';
@@ -256,6 +257,10 @@ export const StatusRedesign: React.FC<StatusRedesignProps> = ({
               )}
 
               <StatusAttachments statusId={status.id} />
+
+              {status.quote && (
+                <StatusQuote {...status.quote} parentId={status.id} />
+              )}
 
               {children}
             </StatusContent>

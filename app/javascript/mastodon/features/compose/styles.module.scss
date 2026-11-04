@@ -12,7 +12,11 @@
   padding-bottom: calc(max(env(safe-area-inset-bottom), var(--space-4)));
   position: relative;
 
-  @media (width >= #{variables.$mobile-menu-breakpoint}) {
+  [data-fullscreen='true'] & {
+    overflow-y: scroll;
+  }
+
+  [data-fullscreen='false'] & {
     @include mixins.elevation-2;
 
     border-bottom: none;
@@ -107,6 +111,8 @@
   scrollbar-width: thin;
   overscroll-behavior-y: contain;
   position: relative;
+  margin-inline: calc(-1 * var(--space-1));
+  padding-inline: var(--space-1);
 
   &::after {
     content: '';
@@ -127,6 +133,14 @@
 
   &[data-scroll-down='true']::after {
     opacity: 1;
+  }
+
+  [data-fullscreen='true'] & {
+    overflow-y: visible;
+
+    &[data-scroll-down='true']::after {
+      opacity: 0;
+    }
   }
 }
 
