@@ -5,9 +5,8 @@ import { defineMessages, FormattedMessage, useIntl } from 'react-intl';
 import { TrashIcon } from '@phosphor-icons/react';
 
 import { changeComposeSpoilerText } from '@/mastodon/actions/compose';
-import { IconButton } from '@/mastodon/components/button/redesign';
-import { FormFieldWrapper } from '@/mastodon/components/form_fields';
-import { TextInput } from '@/mastodon/components/form_fields/redesign';
+import { IconButton } from '@/mastodon/components/button';
+import { FormFieldWrapper, TextInput } from '@/mastodon/components/form_fields';
 import {
   matchesKeyCode,
   normalizeKey,
@@ -53,6 +52,16 @@ export const ComposeSensitiveField: React.FC<
   );
   const onKeyDown: React.KeyboardEventHandler<HTMLInputElement> = useCallback(
     (event) => {
+      // Check if this composing: https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/isComposing
+      // and https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event#keydown_events_with_ime
+      if (
+        event.nativeEvent.isComposing ||
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
+        event.nativeEvent.keyCode === 229
+      ) {
+        return;
+      }
+
       const key = normalizeKey(event.key);
       if (key === 'enter') {
         event.preventDefault();
@@ -81,6 +90,7 @@ export const ComposeSensitiveField: React.FC<
 
   return (
     <FormFieldWrapper
+      compact
       className={classes.sensitiveWrapper}
       status={
         errors.includes('missing-content-warning')
